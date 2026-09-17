@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — Minegensjef 2.0
+ * Kun mørk modus i MVP (PRD §6). Alle farger, flater og mål defineres her
+ * og brukes som Tailwind-utilities (bg-bg, text-muted, border-line osv.).
+ */
+@theme {
+  /* Farger */
+  --color-bg: #060a14;
+  --color-surface: #0e1629;
+  --color-text: #f3f6fc;
+  --color-muted: #9aa6bd;
+  --color-subtle: #7b88a1;
+  --color-accent: #2563f5;
+  --color-accent-hover: #1f58e3;
+  --color-accent-soft: #8fb2ff;
+  --color-line: rgb(148 170 214 / 0.12);
+  --color-line-strong: rgb(148 170 214 / 0.22);
+
+  /* Typografi */
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--letter-spacing: 0.18em;
+  --text-display: clamp(2.5rem, 1.35rem + 4.6vw, 4.75rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.028em;
+  --text-h2: clamp(1.875rem, 1.35rem + 2.1vw, 3rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.024em;
+  --text-lead: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.6;
+
+  /* Layout */
+  --container-content: 76rem;
+  --container-lead: 36rem;
+  --spacing-gutter: clamp(1.25rem, 0.6rem + 2.6vw, 2.5rem);
+  --spacing-section: clamp(5rem, 3.5rem + 6vw, 9rem);
+  --spacing-header: 4.5rem;
+
+  /* Form */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--spacing-header);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgb(47 107 255 / 0.4);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: calc(var(--container-content) + 2 * var(--spacing-gutter));
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+@utility eyebrow {
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

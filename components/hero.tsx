@@ -13,7 +13,7 @@ export function Hero() {
       aria-labelledby="hero-tittel"
       className="relative overflow-hidden border-b border-line"
     >
-      {/* Én dempet lyskilde bak bildet – ingen andre gradienter i hero. */}
+      {/* Én dempet lyskilde bak bildet – ingen annen glow i hero. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 right-[-20rem] size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgb(37_99_245/0.22),transparent)] lg:right-[-8rem]"
@@ -27,7 +27,7 @@ export function Hero() {
             id="hero-tittel"
             className="mt-6 text-display font-bold text-balance sm:mt-7"
           >
-            Bygg en digital sideinntekt.{" "}
+            Bygg en digital ekstrainntekt.{" "}
             <span className="text-accent-soft">Uten hype.</span>
           </h1>
 
@@ -72,22 +72,31 @@ export function Hero() {
           </ul>
         </div>
 
-        <figure className="relative mx-auto w-full max-w-xl lg:col-span-5 lg:max-w-none">
-          <div className="relative overflow-hidden rounded-lg border border-line-strong bg-surface">
+        <figure className="relative w-full max-w-2xl lg:col-span-5 lg:max-w-none">
+          {/* Bildet tones mot navy og løses opp nederst i bakgrunnen i stedet for å stå som et kort. */}
+          <div className="relative overflow-hidden rounded-md mask-b-from-62% mask-b-to-100%">
             <Image
               src={andreasFjell}
               alt="Andreas sitter på en fjellknaus og ser utover et vidt fjellandskap."
               placeholder="blur"
               priority
-              sizes="(min-width: 1024px) 34vw, (min-width: 640px) 36rem, 100vw"
-              className="aspect-[4/3] h-auto w-full object-cover object-[70%_50%] lg:aspect-[4/5]"
+              sizes="(min-width: 1024px) 34vw, (min-width: 640px) 42rem, 100vw"
+              className="aspect-[4/3] h-auto w-full object-cover sm:aspect-[16/10] object-[70%_50%] brightness-[.92] saturate-[.85] lg:aspect-[5/6]"
             />
             <div
               aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-bg/80 to-transparent"
+              className="absolute inset-0 bg-[#0b1a3d]/25 mix-blend-multiply"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-bg/45 to-transparent"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 rounded-md ring-1 ring-white/[0.07] ring-inset"
             />
           </div>
-          <figcaption className="absolute bottom-4 left-4 rounded-sm border border-line-strong bg-bg/70 px-3 py-2 text-sm text-muted backdrop-blur-sm sm:bottom-5 sm:left-5">
+          <figcaption className="absolute bottom-3 left-5 text-sm text-muted sm:bottom-4 sm:left-6">
             <span className="font-semibold text-text">Andreas</span>, som står
             bak Min Egen Sjef
           </figcaption>

@@ -344,6 +344,11 @@ Regler:
 - ikke omtale egne ikke-inntektsgivende AI-sider som økonomiske suksesser
 - resultatgraf og historiske tall brukes nøkternt og med forklaring
 
+Besluttet, ikke implementert ennå:
+
+- `/go/wealthy-affiliate/` -> `https://www.wealthyaffiliate.com?a_aid=fe112df7`
+- den historiske ruten `/wealthyaffiliate` skal bevares ved migreringen (se §12)
+
 ## 17. Analyse og KPI-er
 
 ### Måling ved lansering

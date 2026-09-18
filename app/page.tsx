@@ -1,3 +1,4 @@
+import { AboutSignature } from "@/components/about-signature";
 import { EbutikkerCase } from "@/components/ebutikker-case";
 import { GuidesIndex } from "@/components/guides-index";
 import { Hero } from "@/components/hero";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <WaJourney />
       <EbutikkerCase />
       <GuidesIndex />
+      <AboutSignature />
     </main>
   );
 }

@@ -32,7 +32,7 @@
   --text-chapter: clamp(2.125rem, 1.4rem + 3.1vw, 4rem);
   --text-chapter--line-height: 1.04;
   --text-chapter--letter-spacing: -0.028em;
-  --text-numeral: clamp(3.25rem, 1.6rem + 6.4vw, 7.5rem);
+  --text-numeral: clamp(2.5rem, 1rem + 5.3vw, 6rem);
   --text-numeral--line-height: 1;
   --text-numeral--letter-spacing: -0.045em;
   --text-lead: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem);

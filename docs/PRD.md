@@ -186,6 +186,14 @@ eButikker.no presenteres som **ett ekte eksempel, ikke fasit**. Budskapet skal e
 - kort Om Andreas
 - ingen repetisjon av «Kom i gang» i hver seksjon
 
+### Beslutninger om forsidens struktur (18.09.2026)
+
+- Rekkefølgen er låst: hero, fire steg, Wealthy Affiliate, eButikker-case, guider, Om Andreas-signatur, footer.
+- Ingen flere hovedseksjoner på forsiden etter guidene.
+- Om Andreas er en kort signatur før footer, ikke en hovedseksjon: ingen foto foreløpig, ingen nye tall, ingen CTA-knapp, én tekstlenke til `/om/`.
+- Footer er minimal: navigasjon, juridiske lenker, kort affiliate-opplysning og copyright. Ingen CTA, ingen «Kom i gang», ingen nyhetsbrev.
+- Heroens H1 har høyere visuell prioritet enn årstallene i WA-seksjonen. Årstallene er maks ca. 96 px på desktop og ligger på nivå med H1 under 1024 px.
+
 ## 9. Wealthy Affiliate-hub
 
 WA skal være et sentralt kommersielt og redaksjonelt område, men ikke hele nettstedets identitet.
@@ -381,7 +389,7 @@ MVP-en skal ikke få et kunstig inntektsmål. Første mål er å bygge en trover
 
 ## 18. Tillit, juridisk og tilgjengelighet
 
-- kontakt@swanecreative.no vises kun på `/kontakt/`
+- kontakt@swanecreative.no vises kun på `/kontakt/`, aldri i footer eller andre steder. Footer lenker bare til `/kontakt/`.
 - personvern og cookie-/samtykkevurdering
 - ansvarsfraskrivelse om inntekt og resultater
 - tydelig affiliate disclosure
@@ -436,6 +444,10 @@ Minegensjef 2.0 er klar for domenebytte når:
 ---
 
 ## Endringslogg
+
+### 18.09.2026
+
+Forsidens hovedstruktur låst (§8): ingen flere hovedseksjoner, Om Andreas som kort signatur, minimal footer uten CTA, H1 over WA-årstall. Kontakt-e-post presisert til kun `/kontakt/` (§18). `/go/wealthy-affiliate/` notert som besluttet, ikke implementert (§16).
 
 ### v0.1 - 17.09.2026
 

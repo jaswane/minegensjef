@@ -31,23 +31,44 @@ export function WaJourney() {
             </p>
           </div>
 
-          {/* Tidsreisen: rent typografisk, uten ramme eller flate. */}
+          {/* Tidsreisen: vannrett under lg, loddrett fra lg. Ingen ramme eller flate. */}
           <ol
             aria-label="Min tid i Wealthy Affiliate"
-            className="lg:col-span-5 lg:col-start-9 lg:pt-4"
+            className="flex items-start lg:col-span-5 lg:col-start-9 lg:block lg:pt-4"
           >
-            <li>
-              <time
-                dateTime="2014"
-                className="block text-numeral font-bold text-subtle"
-              >
-                2014
-              </time>
+            <li className="flex min-w-0 flex-1 flex-col lg:block">
+              <div className="flex items-center gap-4 sm:gap-6 lg:block">
+                <time
+                  dateTime="2014"
+                  className="block text-numeral font-bold text-subtle"
+                >
+                  2014
+                </time>
+                <span
+                  aria-hidden="true"
+                  className="flex min-w-6 flex-1 items-center lg:hidden"
+                >
+                  <span className="h-px flex-1 bg-linear-to-r from-line-strong to-accent" />
+                  <svg
+                    width="8"
+                    height="12"
+                    viewBox="0 0 8 12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="-ml-px shrink-0 text-accent"
+                  >
+                    <path d="M1.5 1.5 6 6l-4.5 4.5" />
+                  </svg>
+                </span>
+              </div>
               <span className="mt-2 block text-sm text-subtle">Ble medlem</span>
             </li>
-            <li aria-hidden="true" className="flex justify-start py-6 sm:py-8">
+            <li aria-hidden="true" className="hidden py-8 lg:flex">
               <span className="flex flex-col items-center">
-                <span className="h-16 w-px bg-linear-to-b from-line-strong to-accent sm:h-24" />
+                <span className="h-24 w-px bg-linear-to-b from-line-strong to-accent" />
                 <svg
                   width="12"
                   height="8"
@@ -63,7 +84,7 @@ export function WaJourney() {
                 </svg>
               </span>
             </li>
-            <li>
+            <li className="flex flex-col items-end pl-4 text-right sm:pl-6 lg:block lg:pl-0 lg:text-left">
               <time
                 dateTime="2026"
                 className="block text-numeral font-bold text-accent-soft"

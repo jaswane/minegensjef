@@ -20,13 +20,20 @@ export function EbutikkerCase() {
         </div>
 
         <figure className="max-w-2xl lg:max-w-none lg:col-span-7 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-center">
-          {/* Transparent PNG av laptopen – vises i sitt eget format, uten beskjæring eller ramme. */}
-          <Image
-            src={ebutikkerLaptop}
-            alt="Forsiden til eButikker.no vist på en bærbar PC, med logo, overskriften «Din venn for trygg og smart netthandel i 2026», søkefelt og kategorier som Topp 10 klesbutikker og Topp 10 elektronikk."
-            sizes="(min-width: 1024px) 56vw, (min-width: 640px) 42rem, 100vw"
-            className="h-auto w-full"
-          />
+          {/* Transparent PNG av laptopen – vises i sitt eget format, uten beskjæring eller ramme.
+              Svak refleks under basen, ikke rundt skjermen. */}
+          <div className="relative lg:w-[88%]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-[6%] bottom-[-4%] h-[30%] bg-[radial-gradient(ellipse_at_center,rgb(37_99_235/0.16)_0%,rgb(80_60_220/0.07)_40%,transparent_72%)]"
+            />
+            <Image
+              src={ebutikkerLaptop}
+              alt="Forsiden til eButikker.no vist på en bærbar PC, med logo, overskriften «Din venn for trygg og smart netthandel i 2026», søkefelt og kategorier som Topp 10 klesbutikker og Topp 10 elektronikk."
+              sizes="(min-width: 1024px) 50vw, (min-width: 640px) 42rem, 100vw"
+              className="relative h-auto w-full"
+            />
+          </div>
           <figcaption className="mt-5 flex items-center gap-4 text-sm text-subtle">
             <span aria-hidden="true" className="h-px w-8 shrink-0 bg-accent" />
             Et eksempel, ikke en oppskrift

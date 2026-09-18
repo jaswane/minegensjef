@@ -14,7 +14,7 @@ Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er liv
   1. Header med logo-symbol og mobilmeny (`components/site-header.tsx`, `mobile-nav.tsx`)
   2. Hero med én CTA og troverdighetsrad (`hero.tsx`)
   3. Fire steg (`steps.tsx`)
-  4. Wealthy Affiliate-reisen 2014 → 2026 (`wa-journey.tsx`)
+  4. Wealthy Affiliate-panel med historien og tidslinjen 2014 → 2026 → nytt prosjekt (`wa-journey.tsx`)
   5. eButikker-case med laptop-visual (`ebutikker-case.tsx`)
   6. Guide-indeks med tre innganger (`guides-index.tsx`)
   7. Om Andreas-signatur (`about-signature.tsx`)
@@ -35,6 +35,15 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 - `assets/minegensjef-symbol.png` er produksjonsasset for logoen i UI (beskåret til motivet, 370×256).
 - eButikker-caset bruker `assets/minegensjef_ebutikker_laptop.png` (laptop-visual med transparent bakgrunn).
 - `assets/ebutikker-homepage.png` (det flate skjermbildet) brukes ikke lenger, men beholdes inntil videre.
+
+## Wealthy Affiliate-historien
+
+- Første WA-prosjekt (2014) var en enkel Amazon Associates-side om sportsgadgets for USA-markedet. Domenenavnet skal ikke være sentralt.
+- De første affiliateinntektene kom via Amazon Associates, den gangen som fysiske sjekker i posten.
+- 2026: Andreas går gjennom WA-opplæringen på nytt og bygger et nytt nettsted parallelt med kurset.
+- Nisjen og prosjektet er ikke valgt ennå. Ikke finn på et prosjekt.
+- eButikker.no er et separat, senere case, ikke det første WA-prosjektet.
+- Ikke kommuniser dette som get-rich-quick.
 
 ## Regel for forsiden
 

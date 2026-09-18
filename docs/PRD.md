@@ -170,11 +170,21 @@ Fire rolige steg, ikke fire «SaaS-kort» hvis layouten kan løses mer redaksjon
 
 Forslag til redaksjonell vinkel:
 
-**12 år senere begynner jeg på nytt.**
+**12 år senere tar jeg opplæringen på nytt.**
 
 Andreas går gjennom den oppdaterte WA-opplæringen fra start for å se hva som fortsatt fungerer, hva som har endret seg og hva som er relevant i Norge i 2026.
 
 CTA bør være innholdsorientert, for eksempel `Følg WA-reisen ->`, ikke en aggressiv kjøpsknapp.
+
+**WA-historien (oppdatert 18.09.2026):**
+
+- Første prosjekt gjennom WA-opplæringen (2014) var en enkel Amazon Associates-side om sportsgadgets for det amerikanske markedet. Domenenavnet skal ikke være sentralt i historien.
+- De første affiliateinntektene kom via Amazon Associates. Provisjonen kom den gangen som fysiske sjekker i posten.
+- 2026-planen er å gå gjennom WA-opplæringen på nytt og bygge et nytt nettsted parallelt med kurset.
+- Nisje og prosjekt er ikke valgt ennå. Ikke finn på eller antyd et prosjekt før det er bestemt.
+- eButikker.no er et separat, senere norsk case. Det var ikke det første WA-prosjektet og skal ikke fremstilles som fasit for WA-metoden.
+- Historien skal ikke kommuniseres som get-rich-quick. Den handler om læring, testing og arbeid over tid.
+- På forsiden vises WA som et eget panel innenfor innholdsbredden (svak blå kant og tone), med én intern lenke til `/wealthy-affiliate/`. Ingen direkte affiliatelenke fra forsiden.
 
 ### eButikker-case
 
@@ -192,7 +202,7 @@ eButikker.no presenteres som **ett ekte eksempel, ikke fasit**. Budskapet skal e
 - Ingen flere hovedseksjoner på forsiden etter guidene.
 - Om Andreas er en kort signatur før footer, ikke en hovedseksjon: ingen foto foreløpig, ingen nye tall, ingen CTA-knapp, én tekstlenke til `/om/`.
 - Footer er minimal: navigasjon, juridiske lenker, kort affiliate-opplysning og copyright. Ingen CTA, ingen «Kom i gang», ingen nyhetsbrev.
-- Heroens H1 har høyere visuell prioritet enn årstallene i WA-seksjonen. Årstallene er maks ca. 96 px på desktop og ligger på nivå med H1 under 1024 px.
+- Heroens H1 har høyere visuell prioritet enn årstallene i WA-seksjonen. Årstallene i WA-panelet er maks ca. 52 px, godt under H1 på alle bredder.
 
 ## 9. Wealthy Affiliate-hub
 
@@ -447,7 +457,7 @@ Minegensjef 2.0 er klar for domenebytte når:
 
 ### 18.09.2026
 
-Forsidens hovedstruktur låst (§8): ingen flere hovedseksjoner, Om Andreas som kort signatur, minimal footer uten CTA, H1 over WA-årstall. Kontakt-e-post presisert til kun `/kontakt/` (§18). `/go/wealthy-affiliate/` notert som besluttet, ikke implementert (§16). Nytt logo-symbol foreløpig valgt (§20).
+Forsidens hovedstruktur låst (§8): ingen flere hovedseksjoner, Om Andreas som kort signatur, minimal footer uten CTA, H1 over WA-årstall. Kontakt-e-post presisert til kun `/kontakt/` (§18). `/go/wealthy-affiliate/` notert som besluttet, ikke implementert (§16). Nytt logo-symbol foreløpig valgt (§20). WA-historien oppdatert med første Amazon Associates-prosjekt og 2026-planen (§8).
 
 ### v0.1 - 17.09.2026
 

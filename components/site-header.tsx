@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import minegensjefSymbol from "@/assets/minegensjef-symbol.png";
 import { mainNav } from "@/lib/navigation";
 import { MobileNav } from "@/components/mobile-nav";
 
@@ -8,8 +10,17 @@ export function SiteHeader() {
       <div className="container-page flex h-header items-center justify-between gap-6">
         <Link
           href="/"
-          className="text-[1.0625rem] font-bold tracking-[-0.02em] text-text"
+          className="flex items-center gap-2.5 text-[1.0625rem] font-bold tracking-[-0.02em] text-text"
         >
+          {/* Dekorativt: navnet står som tekst ved siden av. */}
+          <Image
+            src={minegensjefSymbol}
+            alt=""
+            width={46}
+            height={32}
+            loading="eager"
+            className="h-7 w-auto lg:h-8"
+          />
           Min Egen Sjef
         </Link>
 

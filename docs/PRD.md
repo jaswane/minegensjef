@@ -413,7 +413,7 @@ MVP-en skal ikke få et kunstig inntektsmål. Første mål er å bygge en trover
 ## 20. Åpne beslutninger
 
 - [ ] Endelig hero-copy og tagline
-- [ ] Endelig logo / videreføring av eksisterende logo
+- [x] Logo: nytt Min Egen Sjef-symbol er foreløpig valgt og godkjent (18.09.2026). Brukes i header, footer og som favicon/app-ikon.
 - [ ] Eksakt fargepalett og typografifamilie
 - [ ] Dark-only i MVP eller også light mode
 - [ ] MDX/Markdown vs annet CMS
@@ -447,7 +447,7 @@ Minegensjef 2.0 er klar for domenebytte når:
 
 ### 18.09.2026
 
-Forsidens hovedstruktur låst (§8): ingen flere hovedseksjoner, Om Andreas som kort signatur, minimal footer uten CTA, H1 over WA-årstall. Kontakt-e-post presisert til kun `/kontakt/` (§18). `/go/wealthy-affiliate/` notert som besluttet, ikke implementert (§16).
+Forsidens hovedstruktur låst (§8): ingen flere hovedseksjoner, Om Andreas som kort signatur, minimal footer uten CTA, H1 over WA-årstall. Kontakt-e-post presisert til kun `/kontakt/` (§18). `/go/wealthy-affiliate/` notert som besluttet, ikke implementert (§16). Nytt logo-symbol foreløpig valgt (§20).
 
 ### v0.1 - 17.09.2026
 

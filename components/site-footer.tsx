@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import minegensjefSymbol from "@/assets/minegensjef-symbol.png";
 import { footerNav, legalNav, type NavItem } from "@/lib/navigation";
 
 function FooterLinks({ label, items }: { label: string; items: NavItem[] }) {
@@ -32,8 +34,16 @@ export function SiteFooter() {
           <div className="col-span-2 lg:col-span-5">
             <Link
               href="/"
-              className="text-[1.0625rem] font-bold tracking-[-0.02em] text-text"
+              className="inline-flex items-center gap-2 text-[1.0625rem] font-bold tracking-[-0.02em] text-text"
             >
+              {/* Dekorativt: navnet står som tekst ved siden av. */}
+              <Image
+                src={minegensjefSymbol}
+                alt=""
+                width={35}
+                height={24}
+                className="h-6 w-auto opacity-80"
+              />
               Min Egen Sjef
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-subtle">

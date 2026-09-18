@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import ebutikkerHomepage from "@/assets/ebutikker-homepage.png";
+import ebutikkerLaptop from "@/assets/minegensjef_ebutikker_laptop.png";
 
 export function EbutikkerCase() {
   return (
@@ -19,16 +19,14 @@ export function EbutikkerCase() {
           </p>
         </div>
 
-        <figure className="max-w-2xl lg:max-w-none lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-center">
-          {/* Ekte skjermbilde, egne farger. Kun en tynn kant så den lyse flaten sitter på mørk bakgrunn. */}
-          <div className="overflow-hidden rounded-md ring-1 ring-line-strong">
-            <Image
-              src={ebutikkerHomepage}
-              alt="Forsiden til eButikker.no med logo, overskriften «Din venn for trygg og smart netthandel i 2026», søkefelt og kategorier som Topp 10 klesbutikker og Topp 10 elektronikk."
-              sizes="(min-width: 1024px) 48vw, (min-width: 640px) 42rem, 100vw"
-              className="aspect-[5/4] h-auto w-full object-cover object-top sm:aspect-[16/10]"
-            />
-          </div>
+        <figure className="max-w-2xl lg:max-w-none lg:col-span-7 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-center">
+          {/* Transparent PNG av laptopen – vises i sitt eget format, uten beskjæring eller ramme. */}
+          <Image
+            src={ebutikkerLaptop}
+            alt="Forsiden til eButikker.no vist på en bærbar PC, med logo, overskriften «Din venn for trygg og smart netthandel i 2026», søkefelt og kategorier som Topp 10 klesbutikker og Topp 10 elektronikk."
+            sizes="(min-width: 1024px) 56vw, (min-width: 640px) 42rem, 100vw"
+            className="h-auto w-full"
+          />
           <figcaption className="mt-5 flex items-center gap-4 text-sm text-subtle">
             <span aria-hidden="true" className="h-px w-8 shrink-0 bg-accent" />
             Et eksempel, ikke en oppskrift

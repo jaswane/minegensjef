@@ -1,7 +1,42 @@
 # Migreringsprioritet – første bølge
 
 **Dato:** 28.09.2026
-**Status:** Forslag. Ingenting er skrevet ennå.
+**Status:** Første bølge migrert 08.10.2026, se under. Resten av dokumentet er den opprinnelige planen.
+
+## Status 08.10.2026: P0 migrert
+
+Ni artikler er skrevet om i MDX og ligger på sin gamle URL, med opprinnelig publiseringsdato og `updated` 2026-10-08:
+
+1. `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/`: levende versjon. 2016-innholdet er tydelig merket historisk, og priser og funksjoner er ikke kontrollert mot WA. Ingen vurdering av 2026-versjonen før Andreas har gått gjennom den nye opplæringen. Da skal pris, nivåer og dom oppdateres.
+2. `/norske-affiliate-programmer/`
+3. `/hva-er-affiliate-markedsforing/`
+4. `/regnskap-og-skatt-pa-affiliate-inntekter/`
+5. `/merverdiavgift-og-affiliate-markedsforing/`
+6. `/hva-er-seo/`
+7. `/hvordan-lage-nettside-na-til-dags/`
+8. `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`, flyttet opp fra «rett etter topp ti»
+9. `/seriose-mater-a-tjene-penger-pa-nettet/`. Lenkene til spørreundersøkelser, Shopify og Nordnet er fjernet.
+
+`/chatgpt-og-affiliate-markedsforing/` og `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` fra topp ti er ikke migrert ennå.
+
+GSC-dataene er fortsatt ikke hentet. Rekkefølgen for neste bølge bygger derfor på tema og internlenking, ikke på trafikk.
+
+**Må kontrolleres manuelt:** Gjelder skatt/MVA-detaljene og Amazon-oppsettet (W-8BEN, menynavn, minstegrense). Gjelder også Brønnøysund-gebyret (lenket, ikke oppgitt) og om eierskap til AffiliateProgrammer.no skal opplyses i `/norske-affiliate-programmer/`.
+
+### Neste bølge
+
+| URL | Hvorfor nå |
+|---|---|
+| `/chatgpt-og-affiliate-markedsforing/` | Eneste AI-artikkel. Igjen fra topp ti |
+| `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | Igjen fra topp ti. Kobler Amazon-historien til de norske nettverkene |
+| `/min-forste-sjekk-pa-over-1000/` | KEEP. Trenger bare datering, og WA-anmeldelsen og Amazon-artikkelen viser til den samme historien |
+| `/affiliate-markedsforing-i-norge-er-det-enklere/` | Støtter `/hva-er-affiliate-markedsforing/` og nettverksoversikten |
+| `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | Nettverksoversikten er nå på plass |
+| `/gode-verktoy-for-sokeordsanalyse/` | `/hva-er-seo/` nevner verktøyene. Priser må verifiseres |
+| `/morningscore-anmeldelse-for-norsk-seo/` | Samme tema |
+| `/de-beste-norske-seo-bloggene/` | Prioriteres opp hvis GSC viser backlinks |
+
+MERGE-kandidatene som peker til migrerte artikler kan få sine 301-er når GSC er sjekket. Det gjelder `/hvordan-heve-sjekk-fra-utlandet-i-norge/`, `/er-det-umulig-a-tjene-penger-pa-nett/`, `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` og `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`.
 
 Dette er de ti gamle sidene som bør migreres først. Utvalget er gjort ut fra søkepotensial, WA-relevans, kommersiell verdi, relevans for nye Minegensjef og hvor sterk en 2026-versjon kan bli.
 

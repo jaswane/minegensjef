@@ -3,6 +3,7 @@
 **Dato:** 28.09.2026
 **Kilde:** `minegensjef.WordPress.2026-09-28.xml` (rå backup utenfor repoet: `C:\_Nettsider\_backups\minegensjef\`), supplert med lesing av live-siden (statuskoder, `Location`-headere, sitemap, robots-meta).
 **Status:** Forslag. Ingen beslutninger er endelige før de er kontrollert mot Google Search Console og backlinks.
+**Oppdatert 08.10.2026:** De ni P0-artiklene er migrert til `content/artikler/` på samme URL, merket «**migrert**» i oversikten under. Fire av de seks gamle sluggene virker nå (se under).
 
 Ingen rå WordPress-data, kommentarer eller e-postadresser er kopiert inn i dette dokumentet.
 
@@ -52,6 +53,8 @@ WordPress har `_wp_old_slug` for disse. De fungerer i dag, men det må bygges ek
 
 `/hva-er-sokemotoroptimalisering-seo/` er internlenket fra fire publiserte sider, så den er i aktiv bruk.
 
+**Status i 2.0 (08.10.2026):** Alle seks er bygget som 301 i `lib/legacy-redirects.ts`. Fire går nå til en publisert artikkel som svarer 200: affiliate, nettside, SEO og Amazon-utbetaling. SEO That Works og Black Friday går fortsatt til 404, fordi målene selv venter på 410- og 301-beslutninger.
+
 ## Viktig om `/go/`-ruter på dagens side
 
 `/go/<noe>/` gir i dag 301 til artikler, for eksempel `/go/wealthy-affiliate/` → WA-anmeldelsen. Dette er **ikke konfigurerte ruter**, men WordPress' innebygde gjetting på 404 (`redirect_guess_404_permalink`), som også gjør at `/wealthy-affil/` og `/regnskap/` treffer. `/go/tulletull-xyz/` gir 404.
@@ -70,21 +73,21 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/privacy-policy/` | 2015-11-03 | side | Juridisk | nei | – | 301 | `/personvern/` | P0 |
 | `/om-meg/` | 2015-11-03 | side | Om | ja | – | 301 | `/om/` | P1 |
 | `/blogg/` | 2015-11-10 | side | Innholdsoversikt | nei | – | 301 | `/artikler/` | P1 |
-| `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` | 2016-01-04 | innlegg | Wealthy Affiliate | ja (19) | `/wealthyaffiliate`, `/namecheap`, `/one` | REWRITE | beholdes | P0 |
-| `/norske-affiliate-programmer/` | 2024-05-05 | innlegg | Affiliate-nettverk | nei | 9 ruter | REWRITE | beholdes | P0 |
-| `/hva-er-affiliate-markedsforing/` | 2015-11-15 | innlegg | Affiliate | nei | – | REWRITE | beholdes | P0 |
-| `/hva-er-seo/` | 2016-03-15 | innlegg | SEO | ja (1) | `/kwfinder` | REWRITE | beholdes | P0 |
-| `/regnskap-og-skatt-pa-affiliate-inntekter/` | 2018-10-03 | innlegg | Skatt/regnskap | nei | – | REWRITE | beholdes | P0 |
-| `/merverdiavgift-og-affiliate-markedsforing/` | 2019-04-06 | innlegg | MVA | nei | – | REWRITE | beholdes | P0 |
-| `/seriose-mater-a-tjene-penger-pa-nettet/` | 2025-03-13 | innlegg | Tjene penger på nett | ja (1) | 7 ruter | REWRITE | beholdes | P1 |
+| `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` | 2016-01-04 | innlegg | Wealthy Affiliate | ja (19) | `/wealthyaffiliate`, `/namecheap`, `/one` | REWRITE, **migrert** | beholdes | P0 |
+| `/norske-affiliate-programmer/` | 2024-05-05 | innlegg | Affiliate-nettverk | nei | 9 ruter | REWRITE, **migrert** | beholdes | P0 |
+| `/hva-er-affiliate-markedsforing/` | 2015-11-15 | innlegg | Affiliate | nei | – | REWRITE, **migrert** | beholdes | P0 |
+| `/hva-er-seo/` | 2016-03-15 | innlegg | SEO | ja (1) | `/kwfinder` | REWRITE, **migrert** | beholdes | P0 |
+| `/regnskap-og-skatt-pa-affiliate-inntekter/` | 2018-10-03 | innlegg | Skatt/regnskap | nei | – | REWRITE, **migrert** | beholdes | P0 |
+| `/merverdiavgift-og-affiliate-markedsforing/` | 2019-04-06 | innlegg | MVA | nei | – | REWRITE, **migrert** | beholdes | P0 |
+| `/seriose-mater-a-tjene-penger-pa-nettet/` | 2025-03-13 | innlegg | Tjene penger på nett | ja (1) | 7 ruter | REWRITE, **migrert** | beholdes | P1 |
 | `/chatgpt-og-affiliate-markedsforing/` | 2023-01-07 | innlegg | AI | nei | – | REWRITE | beholdes | P1 |
-| `/hvordan-lage-nettside-na-til-dags/` | 2015-11-27 | innlegg | Nettsider | ja (2) | `/namecheap`, `/one`, `/wealthyaffiliate` | REWRITE | beholdes | P1 |
+| `/hvordan-lage-nettside-na-til-dags/` | 2015-11-27 | innlegg | Nettsider | ja (2) | `/namecheap`, `/one`, `/wealthyaffiliate` | REWRITE, **migrert** | beholdes | P1 |
 | `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | 2020-04-17 | innlegg | Amazon/nettverk | ja (2) | 8 ruter | REWRITE | beholdes | P1 |
 | `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | 2020-10-17 | innlegg | Affiliate-nettverk | nei | `/tradetracker`, `/adtraction`, `/adservice` | REWRITE | beholdes | P1 |
 | `/affiliate-markedsforing-i-norge-er-det-enklere/` | 2018-10-07 | innlegg | Affiliate i Norge | ja (1) | 5 ruter | REWRITE | beholdes | P1 |
 | `/gode-verktoy-for-sokeordsanalyse/` | 2019-08-08 | innlegg | SEO-verktøy | ja (1) | `/kwfinder`, `/morningscore`, `/jaaxy` | REWRITE | beholdes | P1 |
 | `/morningscore-anmeldelse-for-norsk-seo/` | 2023-01-04 | innlegg | SEO-verktøy | nei | `/morningscore` | REWRITE | beholdes | P1 |
-| `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 2018-09-22 | innlegg | Amazon/utbetaling | nei | `/payoneer` | REWRITE | beholdes | P1 |
+| `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 2018-09-22 | innlegg | Amazon/utbetaling | nei | `/payoneer` | REWRITE, **migrert** | beholdes | P1 |
 | `/de-beste-norske-seo-bloggene/` | 2016-11-01 | innlegg | SEO/norsk bransje | nei | – | REWRITE | beholdes | P1 |
 | `/gratis-bilder/` | 2020-11-22 | innlegg | Nettsider/bilder | nei | `/depositphotos` | REWRITE | beholdes | P2 |
 | `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` | 2015-12-03 | innlegg | SEO/kvalitet | nei | – | REWRITE | beholdes | P2 |

@@ -19,7 +19,6 @@ const crumbs = [
 ];
 
 const planned = [
-  "Wealthy Affiliate anmeldelse 2026, med erfaringene fra 12 år. Den gamle anmeldelsen fra 2016 oppdateres på sin opprinnelige adresse.",
   "Hva den moderniserte opplæringen faktisk inneholder, del for del.",
   "Pris og medlemsnivåer, kontrollert mot Wealthy Affiliate før publisering.",
   "Hvordan det nye nettstedet utvikler seg, fra nisjevalg og videre.",
@@ -72,6 +71,16 @@ export default function WealthyAffiliatePage() {
             fortsatt bygge selv, og det tar tid. Hvis du leter etter raske penger, er dette feil sted å begynne.
           </p>
 
+          <h2>Anmeldelsen fra 2016, oppdatert</h2>
+          <p>
+            Anmeldelsen jeg skrev i 2016, ligger på sin gamle adresse. Den viser hva jeg skrev den gang, hva jeg
+            mener i dag, og blir oppdatert når jeg har gått gjennom den nye opplæringen:{" "}
+            <Link href="/wealthy-affiliate-anmeldelse-en-gylden-mulighet/">
+              Wealthy Affiliate anmeldelse 2026: mine erfaringer etter 12 år
+            </Link>
+            .
+          </p>
+
           <h2>Dette kommer her</h2>
           <ul>
             {planned.map((item) => (
@@ -98,6 +107,7 @@ export default function WealthyAffiliatePage() {
           <AffiliateLink
             slug="wealthy-affiliate"
             placement="wa_hub"
+            marked={false}
             className="group mt-5 inline-flex items-center gap-2 border-b border-accent-soft/40 pb-1 text-base font-semibold text-accent-soft transition-colors duration-(--duration-fast) hover:border-accent-soft hover:text-text"
           >
             Gå til Wealthy Affiliate

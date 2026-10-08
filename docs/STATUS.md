@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
 **Sist oppdatert:** 08.10.2026
-**Status:** Launch foundation bygget, venter på godkjenning. Ikke committet ennå.
-**Siste commit:** «Refine Wealthy Affiliate homepage story» (`git log -1`)
+**Status:** P0-migreringen er ferdig. Ni gamle artikler er publisert i 2.0 på sin gamle URL.
+**Siste commit:** «Migrate priority legacy content» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -30,8 +30,8 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/` | Forside | ja |
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
-| `/artikler/` | Liste over publiserte artikler (tom til migreringen starter) | ja |
-| `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke | ja |
+| `/artikler/` | Liste over publiserte artikler (ni etter P0) | ja |
+| `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
 | `/kontakt/` | **Eneste sted e-postadressen står** | ja |
@@ -47,7 +47,24 @@ Artikler er MDX-filer i `content/artikler/<slug>.mdx` og publiseres på `/<slug>
 
 Malen gir brødsmuler, publisert- og oppdatert-dato, annonsemerking, «Les videre», Article/WebPage/BreadcrumbList-schema, canonical og Open Graph. Bygget stopper hvis et påkrevd felt mangler.
 
-**Ingen av de gamle artiklene er migrert ennå.** `content/artikler/` inneholder bare `eksempel-artikkelmal.mdx`, et utkast som vises i `npm run dev` og aldri i produksjon.
+`eksempel-artikkelmal.mdx` er et utkast som vises i `npm run dev` og aldri i produksjon.
+
+**Annonsemerking per lenke:** `AffiliateLink` setter «(annonselenke)» etter hver lenke, som Forbrukertilsynet anbefaler. Der lenken står i en boks som allerede er merket «Annonselenke», slås dette av med `marked={false}` (WA-huben).
+
+## Migrerte artikler (P0, 08.10.2026)
+
+Ni artikler er skrevet om og ligger på samme URL som i WordPress, med opprinnelig publiseringsdato og `updated` 2026-10-08. Listen står i `docs/migration/migration-priority.md`. Alle er kontrollert for title, description, canonical, én H1, Article-schema med Person, brødsmuler, «Les videre» og annonsemerking. Annonselenkene går via `/go/`.
+
+- Skatt-, MVA- og Amazon-artiklene er kontrollert mot Skatteetaten, Brønnøysundregistrene og Amazon. De har en merknad om at det er generell informasjon og ikke rådgivning.
+- WA-anmeldelsen er en levende versjon. 2016-innholdet er merket historisk. Ny vurdering, pris og funksjoner kommer etter gjennomgangen av den nye opplæringen.
+- Fjernet fra `/seriose-mater-a-tjene-penger-pa-nettet/`: lenker til spørreundersøkelser (TopSurveys, HeyCash, Prime Opinion, YouGov), Shopify og Nordnet. Rutene finnes fortsatt i `/go/`.
+
+**Må kontrolleres manuelt:**
+
+- W-8BEN/ITIN-krav i dag, Amazons menynavn og minstegrense for utbetaling.
+- Brønnøysund-gebyret (lenket, ikke oppgitt).
+- Vilkårene for årstermin og mva-fristene.
+- Om eierskap til AffiliateProgrammer.no skal opplyses i `/norske-affiliate-programmer/`.
 
 ## Redirects implementert
 
@@ -57,16 +74,16 @@ Malen gir brødsmuler, publisert- og oppdatert-dato, annonsemerking, «Les vider
 
 **Gamle slugger:** De seks `_wp_old_slug`-redirectene (301) fra `docs/migration/url-inventory.md`, i `lib/legacy-redirects.ts`.
 
-**Blokkering før domene-cutover:** Alle seks målene gir 404 til artiklene er migrert.
+**Status:** Fire av seks mål er migrert og svarer 200. To gir fortsatt 404.
 
 | Gammel URL | Mål | Mål i dag |
 |---|---|---|
-| `/hva-er-egentlig-affiliate-markedsforing/` | `/hva-er-affiliate-markedsforing/` | 404, ikke migrert |
-| `/hvordan-lage-nettside-na-til-dags-det-er-enkelt/` | `/hvordan-lage-nettside-na-til-dags/` | 404, ikke migrert |
-| `/hva-er-sokemotoroptimalisering-seo/` | `/hva-er-seo/` | 404, ikke migrert |
+| `/hva-er-egentlig-affiliate-markedsforing/` | `/hva-er-affiliate-markedsforing/` | 200, migrert |
+| `/hvordan-lage-nettside-na-til-dags-det-er-enkelt/` | `/hvordan-lage-nettside-na-til-dags/` | 200, migrert |
+| `/hva-er-sokemotoroptimalisering-seo/` | `/hva-er-seo/` | 200, migrert |
 | `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` | 404, ikke migrert. **Målet er selv en 410-kandidat** |
 | `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate-black-friday-salg/` | 404, ikke migrert. **Målet er selv foreslått 301 til `/wealthy-affiliate/`** |
-| `/hvordan-motta-inntekter-fra-amazon-pa-enklest-mulig-vis/` | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 404, ikke migrert |
+| `/hvordan-motta-inntekter-fra-amazon-pa-enklest-mulig-vis/` | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 200, migrert |
 
 Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen peke rett til det endelige målet (eller gi 410), så det ikke blir en kjede.
 
@@ -111,14 +128,14 @@ Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen pek
 
 ## Ikke implementert
 
-- Migrering av de gamle artiklene.
+- Migrering av resten av de gamle artiklene. Neste bølge står i `docs/migration/migration-priority.md`.
 - Guidesidene (`/guider/<slug>/`) og temahubene (`/nisje/`, `/nettsider/`, `/seo/`, `/ai/`, `/affiliate-markedsforing/`).
 - 410-kandidater og MERGE → 301-forslag.
 - Vercel-oppsett og domeneovergang.
 
 ## Lenker
 
-Ingen synlig intern lenke på noen side gir 404 (kontrollert 08.10.2026).
+Ingen synlig intern lenke på noen side gir 404 (kontrollert 08.10.2026, også i de ni artiklene).
 
 Forsidens tre guide-lenker peker midlertidig til ankrene på `/guider/` (`#nisje`, `#nettside`, `#trafikk`). De endelige rutene står som `plannedHref` i `components/guides-index.tsx` og byttes inn når guidene er publisert:
 
@@ -158,11 +175,11 @@ Fra forside- og grunnmurarbeidet:
 - `assets/minegensjef_ebutikker_laptop.png` er 1,4 MB som PNG.
 - `assets/ebutikker-homepage.png` kan slettes når det er bestemt at den ikke trengs.
 
-## Neste sprint: P0 legacy-content migration
+## Neste sprint
 
-Migrer de prioriterte gamle artiklene til `content/artikler/`, med bevart URL og opprinnelig publiseringsdato. Rekkefølge og arbeidsbeskrivelse står i `docs/migration/migration-priority.md`. Før start: hent GSC-data og klikktall per Pretty Link.
+Neste migreringsbølge står i `docs/migration/migration-priority.md`. Hent GSC-data og klikktall per Pretty Link først, så rekkefølgen kan justeres etter faktisk trafikk.
 
-WA-anmeldelsen skal skrives underveis i Andreas' gjennomgang av den nye WA-opplæringen, ikke før.
+WA-anmeldelsen oppdateres med pris, nivåer og ny vurdering underveis i Andreas' gjennomgang av den nye WA-opplæringen.
 
 ## Praktisk
 

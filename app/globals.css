@@ -107,6 +107,7 @@
     color: var(--color-muted);
     font-size: 1.0625rem;
     line-height: 1.75;
+    overflow-wrap: break-word;
   }
 
   .prose-mes > * + * {

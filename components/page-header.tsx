@@ -45,7 +45,7 @@ export function PageHeader({
 
         {eyebrow ? <p className="eyebrow mt-10 sm:mt-12">{eyebrow}</p> : null}
         <h1
-          className={`${eyebrow ? "mt-5" : "mt-10 sm:mt-12"} max-w-4xl text-chapter font-bold text-balance`}
+          className={`${eyebrow ? "mt-5" : "mt-10 sm:mt-12"} max-w-4xl text-chapter font-bold text-balance break-words hyphens-auto`}
         >
           {title}
         </h1>

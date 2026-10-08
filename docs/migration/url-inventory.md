@@ -3,6 +3,7 @@
 **Dato:** 28.09.2026
 **Kilde:** `minegensjef.WordPress.2026-09-28.xml` (rå backup utenfor repoet: `C:\_Nettsider\_backups\minegensjef\`), supplert med lesing av live-siden (statuskoder, `Location`-headere, sitemap, robots-meta).
 **Status:** Forslag. Ingen beslutninger er endelige før de er kontrollert mot Google Search Console og backlinks.
+**Oppdatert 09.10.2026:** Bølge 2 er migrert: seks artikler, valgt ut fra GSC-data til og med 08.10.2026. `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` er beholdt, ikke slått sammen, fordi den har egen trafikk.
 **Oppdatert 08.10.2026:** De ni P0-artiklene er migrert til `content/artikler/` på samme URL, merket «**migrert**» i oversikten under. Fire av de seks gamle sluggene virker nå (se under).
 
 Ingen rå WordPress-data, kommentarer eller e-postadresser er kopiert inn i dette dokumentet.
@@ -82,16 +83,16 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/seriose-mater-a-tjene-penger-pa-nettet/` | 2025-03-13 | innlegg | Tjene penger på nett | ja (1) | 7 ruter | REWRITE, **migrert** | beholdes | P1 |
 | `/chatgpt-og-affiliate-markedsforing/` | 2023-01-07 | innlegg | AI | nei | – | REWRITE | beholdes | P1 |
 | `/hvordan-lage-nettside-na-til-dags/` | 2015-11-27 | innlegg | Nettsider | ja (2) | `/namecheap`, `/one`, `/wealthyaffiliate` | REWRITE, **migrert** | beholdes | P1 |
-| `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | 2020-04-17 | innlegg | Amazon/nettverk | ja (2) | 8 ruter | REWRITE | beholdes | P1 |
+| `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | 2020-04-17 | innlegg | Amazon/nettverk | ja (2) | 8 ruter | REWRITE, **migrert** | beholdes | P1 |
 | `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | 2020-10-17 | innlegg | Affiliate-nettverk | nei | `/tradetracker`, `/adtraction`, `/adservice` | REWRITE | beholdes | P1 |
-| `/affiliate-markedsforing-i-norge-er-det-enklere/` | 2018-10-07 | innlegg | Affiliate i Norge | ja (1) | 5 ruter | REWRITE | beholdes | P1 |
+| `/affiliate-markedsforing-i-norge-er-det-enklere/` | 2018-10-07 | innlegg | Affiliate i Norge | ja (1) | 5 ruter | REWRITE, **migrert** | beholdes | P1 |
 | `/gode-verktoy-for-sokeordsanalyse/` | 2019-08-08 | innlegg | SEO-verktøy | ja (1) | `/kwfinder`, `/morningscore`, `/jaaxy` | REWRITE | beholdes | P1 |
-| `/morningscore-anmeldelse-for-norsk-seo/` | 2023-01-04 | innlegg | SEO-verktøy | nei | `/morningscore` | REWRITE | beholdes | P1 |
+| `/morningscore-anmeldelse-for-norsk-seo/` | 2023-01-04 | innlegg | SEO-verktøy | nei | `/morningscore` | REWRITE, **migrert** | beholdes | P1 |
 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 2018-09-22 | innlegg | Amazon/utbetaling | nei | `/payoneer` | REWRITE, **migrert** | beholdes | P1 |
-| `/de-beste-norske-seo-bloggene/` | 2016-11-01 | innlegg | SEO/norsk bransje | nei | – | REWRITE | beholdes | P1 |
+| `/de-beste-norske-seo-bloggene/` | 2016-11-01 | innlegg | SEO/norsk bransje | nei | – | REWRITE, **migrert** | beholdes | P1 |
 | `/gratis-bilder/` | 2020-11-22 | innlegg | Nettsider/bilder | nei | `/depositphotos` | REWRITE | beholdes | P2 |
 | `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` | 2015-12-03 | innlegg | SEO/kvalitet | nei | – | REWRITE | beholdes | P2 |
-| `/min-forste-sjekk-pa-over-1000/` | 2016-01-05 | innlegg | Amazon/historie | nei | – | KEEP | – | P1 |
+| `/min-forste-sjekk-pa-over-1000/` | 2016-01-05 | innlegg | Amazon/historie | nei | – | KEEP, **migrert** med redaksjonell merknad | – | P1 |
 | `/introduksjon-drommen-om-a-bli-sin-egen-sjef/` | 2015-11-09 | innlegg | Historie | nei | – | KEEP | – | P2 |
 | `/suksess-motbakke-status-og-nye-mal-for-2017/` | 2017-01-14 | innlegg | Statusrapport | ja (2) | – | KEEP | – | P2 |
 | `/har-jeg-gitt-opp/` | 2017-11-08 | innlegg | Historie | ja (1) | – | KEEP | – | P2 |
@@ -101,7 +102,7 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/amazon-julehandel-over-alle-stovelskaft/` | 2015-12-18 | innlegg | Amazon/sesong | ja (1) | – | MERGE → 301 | `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | P2 |
 | `/er-det-umulig-a-tjene-penger-pa-nett/` | 2015-12-08 | innlegg | Tjene penger på nett | ja (1) | – | MERGE → 301 | `/seriose-mater-a-tjene-penger-pa-nettet/` | P2 |
 | `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` | 2020-11-24 | innlegg | Tjene penger på nett | ja (4) | `/wealthyaffiliate` | MERGE → 301 | `/seriose-mater-a-tjene-penger-pa-nettet/` | P2 |
-| `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` | 2023-01-10 | innlegg | Skatt/forventninger | ja (1) | `/wealthyaffiliate` | MERGE → 301 | `/regnskap-og-skatt-pa-affiliate-inntekter/` | P2 |
+| `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` | 2023-01-10 | innlegg | Skatt/forventninger | ja (1) | `/wealthyaffiliate` | ~~MERGE → 301~~ KEEP, **migrert** (GSC viste trafikk) | beholdes | P1 |
 | `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/` | 2016-01-12 | innlegg | Verktøy (utenfor tema) | nei | – | 410-kandidat – må valideres | – | P2 |
 | `/anmeldelse_seo-that-works-2/` | 2016-06-13 | innlegg | Kursanmeldelse | ja (1) | – | 410-kandidat – må valideres | – | P2 |
 | `/betalt-annonsering-med-google-adwords/` | 2016-10-05 | innlegg | Betalt annonsering | nei | – | 410-kandidat – må valideres | – | P2 |

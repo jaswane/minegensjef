@@ -3,6 +3,37 @@
 **Dato:** 28.09.2026
 **Status:** Første bølge migrert 08.10.2026, se under. Resten av dokumentet er den opprinnelige planen.
 
+## Status 09.10.2026: bølge 2 migrert
+
+Valgt ut fra GSC-data til og med 08.10.2026:
+
+| URL | Klikk / visninger / posisjon | Hva som ble gjort |
+|---|---|---|
+| `/de-beste-norske-seo-bloggene/` | 10 / 2433 / 25,2 | Ingen ny topp ti. Datert status for alle ti bloggene på den gamle listen (5 aktive, 2 uten innlegg siden 2024, 3 borte), pluss primærkilder |
+| `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` | 7 / 1756 / 33,8 | Beholdt som personlig innlegg. Språk strammet inn, ingen `updated`. Ikke slått sammen likevel |
+| `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | 6 / 188 / 33,4 | 2020-teksten beholdt og merket. Ny del om Amazon Associates i 2026, kontrollert mot Amazons vilkår |
+| `/affiliate-markedsforing-i-norge-er-det-enklere/` | 5 / 1565 / 52,1 | 2018-vurderingen beholdt. Lånetips, døde lenker og gamle verktøylenker fjernet |
+| `/min-forste-sjekk-pa-over-1000/` | 3 / 568 / 7,3 | Historien bevart. Kort redaksjonell merknad øverst, ingen `updated` |
+| `/morningscore-anmeldelse-for-norsk-seo/` | 0 / 1120 / 35,2 | Testen fra 2023 beholdt og merket. Ny del med priser og funksjoner fra Morningscores egne sider |
+
+`/chatgpt-og-affiliate-markedsforing/` er utsatt med vilje. Den skrives når Andreas har sett hvordan den nye Wealthy Affiliate-opplæringen bruker AI, og skal inngå i historien om affiliate før og etter AI.
+
+**Må kontrolleres manuelt:**
+- Morningscore-prisene, og om de er uten mva.
+- Hvilke norske SEO-kilder Andreas faktisk følger i dag, hvis de skal inn i SEO-blogg-artikkelen.
+
+### Neste bølge
+
+| URL | Hvorfor |
+|---|---|
+| `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | Kommersiell, og nettverksoversikten er på plass. TradeTracker-lenken bruker HTTP |
+| `/gode-verktoy-for-sokeordsanalyse/` | SEO-artiklene nevner verktøyene. Priser må verifiseres |
+| `/chatgpt-og-affiliate-markedsforing/` | Etter WA-gjennomgangen, se over |
+| `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/har-jeg-gitt-opp/`, `/suksess-motbakke-status-og-nye-mal-for-2017/` | KEEP-innlegg med personlig historie. Samme behandling som «Min første sjekk» |
+| `/gratis-bilder/`, `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` | P2. Sjekk GSC først |
+
+MERGE-kandidatene `/amazon-julehandel-over-alle-stovelskaft/`, `/hvordan-heve-sjekk-fra-utlandet-i-norge/`, `/er-det-umulig-a-tjene-penger-pa-nett/` og `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` har nå alle et migrert mål. 301-ene kan bygges når GSC bekrefter at de ikke har egen trafikk verdt å beholde.
+
 ## Status 08.10.2026: P0 migrert
 
 Ni artikler er skrevet om i MDX og ligger på sin gamle URL, med opprinnelig publiseringsdato og `updated` 2026-10-08:

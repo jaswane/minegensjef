@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
-**Sist oppdatert:** 08.10.2026
-**Status:** P0-migreringen er ferdig. Ni gamle artikler er publisert i 2.0 på sin gamle URL.
-**Siste commit:** «Migrate priority legacy content» (`git log -1`)
+**Sist oppdatert:** 09.10.2026
+**Status:** To migreringsbølger er ferdige. 15 gamle artikler er publisert i 2.0 på sin gamle URL.
+**Siste commit:** «Migrate second legacy content wave» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -30,7 +30,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/` | Forside | ja |
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
-| `/artikler/` | Liste over publiserte artikler (ni etter P0) | ja |
+| `/artikler/` | Liste over publiserte artikler (15 etter bølge 2) | ja |
 | `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
@@ -59,12 +59,22 @@ Ni artikler er skrevet om og ligger på samme URL som i WordPress, med opprinnel
 - WA-anmeldelsen er en levende versjon. 2016-innholdet er merket historisk. Ny vurdering, pris og funksjoner kommer etter gjennomgangen av den nye opplæringen.
 - Fjernet fra `/seriose-mater-a-tjene-penger-pa-nettet/`: lenker til spørreundersøkelser (TopSurveys, HeyCash, Prime Opinion, YouGov), Shopify og Nordnet. Rutene finnes fortsatt i `/go/`.
 
+## Migrerte artikler (bølge 2, 09.10.2026)
+
+Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `docs/migration/migration-priority.md`.
+
+- **De to personlige innleggene** (`/min-forste-sjekk-pa-over-1000/` og `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`) er beholdt som historie, uten `updated`. «Min første sjekk» har en redaksjonell merknad om at resultatet ikke kan forventes i dag.
+- **Amazon- og Morningscore-artiklene** skiller mellom det Andreas opplevde da, og dagens fakta. Dagens fakta er kontrollert mot Amazon og Morningscore 09.10.2026.
+- **SEO-blogg-artikkelen** er bygget om fra «topp ti» til en datert status for den gamle listen.
+- **`/norske-affiliate-programmer/`:** har fått én linje om at AffiliateProgrammer.no også er et prosjekt fra Swane Creative.
+
 **Må kontrolleres manuelt:**
 
+- Morningscore-prisene (USD per måned, hentet fra prissiden 09.10.2026), og om de er uten mva.
+- Hvilke norske SEO-kilder Andreas følger i dag, hvis SEO-blogg-artikkelen skal få en anbefaling.
 - W-8BEN/ITIN-krav i dag, Amazons menynavn og minstegrense for utbetaling.
 - Brønnøysund-gebyret (lenket, ikke oppgitt).
 - Vilkårene for årstermin og mva-fristene.
-- Om eierskap til AffiliateProgrammer.no skal opplyses i `/norske-affiliate-programmer/`.
 
 ## Redirects implementert
 

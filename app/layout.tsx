@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { robotsFor } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -10,12 +13,26 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const HOME_TITLE = "Min Egen Sjef – bygg en digital ekstrainntekt uten hype";
+const HOME_DESCRIPTION =
+  "Lær å finne en nisje, bygge noe nyttig, få trafikk og tjene penger på nett over tid – ved siden av jobb og vanlig liv.";
+
 export const metadata: Metadata = {
-  title: "Min Egen Sjef – bygg en digital sideinntekt uten hype",
-  description:
-    "Lær å finne en nisje, bygge noe nyttig, få trafikk og tjene penger på nett over tid – ved siden av jobb og vanlig liv.",
-  // Lokal prototype: skal ikke indekseres før domeneovergangen.
-  robots: { index: false, follow: false },
+  metadataBase: new URL(SITE_URL),
+  title: { default: HOME_TITLE, template: `%s – ${SITE_NAME}` },
+  description: HOME_DESCRIPTION,
+  applicationName: SITE_NAME,
+  // noindex på hele nettstedet til SITE_INDEXABLE=true settes ved lansering.
+  robots: robotsFor(true),
+  openGraph: {
+    type: "website",
+    locale: "nb_NO",
+    siteName: SITE_NAME,
+    url: "/",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
@@ -36,6 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         {children}
         <SiteFooter />
+        <AnalyticsConsent />
       </body>
     </html>
   );

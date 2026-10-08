@@ -1,22 +1,27 @@
 import Link from "next/link";
 
+// `href` peker midlertidig til ankrene på /guider/ til guidene er publisert.
+// `plannedHref` er den endelige ruten. Bytt `href` til den når guiden finnes.
 const guides = [
   {
     category: "Nisje",
     title: "Slik finner du en nisje du faktisk orker å jobbe med",
-    href: "/guider/finne-nisje/",
+    href: "/guider/#nisje",
+    plannedHref: "/guider/finne-nisje/",
     context: "Del av nisje-huben",
   },
   {
     category: "Nettsider",
     title: "Slik bygger du en nettside i 2026",
-    href: "/guider/bygge-nettside/",
+    href: "/guider/#nettside",
+    plannedHref: "/guider/bygge-nettside/",
     context: "Del av nettsider-huben",
   },
   {
     category: "SEO og trafikk",
     title: "Slik får en ny nettside trafikk fra Google og AI-søk",
-    href: "/guider/trafikk-fra-google-og-ai-sok/",
+    href: "/guider/#trafikk",
+    plannedHref: "/guider/trafikk-fra-google-og-ai-sok/",
     context: "Del av SEO-huben",
   },
 ];

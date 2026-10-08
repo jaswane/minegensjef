@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import minegensjefSymbol from "@/assets/minegensjef-symbol.png";
+import { ConsentSettingsButton } from "@/components/analytics-consent";
+import { isAnalyticsConfigured } from "@/lib/analytics";
 import { footerNav, legalNav, type NavItem } from "@/lib/navigation";
 
 function FooterLinks({ label, items }: { label: string; items: NavItem[] }) {
@@ -63,7 +65,12 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-subtle sm:flex-row sm:items-center sm:justify-between lg:mt-20">
-          <p>© 2026 Min Egen Sjef</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p>© 2026 Min Egen Sjef</p>
+            {isAnalyticsConfigured() ? (
+              <ConsentSettingsButton className="transition-colors duration-(--duration-fast) hover:text-text" />
+            ) : null}
+          </div>
           <p>
             Et prosjekt fra{" "}
             <a

@@ -3,7 +3,7 @@ export type NavItem = {
   href: string;
 };
 
-// Planlagte ruter fra PRD §7. Sidene er ikke bygget ennå.
+// Hovedruter fra PRD §7. Alle finnes som sider.
 export const mainNav: NavItem[] = [
   { label: "Start her", href: "/start/" },
   { label: "Guider", href: "/guider/" },

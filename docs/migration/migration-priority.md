@@ -26,7 +26,7 @@ Gjort i bølge 4:
 
 1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
 2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
-3. **Arkiv- og vedleggs-URL-er fra WordPress er ikke behandlet.** Det gjelder kategori- og tag-arkiver, `/feed/`, forfattersider, sidetall som `/page/2/`, vedleggssider og bilder under `/wp-content/uploads/`. Disse er ikke blant de 39, men kan ha visninger eller lenker inn. Trenger en enkel regel (for eksempel 301 til `/artikler/` for arkivene) og en beslutning om gamle bilde-URL-er.
+3. **Gamle bildeadresser** (`/wp-content/uploads/...`) gir 404. Anbefalingen er én 410-regel, og den venter på godkjenning. Arkiver, feeder og vedleggssider er behandlet (se `docs/migration/wordpress-archives-and-media.md`). 28 vedleggssider følger parent-artiklene og avgjøres sammen med dem.
 4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
 5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
 6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).

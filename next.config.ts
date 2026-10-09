@@ -1,12 +1,16 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import { affiliateLinks } from "./lib/affiliate-links";
+import { attachmentRedirects, goneAttachmentPaths } from "./lib/legacy-attachments";
 import { legacySlugRedirects, replacedPageRedirects } from "./lib/legacy-redirects";
 
 /** Med trailingSlash: true legger Next selv til avsluttende skråstrek før disse reglene kjøres. */
 function withSlash(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
 }
+
+/** Route handler som svarer 410 Gone. Brukes via rewrites, så den gamle adressen beholdes. */
+const GONE = "/gone/";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
@@ -22,12 +26,39 @@ const nextConfig: NextConfig = {
         statusCode: 301 as const,
       })),
     );
-    const oldPages = [...legacySlugRedirects, ...replacedPageRedirects].map(({ from, to }) => ({
+    const oldPages = [...legacySlugRedirects, ...replacedPageRedirects, ...attachmentRedirects].map(({ from, to }) => ({
       source: withSlash(from),
       destination: to,
       statusCode: 301 as const,
     }));
-    return [...prettyLinks, ...oldPages];
+    // WordPress-arkiver med et tydelig tematisk mål. Resten av arkivene får 410 (se rewrites).
+    const archives = [
+      { source: "/category/blogg/", destination: "/artikler/" },
+      { source: "/category/blogg/page/:n(\\d+)/", destination: "/artikler/" },
+      { source: "/blogg/page/:n(\\d+)/", destination: "/artikler/" },
+      { source: "/author/andreas/", destination: "/om/" },
+    ].map((rule) => ({ ...rule, statusCode: 301 as const }));
+    return [...prettyLinks, ...oldPages, ...archives];
+  },
+  async rewrites() {
+    return {
+      // Spørringsvarianter på forsiden må fanges før forsiden selv blir servert.
+      beforeFiles: [
+        { source: "/", has: [{ type: "query", key: "attachment_id" }], destination: GONE },
+        { source: "/", has: [{ type: "query", key: "feed" }], destination: GONE },
+      ],
+      // 410 for gamle WordPress-arkiver, feeder og vedleggssider uten publisert parent.
+      afterFiles: [
+        { source: "/category/:path*/", destination: GONE },
+        { source: "/tag/:path*/", destination: GONE },
+        { source: "/author/:path*/", destination: GONE },
+        { source: "/page/:n(\\d+)/", destination: GONE },
+        { source: "/feed/:path*/", destination: GONE },
+        { source: "/comments/feed/:path*/", destination: GONE },
+        { source: "/:slug/feed/:path*/", destination: GONE },
+        ...goneAttachmentPaths.map((path) => ({ source: withSlash(path), destination: GONE })),
+      ],
+    };
   },
 };
 

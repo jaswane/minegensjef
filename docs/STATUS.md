@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 09.10.2026
 **Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 22 migrert, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Close legacy migration accounting» (`git log -1`)
+**Siste commit:** «Handle WordPress archives, feeds and attachment pages» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -86,6 +86,15 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 - Fire MERGE → 301 er implementert (se «Redirects implementert»).
 - `/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/` er KEEP/REWRITE, utsatt.
 - `/tanker-rundt-inspirasjon/`, `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/`, `/anmeldelse_seo-that-works-2/` og `/betalt-annonsering-med-google-adwords/` er markert «410 candidate – backlink validation required». Ingen 410 er implementert.
+
+## WordPress-arkiver, feeder og vedlegg (09.10.2026)
+
+Detaljer, antall og begrunnelser står i `docs/migration/wordpress-archives-and-media.md`.
+
+- **301:** `/category/blogg/` med paginering og `/blogg/page/<n>/` → `/artikler/`, og `/author/andreas/` → `/om/`. I tillegg går 137 vedleggssider direkte til parent-artikkelens endelige URL (`lib/legacy-attachments.ts`, generert fra WXR).
+- **410** (`app/gone/route.ts` via rewrites): øvrige kategorier, alle tag-arkiver, øvrige forfatter-URL-er, `/page/<n>/`, alle feeder (`/feed/`, `/comments/feed/`, `/<slug>/feed/`, `?feed=`), 20 vedleggssider uten publisert parent og `/?attachment_id=<id>`.
+- **Ikke behandlet:** 28 vedleggssider som følger de fire 410-kandidatene og de to utsatte artiklene, og `/wp-content/uploads/...`.
+- **Media:** Ikke kopiert inn i repoet. Backupen har 3 065 filer (81,7 MB), og ingen av de 22 migrerte artiklene bruker gamle bilder. Anbefalingen er å bevare bare filer som faktisk tas i bruk, og gi gamle bildeadresser 410. Den venter på godkjenning.
 
 ## Partnerlenker Andreas skal kontrollere
 
@@ -172,7 +181,7 @@ Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen pek
 - De to utsatte artiklene (ChatGPT og TradeTracker).
 - Guidesidene (`/guider/<slug>/`) og temahubene (`/nisje/`, `/nettsider/`, `/seo/`, `/ai/`, `/affiliate-markedsforing/`).
 - 410 for de fire kandidatene.
-- Regler for gamle WordPress-arkiver, feeder og vedlegg (`/category/`, `/tag/`, `/feed/`, `/wp-content/uploads/` osv.).
+- Regel for gamle bildeadresser (`/wp-content/uploads/...`), og de 28 vedleggssidene som følger parent-artiklene.
 - Vercel-oppsett og domeneovergang.
 
 ## Lenker
@@ -221,7 +230,7 @@ Fra forside- og grunnmurarbeidet:
 
 1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
 2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
-3. **Arkiv- og vedleggs-URL-er fra WordPress er ikke behandlet.** Det gjelder kategori- og tag-arkiver, `/feed/`, forfattersider, sidetall som `/page/2/`, vedleggssider og bilder under `/wp-content/uploads/`. Disse er ikke blant de 39, men kan ha visninger eller lenker inn. Trenger en enkel regel (for eksempel 301 til `/artikler/` for arkivene) og en beslutning om gamle bilde-URL-er.
+3. **Gamle bildeadresser** (`/wp-content/uploads/...`) gir 404. Anbefalingen er én 410-regel, og den venter på godkjenning. Arkiver, feeder og vedleggssider er behandlet (se `docs/migration/wordpress-archives-and-media.md`). 28 vedleggssider følger parent-artiklene og avgjøres sammen med dem.
 4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
 5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
 6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).

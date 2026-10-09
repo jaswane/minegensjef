@@ -3,6 +3,7 @@
 **Dato:** 28.09.2026
 **Kilde:** `minegensjef.WordPress.2026-09-28.xml` (rå backup utenfor repoet: `C:\_Nettsider\_backups\minegensjef\`), supplert med lesing av live-siden (statuskoder, `Location`-headere, sitemap, robots-meta).
 **Status:** Forslag. Ingen beslutninger er endelige før de er kontrollert mot Google Search Console og backlinks.
+**Oppdatert 09.10.2026 (arkiver):** Kategori-, tag- og forfatterarkiver, feeder, paginering, vedleggssider og media er ikke blant de 39. De er behandlet i `wordpress-archives-and-media.md`.
 **Oppdatert 09.10.2026 (bølge 4):** Alle 39 gamle URL-er har nå en dokumentert behandling. Se «Sluttregnskap» under.
 **Oppdatert 09.10.2026 (bølge 3):** Bølge 3: `/gratis-bilder/`, `/gode-verktoy-for-sokeordsanalyse/` og tre personlige innlegg er migrert. Fire 301-er er implementert. Beslutningene for resten står i `migration-priority.md`.
 **Oppdatert 09.10.2026:** Bølge 2 er migrert: seks artikler, valgt ut fra GSC-data til og med 08.10.2026. `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` er beholdt, ikke slått sammen, fordi den har egen trafikk.

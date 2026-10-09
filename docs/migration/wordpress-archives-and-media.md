@@ -48,12 +48,27 @@ Av de 137 vedleggssidene går 116 til en migrert artikkel, 14 til målet for en 
 | `/page/<n>/` | Paginering av en statisk forside. Ingen funksjon |
 | `/feed/` med varianter, `/comments/feed/`, `/<slug>/feed/`, og `?feed=` på forsiden | Nettstedet har ingen RSS-feed og trenger ingen nå. Feeder sendes ikke til forsiden |
 | 20 vedleggssider uten publisert parent (`goneAttachmentPaths`) | Logoer, knapper og bilder som ikke hørte til noe publisert innlegg |
-| `/?attachment_id=<id>` | Dekker de 17 vedleggene som bare har denne adressen. Gjelder alle id-er |
+
+### WordPress-ID-er i spørringer
+
+Gamle spørringsadresser på forsiden går til `app/wp-id/route.ts`. Den slår opp ID-en i `lib/legacy-wp-ids.ts`, som er generert fra WXR:
+
+| Adresse | Kjent ID | Ukjent ID |
+|---|---|---|
+| `/?p=<id>` | 301 til endelig mål. Gjelder innlegg, sider og vedlegg, som i WordPress | 410 |
+| `/?page_id=<id>` | 301 til endelig mål. Bare sider | 410 |
+| `/?attachment_id=<id>` | 301 til parent-artikkelens endelige mål. Bare vedlegg | 410 |
+
+- **Kjent ID** betyr en offentlig ID med et mål: 33 innlegg, 6 sider og 165 vedlegg, til sammen 204. Målet er alltid det endelige: Har siden fått 301, går ID-en direkte dit, uten kjede.
+- **Ukjent ID** betyr en ID som ikke finnes i WXR, et utkast (19), et vedlegg uten publisert parent (37), feil type for parameteren (for eksempel `?page_id=` med ID-en til et innlegg) eller en verdi som ikke er et tall. Alle gir 410, aldri forsiden.
+- **34 ID-er følger en artikkel som venter på beslutning:** 6 innlegg og 28 vedlegg hører til de utsatte artiklene eller 410-kandidatene. De går i dag til artikkelens egen URL, som gir 404 til den er avgjort. Får artikkelen 301, må tabellen genereres på nytt, så det ikke blir kjede.
+- **Andre parametre påvirkes ikke.** `utm_source`, `utm_campaign` og lignende gir vanlig sideoppførsel.
+- **Tom verdi** (`/?p=`) viser forsiden. Next matcher ikke en tom spørringsverdi i `has`, og en tom verdi er heller ingen ID. WordPress gjorde det samme.
 
 ### Ikke behandlet ennå (gir 404)
 
 - **28 vedleggssider der parent venter på beslutning:** 23 hører til de fire 410-kandidatene, og 5 til de to utsatte artiklene. De skal følge parent-artikkelens beslutning, og legges inn i `lib/legacy-attachments.ts` når den er tatt.
-- **Andre spørringsadresser fra WordPress** (`?p=`, `?page_id=`, `?cat=`, `?tag=`, `?author=`, `?s=`) viser i dag forsiden, fordi spørringen ignoreres. Ingen kjent trafikk.
+- **Andre spørringsadresser fra WordPress** (`?cat=`, `?tag=`, `?author=`, `?s=`) viser i dag forsiden, fordi spørringen ignoreres. Ingen kjent trafikk.
 - **WordPress-systemadresser** (`/wp-admin/`, `/wp-login.php`, `/xmlrpc.php`, `/wp-json/`) gir 404. Det er riktig.
 
 ## Media: måling

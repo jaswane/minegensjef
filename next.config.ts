@@ -44,7 +44,10 @@ const nextConfig: NextConfig = {
     return {
       // Spørringsvarianter på forsiden må fanges før forsiden selv blir servert.
       beforeFiles: [
-        { source: "/", has: [{ type: "query", key: "attachment_id" }], destination: GONE },
+        // Gamle WordPress-ID-er: kjent ID gir 301 til endelig mål, ukjent ID gir 410 (app/wp-id/route.ts).
+        { source: "/", has: [{ type: "query", key: "p" }], destination: "/wp-id/" },
+        { source: "/", has: [{ type: "query", key: "page_id" }], destination: "/wp-id/" },
+        { source: "/", has: [{ type: "query", key: "attachment_id" }], destination: "/wp-id/" },
         { source: "/", has: [{ type: "query", key: "feed" }], destination: GONE },
       ],
       // 410 for gamle WordPress-arkiver, feeder og vedleggssider uten publisert parent.

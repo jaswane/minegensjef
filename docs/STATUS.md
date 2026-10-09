@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 09.10.2026
 **Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 22 migrert, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Handle WordPress archives, feeds and attachment pages» (`git log -1`)
+**Siste commit:** «Map legacy WordPress IDs and return 410 for unknown ones» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -92,7 +92,8 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 Detaljer, antall og begrunnelser står i `docs/migration/wordpress-archives-and-media.md`.
 
 - **301:** `/category/blogg/` med paginering og `/blogg/page/<n>/` → `/artikler/`, og `/author/andreas/` → `/om/`. I tillegg går 137 vedleggssider direkte til parent-artikkelens endelige URL (`lib/legacy-attachments.ts`, generert fra WXR).
-- **410** (`app/gone/route.ts` via rewrites): øvrige kategorier, alle tag-arkiver, øvrige forfatter-URL-er, `/page/<n>/`, alle feeder (`/feed/`, `/comments/feed/`, `/<slug>/feed/`, `?feed=`), 20 vedleggssider uten publisert parent og `/?attachment_id=<id>`.
+- **410** (`app/gone/route.ts` via rewrites): øvrige kategorier, alle tag-arkiver, øvrige forfatter-URL-er, `/page/<n>/`, alle feeder (`/feed/`, `/comments/feed/`, `/<slug>/feed/`, `?feed=`), og 20 vedleggssider uten publisert parent.
+- **WordPress-ID-er** (`/?p=`, `/?page_id=`, `/?attachment_id=`): kjent ID gir 301 til endelig mål, og ukjent ID gir 410 (`app/wp-id/route.ts`, `lib/legacy-wp-ids.ts`). Andre parametre som `utm_source` påvirkes ikke.
 - **Ikke behandlet:** 28 vedleggssider som følger de fire 410-kandidatene og de to utsatte artiklene, og `/wp-content/uploads/...`.
 - **Media:** Ikke kopiert inn i repoet. Backupen har 3 065 filer (81,7 MB), og ingen av de 22 migrerte artiklene bruker gamle bilder. Anbefalingen er å bevare bare filer som faktisk tas i bruk, og gi gamle bildeadresser 410. Den venter på godkjenning.
 

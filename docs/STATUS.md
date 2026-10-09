@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 09.10.2026
 **Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 22 migrert, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Map legacy WordPress IDs and return 410 for unknown ones» (`git log -1`)
+**Siste commit:** «Return 410 for old WordPress media and query archives» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -94,8 +94,9 @@ Detaljer, antall og begrunnelser står i `docs/migration/wordpress-archives-and-
 - **301:** `/category/blogg/` med paginering og `/blogg/page/<n>/` → `/artikler/`, og `/author/andreas/` → `/om/`. I tillegg går 137 vedleggssider direkte til parent-artikkelens endelige URL (`lib/legacy-attachments.ts`, generert fra WXR).
 - **410** (`app/gone/route.ts` via rewrites): øvrige kategorier, alle tag-arkiver, øvrige forfatter-URL-er, `/page/<n>/`, alle feeder (`/feed/`, `/comments/feed/`, `/<slug>/feed/`, `?feed=`), og 20 vedleggssider uten publisert parent.
 - **WordPress-ID-er** (`/?p=`, `/?page_id=`, `/?attachment_id=`): kjent ID gir 301 til endelig mål, og ukjent ID gir 410 (`app/wp-id/route.ts`, `lib/legacy-wp-ids.ts`). Andre parametre som `utm_source` påvirkes ikke.
-- **Ikke behandlet:** 28 vedleggssider som følger de fire 410-kandidatene og de to utsatte artiklene, og `/wp-content/uploads/...`.
-- **Media:** Ikke kopiert inn i repoet. Backupen har 3 065 filer (81,7 MB), og ingen av de 22 migrerte artiklene bruker gamle bilder. Anbefalingen er å bevare bare filer som faktisk tas i bruk, og gi gamle bildeadresser 410. Den venter på godkjenning.
+- **410 også for** `/wp-content/uploads/...` og `?cat=`, `?tag=`, `?author=`, `?s=` på forsiden.
+- **Ikke behandlet:** 28 vedleggssider som følger de fire 410-kandidatene og de to utsatte artiklene.
+- **Media:** Ikke kopiert inn i repoet. Backupen har 3 065 filer (81,7 MB), og ingen av de 22 migrerte artiklene bruker gamle bilder. Bare filer som faktisk tas i bruk, bevares, og gamle bildeadresser gir 410.
 
 ## Partnerlenker Andreas skal kontrollere
 
@@ -182,7 +183,7 @@ Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen pek
 - De to utsatte artiklene (ChatGPT og TradeTracker).
 - Guidesidene (`/guider/<slug>/`) og temahubene (`/nisje/`, `/nettsider/`, `/seo/`, `/ai/`, `/affiliate-markedsforing/`).
 - 410 for de fire kandidatene.
-- Regel for gamle bildeadresser (`/wp-content/uploads/...`), og de 28 vedleggssidene som følger parent-artiklene.
+- De 28 vedleggssidene som følger parent-artiklene.
 - Vercel-oppsett og domeneovergang.
 
 ## Lenker
@@ -231,7 +232,7 @@ Fra forside- og grunnmurarbeidet:
 
 1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
 2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
-3. **Gamle bildeadresser** (`/wp-content/uploads/...`) gir 404. Anbefalingen er én 410-regel, og den venter på godkjenning. Arkiver, feeder og vedleggssider er behandlet (se `docs/migration/wordpress-archives-and-media.md`). 28 vedleggssider følger parent-artiklene og avgjøres sammen med dem.
+3. **WordPress-arkiver, feeder, vedlegg, ID-spørringer og gamle bildeadresser er behandlet** (se `docs/migration/wordpress-archives-and-media.md`). Det som gjenstår, er 28 vedleggssider som følger parent-artiklene og avgjøres sammen med dem.
 4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
 5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
 6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).

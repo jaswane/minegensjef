@@ -47,6 +47,8 @@ Av de 137 vedleggssidene går 116 til en migrert artikkel, 14 til målet for en 
 | `/author/<alt annet>/`, også forfatterfeeden | Ingen funksjon |
 | `/page/<n>/` | Paginering av en statisk forside. Ingen funksjon |
 | `/feed/` med varianter, `/comments/feed/`, `/<slug>/feed/`, og `?feed=` på forsiden | Nettstedet har ingen RSS-feed og trenger ingen nå. Feeder sendes ikke til forsiden |
+| `/wp-content/uploads/<sti>` | Gamle mediefiler. Ingen brukes i 2.0 (se «Media» under) |
+| `?cat=`, `?tag=`, `?author=` og `?s=` på forsiden | Gamle arkiver og søk via spørring. Andre parametre som `utm_source` påvirkes ikke |
 | 20 vedleggssider uten publisert parent (`goneAttachmentPaths`) | Logoer, knapper og bilder som ikke hørte til noe publisert innlegg |
 
 ### WordPress-ID-er i spørringer
@@ -63,12 +65,11 @@ Gamle spørringsadresser på forsiden går til `app/wp-id/route.ts`. Den slår o
 - **Ukjent ID** betyr en ID som ikke finnes i WXR, et utkast (19), et vedlegg uten publisert parent (37), feil type for parameteren (for eksempel `?page_id=` med ID-en til et innlegg) eller en verdi som ikke er et tall. Alle gir 410, aldri forsiden.
 - **34 ID-er følger en artikkel som venter på beslutning:** 6 innlegg og 28 vedlegg hører til de utsatte artiklene eller 410-kandidatene. De går i dag til artikkelens egen URL, som gir 404 til den er avgjort. Får artikkelen 301, må tabellen genereres på nytt, så det ikke blir kjede.
 - **Andre parametre påvirkes ikke.** `utm_source`, `utm_campaign` og lignende gir vanlig sideoppførsel.
-- **Tom verdi** (`/?p=`) viser forsiden. Next matcher ikke en tom spørringsverdi i `has`, og en tom verdi er heller ingen ID. WordPress gjorde det samme.
+- **Tom verdi** (`/?p=`, også `?s=` og de andre) viser forsiden. Dette er akseptert. Next matcher ikke en tom spørringsverdi i `has`, og en tom verdi er heller ingen ID. WordPress gjorde det samme.
 
 ### Ikke behandlet ennå (gir 404)
 
 - **28 vedleggssider der parent venter på beslutning:** 23 hører til de fire 410-kandidatene, og 5 til de to utsatte artiklene. De skal følge parent-artikkelens beslutning, og legges inn i `lib/legacy-attachments.ts` når den er tatt.
-- **Andre spørringsadresser fra WordPress** (`?cat=`, `?tag=`, `?author=`, `?s=`) viser i dag forsiden, fordi spørringen ignoreres. Ingen kjent trafikk.
 - **WordPress-systemadresser** (`/wp-admin/`, `/wp-login.php`, `/xmlrpc.php`, `/wp-json/`) gir 404. Det er riktig.
 
 ## Media: måling
@@ -102,12 +103,12 @@ Uploads-backupen er ikke kopiert inn i repoet.
 
 Begge har 0 klikk og til sammen 7 visninger. Den nye `/gratis-bilder/` bruker ingen av dem.
 
-## Media: anbefaling (ikke implementert)
+## Media: strategi (implementert 09.10.2026)
 
-**Anbefalt: B, bevar bare filer som faktisk brukes. I dag er det ingen.**
+**Valgt: B, bevar bare filer som faktisk brukes. I dag er det ingen.**
 
 - Ikke kopier uploads-mappen inn i repoet. 81,7 MB med miniatyrer, plugin-kopier og backupfiler gir ingen nytte for de nye artiklene, og ville gjort repoet mange ganger større.
-- Gamle `/wp-content/uploads/...`-adresser gir 404 i dag. Anbefalingen er én regel som gir **410** for `/wp-content/uploads/:path*`, så det er tydelig at filene er fjernet med vilje. Det krever godkjenning først.
+- Alle `/wp-content/uploads/...`-adresser gir **410**, så det er tydelig at filene er fjernet med vilje.
 - **De to GSC-bildene:** Med 0 klikk er det ikke verdt en egen regel. De følger samme regel som resten. Alternativet er 301 til `/gratis-bilder/` (C), men det sender en bildeforespørsel til en HTML-side og gir lite.
 - **Når et gammelt bilde skal brukes igjen** i en artikkel: kopier den ene originalfilen fra backupen, optimaliser den, og legg den under en ny, beskrivende sti i `public/`. Har den gamle adressen trafikk eller lenker inn, kan den få en egen 301 til den nye filen.
 - Backupen beholdes uendret utenfor repoet.

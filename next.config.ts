@@ -49,6 +49,11 @@ const nextConfig: NextConfig = {
         { source: "/", has: [{ type: "query", key: "page_id" }], destination: "/wp-id/" },
         { source: "/", has: [{ type: "query", key: "attachment_id" }], destination: "/wp-id/" },
         { source: "/", has: [{ type: "query", key: "feed" }], destination: GONE },
+        // Gamle WordPress-arkiver og søk via spørring. Andre parametre (utm_* osv.) påvirkes ikke.
+        { source: "/", has: [{ type: "query", key: "cat" }], destination: GONE },
+        { source: "/", has: [{ type: "query", key: "tag" }], destination: GONE },
+        { source: "/", has: [{ type: "query", key: "author" }], destination: GONE },
+        { source: "/", has: [{ type: "query", key: "s" }], destination: GONE },
       ],
       // 410 for gamle WordPress-arkiver, feeder og vedleggssider uten publisert parent.
       afterFiles: [
@@ -59,6 +64,8 @@ const nextConfig: NextConfig = {
         { source: "/feed/:path*/", destination: GONE },
         { source: "/comments/feed/:path*/", destination: GONE },
         { source: "/:slug/feed/:path*/", destination: GONE },
+        // Gamle mediefiler fra WordPress. Ingen kopieres inn i 2.0 (se docs/migration/wordpress-archives-and-media.md).
+        { source: "/wp-content/uploads/:path*", destination: GONE },
         ...goneAttachmentPaths.map((path) => ({ source: withSlash(path), destination: GONE })),
       ],
     };

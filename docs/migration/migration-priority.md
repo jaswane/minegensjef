@@ -3,6 +3,41 @@
 **Dato:** 28.09.2026
 **Status:** Første bølge migrert 08.10.2026, se under. Resten av dokumentet er den opprinnelige planen.
 
+## Status 09.10.2026: bølge 3 migrert
+
+| URL | Hva som ble gjort |
+|---|---|
+| `/gratis-bilder/` | Skrevet om for søk som «gratis bilder på nett». Tar for seg lisensene til Pixabay, Pexels og Unsplash, Creative Commons, Wikimedia Commons, åndsverkloven §§ 23 og 104, AI-bilder og egne bilder. Depositphotos er beholdt som historisk kjøp via `/go/depositphotos/` |
+| `/gode-verktoy-for-sokeordsanalyse/` | Skrevet om fra en liste over fem verktøy til en metode: Search Console, Googles søkeforslag, Søkeordsplanleggeren, betalte verktøy, usikkert søkevolum i Norge, søkeintensjon og AI. Ingen `/go/`-lenker |
+| `/introduksjon-drommen-om-a-bli-sin-egen-sjef/` | Historisk. Kort merknad, ingen `updated`. Fjernet: lenke til en valutahandel-side og et udokumentert inntektstall for en YouTuber |
+| `/har-jeg-gitt-opp/` | Historisk. Kort merknad, ingen `updated` |
+| `/suksess-motbakke-status-og-nye-mal-for-2017/` | Historisk, med inntektstallene fra 2016 bevart. Merknaden sier at tallene ikke kan forventes i dag. Ingen `updated` |
+
+## Beslutningsrunde 09.10.2026: resterende URL-er
+
+Etter bølge 3 er 20 artikler migrert, og forsiden, `/kontakt/` og `/ansvarsfraskrivelse/` er bygget på nytt. Fire 301-er er implementert (se under). Det gjenstår **12 publiserte URL-er uten endelig behandling**: 2 utsatte omskrivinger, 1 minimal historisk migrering, 5 MERGE-forslag og 4 410-kandidater.
+
+| URL | Anbefaling | Begrunnelse |
+|---|---|---|
+| `/blogg/` | 301 → `/artikler/` | **Implementert** |
+| `/om-meg/` | 301 → `/om/` | **Implementert** |
+| `/privacy-policy/` | 301 → `/personvern/` | **Implementert** |
+| `/wealthy-affiliate-black-friday-salg/` | 301 → `/wealthy-affiliate/` | **Implementert.** Kampanje fra 2017 med utdaterte priser. Den gamle sluggen `/det-arlige-wealthy-affiliate-black-friday-salget/` går nå også rett til `/wealthy-affiliate/`, uten kjede |
+| `/chatgpt-og-affiliate-markedsforing/` | REWRITE, utsatt | Venter på at Andreas har sett hvordan nye WA/Ace bruker AI |
+| `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | REWRITE, utsatt | Venter på ny TradeTracker-lenke fra Andreas |
+| `/amazon-julehandel-over-alle-stovelskaft/` | KEEP, minimal historisk migrering | Personlig milepæl fra julen 2015 med oppdatering for 2016. Både «Min første sjekk» og statusrapporten fra 2017 viser til den. Endret fra MERGE |
+| `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` | MERGE → 301 `/seriose-mater-a-tjene-penger-pa-nettet/` | Fra lockdown i 2020, med løfter som «null risiko» og «bedre enn NAV». Den nye siden dekker intensjonen bedre og uten hype |
+| `/er-det-umulig-a-tjene-penger-pa-nett/` | MERGE → 301 `/seriose-mater-a-tjene-penger-pa-nettet/` | Samme søkeintensjon. Det personlige innholdet (start i 2014, første inntekter) står nå i introduksjonsinnlegget, i «Min første sjekk» og i statusrapporten |
+| `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` | MERGE → 301 `/hva-er-seo/` | Et sammendrag av Googles retningslinjer for kvalitetsvurdering fra 2015 (E-A-T, verktøy for mobilvennlighet). `/hva-er-seo/` dekker innhold, tillit og E-E-A-T slik det er i dag |
+| `/hvordan-heve-sjekk-fra-utlandet-i-norge/` | MERGE → 301 `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | Utdatert oversikt over hvilke banker som løste inn sjekker. Amazon-artikkelen har historikken og dagens løsning |
+| `/verdifulle-tips-fra-simon/` | MERGE → 301 `/hva-er-affiliate-markedsforing/` | Gjestepost fra 2017. Rådene er generelle og delvis utdaterte, og innlegget har ingen unik historie fra Andreas. Grunnsiden dekker realistiske forventninger bedre |
+| `/tanker-rundt-inspirasjon/` | 410-kandidat | Klikkene kommer fra søk på et navn, ikke på Min Egen Sjefs temaer. Innlegget handler mest om andre personer fra avisoppslag i 2016 |
+| `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/` | 410-kandidat | Utenfor tema |
+| `/anmeldelse_seo-that-works-2/` | 410-kandidat | Kurs fra 2016 med utdatert pris og påmelding. Den gamle sluggen `/hva-syns-jeg-om-kurset-seo-that-works-2/` skal få samme behandling |
+| `/betalt-annonsering-med-google-adwords/` | 410-kandidat | Første AdWords-test fra 2016, utenfor kjernetemaet. Har den lenker inn, er 301 til `/hva-er-seo/` et alternativ |
+
+MERGE- og 410-forslagene skal ikke implementeres før GSC og lenker inn er sjekket for hver URL.
+
 ## Status 09.10.2026: bølge 2 migrert
 
 Valgt ut fra GSC-data til og med 08.10.2026:

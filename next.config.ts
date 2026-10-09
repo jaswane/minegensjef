@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import { affiliateLinks } from "./lib/affiliate-links";
-import { legacySlugRedirects } from "./lib/legacy-redirects";
+import { legacySlugRedirects, replacedPageRedirects } from "./lib/legacy-redirects";
 
 /** Med trailingSlash: true legger Next selv til avsluttende skråstrek før disse reglene kjøres. */
 function withSlash(path: string): string {
@@ -22,12 +22,12 @@ const nextConfig: NextConfig = {
         statusCode: 301 as const,
       })),
     );
-    const oldSlugs = legacySlugRedirects.map(({ from, to }) => ({
+    const oldPages = [...legacySlugRedirects, ...replacedPageRedirects].map(({ from, to }) => ({
       source: withSlash(from),
       destination: to,
       statusCode: 301 as const,
     }));
-    return [...prettyLinks, ...oldSlugs];
+    return [...prettyLinks, ...oldPages];
   },
 };
 

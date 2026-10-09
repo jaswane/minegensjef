@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
 **Sist oppdatert:** 09.10.2026
-**Status:** To migreringsbølger er ferdige. 15 gamle artikler er publisert i 2.0 på sin gamle URL.
-**Siste commit:** «Migrate second legacy content wave» (`git log -1`)
+**Status:** Tre migreringsbølger er ferdige. 20 gamle artikler er publisert i 2.0 på sin gamle URL. 12 gamle URL-er venter på endelig behandling (se `docs/migration/migration-priority.md`).
+**Siste commit:** «Close legacy migration wave 3» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -30,7 +30,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/` | Forside | ja |
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
-| `/artikler/` | Liste over publiserte artikler (15 etter bølge 2) | ja |
+| `/artikler/` | Liste over publiserte artikler (20 etter bølge 3) | ja |
 | `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
@@ -76,6 +76,28 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 - Brønnøysund-gebyret (lenket, ikke oppgitt).
 - Vilkårene for årstermin og mva-fristene.
 
+## Migrerte artikler (bølge 3, 09.10.2026)
+
+`/gratis-bilder/` og `/gode-verktoy-for-sokeordsanalyse/` er skrevet om. De tre personlige innleggene `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/har-jeg-gitt-opp/` og `/suksess-motbakke-status-og-nye-mal-for-2017/` er beholdt som historie, uten `updated`. Detaljer og beslutningene for resten står i `docs/migration/migration-priority.md`.
+
+## Partnerlenker Andreas skal kontrollere
+
+Ingen destinasjoner er endret. Når Andreas leverer en ny partnerlenke, endres bare `destination` for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter (`legacyRoutes`) fortsetter å virke uten andre endringer.
+
+| Slug | Gamle ruter | Hvorfor den bør kontrolleres |
+|---|---|---|
+| `tradedoubler` | `/tradedoubler` | Lenken mangler sporingsparametre. En gammel artikkel hadde en sporet `clk.tradedoubler.com`-lenke |
+| `awin` | `/awin` | Peker til én bestemt annonsør (`awinmid=4030`), ikke til nettverket |
+| `partner-ads` | `/partnerads` | Peker til en bannerlenke |
+| `addrevenue` | `/addrevenue` | Peker til den danske versjonen (`m=DK`) |
+| `payoneer` | `/payoneer` | Delingslenke fra 2018 |
+| `kwfinder` | `/kwfinder` | Sporings-ID-en ligger i et URL-fragment (`#…`), som ofte ikke blir registrert |
+| `tradetracker` | `/tradetracker` | HTTP, ikke HTTPS. Trengs også før TradeTracker-artikkelen kan migreres |
+| `one-com` | `/one`, `/one_rabatt` | HTTP, ikke HTTPS |
+| `namecheap` | `/namecheap` | HTTP, ikke HTTPS |
+| `adservice` | `/adservice` | Samme destinasjon som `adtraction` |
+| `jaaxy` | `/jaaxy` | **Ny 09.10.2026:** jaaxy.com sender videre til www.jaaxy.com, som ikke svarte da lenken ble sjekket. Brukes i `/hva-er-seo/` |
+
 ## Redirects implementert
 
 **Affiliate (`/go/<slug>/`):** 29 ruter i `lib/affiliate-links.ts`, med destinasjoner byte-identiske med Pretty Links-eksporten 28.09.2026. Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Ruter merket `review` virker, men skal ikke brukes i nytt innhold før de er vurdert (se `docs/migration/affiliate-redirects.md`).
@@ -84,7 +106,7 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 
 **Gamle slugger:** De seks `_wp_old_slug`-redirectene (301) fra `docs/migration/url-inventory.md`, i `lib/legacy-redirects.ts`.
 
-**Status:** Fire av seks mål er migrert og svarer 200. To gir fortsatt 404.
+**Status:** Fem av seks går til en side som svarer 200. Bare SEO That Works gir 404.
 
 | Gammel URL | Mål | Mål i dag |
 |---|---|---|
@@ -92,10 +114,12 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 | `/hvordan-lage-nettside-na-til-dags-det-er-enkelt/` | `/hvordan-lage-nettside-na-til-dags/` | 200, migrert |
 | `/hva-er-sokemotoroptimalisering-seo/` | `/hva-er-seo/` | 200, migrert |
 | `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` | 404, ikke migrert. **Målet er selv en 410-kandidat** |
-| `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate-black-friday-salg/` | 404, ikke migrert. **Målet er selv foreslått 301 til `/wealthy-affiliate/`** |
+| `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate/` | 200, går direkte uten kjede |
 | `/hvordan-motta-inntekter-fra-amazon-pa-enklest-mulig-vis/` | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 200, migrert |
 
 Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen peke rett til det endelige målet (eller gi 410), så det ikke blir en kjede.
+
+**Erstattede sider (301, `replacedPageRedirects` i `lib/legacy-redirects.ts`):** `/blogg/` → `/artikler/`, `/om-meg/` → `/om/`, `/privacy-policy/` → `/personvern/` og `/wealthy-affiliate-black-friday-salg/` → `/wealthy-affiliate/`.
 
 **Ikke implementert:** 410-kandidater og MERGE → 301-forslag. De venter på GSC-kontroll.
 

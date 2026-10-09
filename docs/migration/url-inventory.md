@@ -3,6 +3,7 @@
 **Dato:** 28.09.2026
 **Kilde:** `minegensjef.WordPress.2026-09-28.xml` (rå backup utenfor repoet: `C:\_Nettsider\_backups\minegensjef\`), supplert med lesing av live-siden (statuskoder, `Location`-headere, sitemap, robots-meta).
 **Status:** Forslag. Ingen beslutninger er endelige før de er kontrollert mot Google Search Console og backlinks.
+**Oppdatert 09.10.2026 (bølge 3):** Bølge 3: `/gratis-bilder/`, `/gode-verktoy-for-sokeordsanalyse/` og tre personlige innlegg er migrert. Fire 301-er er implementert. Beslutningene for resten står i `migration-priority.md`.
 **Oppdatert 09.10.2026:** Bølge 2 er migrert: seks artikler, valgt ut fra GSC-data til og med 08.10.2026. `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` er beholdt, ikke slått sammen, fordi den har egen trafikk.
 **Oppdatert 08.10.2026:** De ni P0-artiklene er migrert til `content/artikler/` på samme URL, merket «**migrert**» i oversikten under. Fire av de seks gamle sluggene virker nå (se under).
 
@@ -49,12 +50,12 @@ WordPress har `_wp_old_slug` for disse. De fungerer i dag, men det må bygges ek
 | `/hvordan-lage-nettside-na-til-dags-det-er-enkelt/` | `/hvordan-lage-nettside-na-til-dags/` |
 | `/hva-er-sokemotoroptimalisering-seo/` | `/hva-er-seo/` (verifisert 301 på live) |
 | `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` |
-| `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate-black-friday-salg/` |
+| `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate/` (direkte, uten kjede) |
 | `/hvordan-motta-inntekter-fra-amazon-pa-enklest-mulig-vis/` | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` |
 
 `/hva-er-sokemotoroptimalisering-seo/` er internlenket fra fire publiserte sider, så den er i aktiv bruk.
 
-**Status i 2.0 (08.10.2026):** Alle seks er bygget som 301 i `lib/legacy-redirects.ts`. Fire går nå til en publisert artikkel som svarer 200: affiliate, nettside, SEO og Amazon-utbetaling. SEO That Works og Black Friday går fortsatt til 404, fordi målene selv venter på 410- og 301-beslutninger.
+**Status i 2.0 (08.10.2026):** Alle seks er bygget som 301 i `lib/legacy-redirects.ts`. Fem går nå til en side som svarer 200: affiliate, nettside, SEO og Amazon-utbetaling, og Black Friday-sluggen går rett til `/wealthy-affiliate/` (09.10.2026). Bare SEO That Works gir fortsatt 404, fordi målet er en 410-kandidat.
 
 ## Viktig om `/go/`-ruter på dagens side
 
@@ -71,9 +72,9 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/` | 2015-11-09 | side | Forside | nei | – | KEEP | – | P0 |
 | `/kontakt/` | 2015-11-03 | side | Kontakt | nei | – | REWRITE | – | P0 |
 | `/ansvarsfraskrivelse/` | 2015-11-04 | side | Juridisk | nei | – | REWRITE | – | P0 |
-| `/privacy-policy/` | 2015-11-03 | side | Juridisk | nei | – | 301 | `/personvern/` | P0 |
-| `/om-meg/` | 2015-11-03 | side | Om | ja | – | 301 | `/om/` | P1 |
-| `/blogg/` | 2015-11-10 | side | Innholdsoversikt | nei | – | 301 | `/artikler/` | P1 |
+| `/privacy-policy/` | 2015-11-03 | side | Juridisk | nei | – | 301, **implementert** | `/personvern/` | P0 |
+| `/om-meg/` | 2015-11-03 | side | Om | ja | – | 301, **implementert** | `/om/` | P1 |
+| `/blogg/` | 2015-11-10 | side | Innholdsoversikt | nei | – | 301, **implementert** | `/artikler/` | P1 |
 | `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` | 2016-01-04 | innlegg | Wealthy Affiliate | ja (19) | `/wealthyaffiliate`, `/namecheap`, `/one` | REWRITE, **migrert** | beholdes | P0 |
 | `/norske-affiliate-programmer/` | 2024-05-05 | innlegg | Affiliate-nettverk | nei | 9 ruter | REWRITE, **migrert** | beholdes | P0 |
 | `/hva-er-affiliate-markedsforing/` | 2015-11-15 | innlegg | Affiliate | nei | – | REWRITE, **migrert** | beholdes | P0 |
@@ -86,20 +87,20 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | 2020-04-17 | innlegg | Amazon/nettverk | ja (2) | 8 ruter | REWRITE, **migrert** | beholdes | P1 |
 | `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | 2020-10-17 | innlegg | Affiliate-nettverk | nei | `/tradetracker`, `/adtraction`, `/adservice` | REWRITE | beholdes | P1 |
 | `/affiliate-markedsforing-i-norge-er-det-enklere/` | 2018-10-07 | innlegg | Affiliate i Norge | ja (1) | 5 ruter | REWRITE, **migrert** | beholdes | P1 |
-| `/gode-verktoy-for-sokeordsanalyse/` | 2019-08-08 | innlegg | SEO-verktøy | ja (1) | `/kwfinder`, `/morningscore`, `/jaaxy` | REWRITE | beholdes | P1 |
+| `/gode-verktoy-for-sokeordsanalyse/` | 2019-08-08 | innlegg | SEO-verktøy | ja (1) | `/kwfinder`, `/morningscore`, `/jaaxy` | REWRITE, **migrert** | beholdes | P1 |
 | `/morningscore-anmeldelse-for-norsk-seo/` | 2023-01-04 | innlegg | SEO-verktøy | nei | `/morningscore` | REWRITE, **migrert** | beholdes | P1 |
 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 2018-09-22 | innlegg | Amazon/utbetaling | nei | `/payoneer` | REWRITE, **migrert** | beholdes | P1 |
 | `/de-beste-norske-seo-bloggene/` | 2016-11-01 | innlegg | SEO/norsk bransje | nei | – | REWRITE, **migrert** | beholdes | P1 |
-| `/gratis-bilder/` | 2020-11-22 | innlegg | Nettsider/bilder | nei | `/depositphotos` | REWRITE | beholdes | P2 |
-| `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` | 2015-12-03 | innlegg | SEO/kvalitet | nei | – | REWRITE | beholdes | P2 |
+| `/gratis-bilder/` | 2020-11-22 | innlegg | Nettsider/bilder | nei | `/depositphotos` | REWRITE, **migrert** | beholdes | P2 |
+| `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` | 2015-12-03 | innlegg | SEO/kvalitet | nei | – | MERGE → 301 (forslag 09.10.2026) | `/hva-er-seo/` | P2 |
 | `/min-forste-sjekk-pa-over-1000/` | 2016-01-05 | innlegg | Amazon/historie | nei | – | KEEP, **migrert** med redaksjonell merknad | – | P1 |
-| `/introduksjon-drommen-om-a-bli-sin-egen-sjef/` | 2015-11-09 | innlegg | Historie | nei | – | KEEP | – | P2 |
-| `/suksess-motbakke-status-og-nye-mal-for-2017/` | 2017-01-14 | innlegg | Statusrapport | ja (2) | – | KEEP | – | P2 |
-| `/har-jeg-gitt-opp/` | 2017-11-08 | innlegg | Historie | ja (1) | – | KEEP | – | P2 |
-| `/verdifulle-tips-fra-simon/` | 2017-03-18 | innlegg | Gjestepost | nei | – | KEEP | – | P2 |
-| `/wealthy-affiliate-black-friday-salg/` | 2017-11-16 | innlegg | WA-kampanje | ja (6) | – | 301 | `/wealthy-affiliate/` | P1 |
+| `/introduksjon-drommen-om-a-bli-sin-egen-sjef/` | 2015-11-09 | innlegg | Historie | nei | – | KEEP, **migrert** med redaksjonell merknad | – | P2 |
+| `/suksess-motbakke-status-og-nye-mal-for-2017/` | 2017-01-14 | innlegg | Statusrapport | ja (2) | – | KEEP, **migrert** med redaksjonell merknad | – | P2 |
+| `/har-jeg-gitt-opp/` | 2017-11-08 | innlegg | Historie | ja (1) | – | KEEP, **migrert** med redaksjonell merknad | – | P2 |
+| `/verdifulle-tips-fra-simon/` | 2017-03-18 | innlegg | Gjestepost | nei | – | MERGE → 301 (forslag 09.10.2026) | `/hva-er-affiliate-markedsforing/` | P2 |
+| `/wealthy-affiliate-black-friday-salg/` | 2017-11-16 | innlegg | WA-kampanje | ja (6) | – | 301, **implementert** | `/wealthy-affiliate/` | P1 |
 | `/hvordan-heve-sjekk-fra-utlandet-i-norge/` | 2016-01-08 | innlegg | Utbetaling | nei | `/tradedoubler`, `/tradetracker`, `/payoneer` | MERGE → 301 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | P2 |
-| `/amazon-julehandel-over-alle-stovelskaft/` | 2015-12-18 | innlegg | Amazon/sesong | ja (1) | – | MERGE → 301 | `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | P2 |
+| `/amazon-julehandel-over-alle-stovelskaft/` | 2015-12-18 | innlegg | Amazon/sesong | ja (1) | – | KEEP, minimal historisk migrering (endret 09.10.2026) | – | P2 |
 | `/er-det-umulig-a-tjene-penger-pa-nett/` | 2015-12-08 | innlegg | Tjene penger på nett | ja (1) | – | MERGE → 301 | `/seriose-mater-a-tjene-penger-pa-nettet/` | P2 |
 | `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` | 2020-11-24 | innlegg | Tjene penger på nett | ja (4) | `/wealthyaffiliate` | MERGE → 301 | `/seriose-mater-a-tjene-penger-pa-nettet/` | P2 |
 | `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` | 2023-01-10 | innlegg | Skatt/forventninger | ja (1) | `/wealthyaffiliate` | ~~MERGE → 301~~ KEEP, **migrert** (GSC viste trafikk) | beholdes | P1 |

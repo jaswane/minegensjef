@@ -32,6 +32,8 @@ export type ArticleMeta = {
   affiliate?: boolean;
   /** Utkast vises bare i `next dev`, aldri i produksjon, sitemap eller lister. */
   draft?: boolean;
+  /** Forfatter i Article-schema når det ikke er Andreas, for eksempel ved gjesteinnlegg. */
+  author?: string;
 };
 
 export type Article = ArticleMeta & { slug: string; path: string };

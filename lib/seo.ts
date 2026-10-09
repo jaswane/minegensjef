@@ -106,6 +106,7 @@ export function articleSchema(input: {
   path: string;
   published: string;
   updated?: string;
+  author?: string;
 }) {
   return {
     "@type": "Article",
@@ -117,7 +118,7 @@ export function articleSchema(input: {
     datePublished: input.published,
     dateModified: input.updated ?? input.published,
     inLanguage: "nb-NO",
-    author: { "@type": "Person", name: "Andreas" },
+    author: { "@type": "Person", name: input.author ?? "Andreas" },
     publisher: { "@id": organizationId },
     isPartOf: { "@id": websiteId },
   };

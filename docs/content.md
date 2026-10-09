@@ -43,6 +43,7 @@ Ingressen er første avsnitt.
 | `related` | nei | Slugger til relaterte artikler. Upubliserte hoppes over |
 | `affiliate` | nei | `true` viser annonsemerking øverst |
 | `draft` | nei | `true` viser artikkelen bare i `npm run dev` |
+| `author` | nei | Forfatter i Article-schema når det ikke er Andreas, for eksempel ved gjesteinnlegg |
 
 Bygget stopper med en tydelig feilmelding hvis et påkrevd felt mangler eller en dato har feil format.
 

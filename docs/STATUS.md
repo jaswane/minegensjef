@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
 **Sist oppdatert:** 09.10.2026
-**Status:** Tre migreringsbølger er ferdige. 20 gamle artikler er publisert i 2.0 på sin gamle URL. 12 gamle URL-er venter på endelig behandling (se `docs/migration/migration-priority.md`).
-**Siste commit:** «Close legacy migration wave 3» (`git log -1`)
+**Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 22 migrert, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
+**Siste commit:** «Close legacy migration accounting» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -30,7 +30,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/` | Forside | ja |
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
-| `/artikler/` | Liste over publiserte artikler (20 etter bølge 3) | ja |
+| `/artikler/` | Liste over publiserte artikler (22) | ja |
 | `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
@@ -80,6 +80,13 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 
 `/gratis-bilder/` og `/gode-verktoy-for-sokeordsanalyse/` er skrevet om. De tre personlige innleggene `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/har-jeg-gitt-opp/` og `/suksess-motbakke-status-og-nye-mal-for-2017/` er beholdt som historie, uten `updated`. Detaljer og beslutningene for resten står i `docs/migration/migration-priority.md`.
 
+## Bølge 4 (09.10.2026): migreringen lukket
+
+- `/verdifulle-tips-fra-simon/` er migrert som historisk gjestepost, og `/amazon-julehandel-over-alle-stovelskaft/` som historisk innlegg. Ingen av dem har `updated`.
+- Fire MERGE → 301 er implementert (se «Redirects implementert»).
+- `/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/` er KEEP/REWRITE, utsatt.
+- `/tanker-rundt-inspirasjon/`, `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/`, `/anmeldelse_seo-that-works-2/` og `/betalt-annonsering-med-google-adwords/` er markert «410 candidate – backlink validation required». Ingen 410 er implementert.
+
 ## Partnerlenker Andreas skal kontrollere
 
 Ingen destinasjoner er endret. Når Andreas leverer en ny partnerlenke, endres bare `destination` for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter (`legacyRoutes`) fortsetter å virke uten andre endringer.
@@ -119,9 +126,9 @@ Ingen destinasjoner er endret. Når Andreas leverer en ny partnerlenke, endres b
 
 Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen peke rett til det endelige målet (eller gi 410), så det ikke blir en kjede.
 
-**Erstattede sider (301, `replacedPageRedirects` i `lib/legacy-redirects.ts`):** `/blogg/` → `/artikler/`, `/om-meg/` → `/om/`, `/privacy-policy/` → `/personvern/` og `/wealthy-affiliate-black-friday-salg/` → `/wealthy-affiliate/`.
+**Erstattede og sammenslåtte sider (301, `replacedPageRedirects` i `lib/legacy-redirects.ts`):** `/blogg/` → `/artikler/`, `/om-meg/` → `/om/`, `/privacy-policy/` → `/personvern/`, `/wealthy-affiliate-black-friday-salg/` → `/wealthy-affiliate/`, `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` og `/er-det-umulig-a-tjene-penger-pa-nett/` → `/seriose-mater-a-tjene-penger-pa-nettet/`, `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` → `/hva-er-seo/`, og `/hvordan-heve-sjekk-fra-utlandet-i-norge/` → `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`. Alle er én direkte 301 til et mål som svarer 200.
 
-**Ikke implementert:** 410-kandidater og MERGE → 301-forslag. De venter på GSC-kontroll.
+**Ikke implementert:** De fire 410-kandidatene. De venter på kontroll av lenker inn.
 
 ## SEO
 
@@ -162,9 +169,10 @@ Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen pek
 
 ## Ikke implementert
 
-- Migrering av resten av de gamle artiklene. Neste bølge står i `docs/migration/migration-priority.md`.
+- De to utsatte artiklene (ChatGPT og TradeTracker).
 - Guidesidene (`/guider/<slug>/`) og temahubene (`/nisje/`, `/nettsider/`, `/seo/`, `/ai/`, `/affiliate-markedsforing/`).
-- 410-kandidater og MERGE → 301-forslag.
+- 410 for de fire kandidatene.
+- Regler for gamle WordPress-arkiver, feeder og vedlegg (`/category/`, `/tag/`, `/feed/`, `/wp-content/uploads/` osv.).
 - Vercel-oppsett og domeneovergang.
 
 ## Lenker
@@ -209,9 +217,18 @@ Fra forside- og grunnmurarbeidet:
 - `assets/minegensjef_ebutikker_laptop.png` er 1,4 MB som PNG.
 - `assets/ebutikker-homepage.png` kan slettes når det er bestemt at den ikke trengs.
 
-## Neste sprint
+## Gjenstår før domenet kan flyttes
 
-Neste migreringsbølge står i `docs/migration/migration-priority.md`. Hent GSC-data og klikktall per Pretty Link først, så rekkefølgen kan justeres etter faktisk trafikk.
+1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
+2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
+3. **Arkiv- og vedleggs-URL-er fra WordPress er ikke behandlet.** Det gjelder kategori- og tag-arkiver, `/feed/`, forfattersider, sidetall som `/page/2/`, vedleggssider og bilder under `/wp-content/uploads/`. Disse er ikke blant de 39, men kan ha visninger eller lenker inn. Trenger en enkel regel (for eksempel 301 til `/artikler/` for arkivene) og en beslutning om gamle bilde-URL-er.
+4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
+5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
+6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).
+7. **Vercel og domene** (krever godkjenning fra Andreas): sette opp prosjektet, sette `SITE_INDEXABLE=true` og miljøvariablene, teste på en forhåndsvisningsadresse, og deretter flytte DNS. WordPress-produksjonen skal ikke røres før dette er bestemt.
+8. **Etter flyttingen:** kjøre alle 39 gamle URL-er og Pretty Links-rutene mot det nye domenet, sende inn sitemapen i Search Console og følge med på 404-feil de første ukene.
+
+Mindre, ikke blokkerende: `npm audit fix` for sharp og source-map-js, bytte avviklet `priority` på heltebildet, og fullt forfatternavn i Article-schema hvis Andreas ønsker det.
 
 WA-anmeldelsen oppdateres med pris, nivåer og ny vurdering underveis i Andreas' gjennomgang av den nye WA-opplæringen.
 

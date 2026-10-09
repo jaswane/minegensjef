@@ -3,6 +3,38 @@
 **Dato:** 28.09.2026
 **Status:** Første bølge migrert 08.10.2026, se under. Resten av dokumentet er den opprinnelige planen.
 
+## Status 09.10.2026: bølge 4, migreringen lukket
+
+Alle 39 gamle offentlige URL-er har nå en dokumentert behandling. Sluttregnskapet står i `url-inventory.md` («Sluttregnskap»):
+
+| Behandling | Antall |
+|---|---|
+| Migrert, svarer 200 på samme URL | 22 |
+| Ny side / rebygget | 3 |
+| Permanent 301 | 8 |
+| Utsatt, KEEP/REWRITE | 2 |
+| 410 candidate – backlink validation required | 4 |
+| **Sum** | **39** |
+
+Gjort i bølge 4:
+
+- **Fire MERGE → 301 er implementert** etter GSC-kontroll: `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` og `/er-det-umulig-a-tjene-penger-pa-nett/` går til `/seriose-mater-a-tjene-penger-pa-nettet/`. `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` går til `/hva-er-seo/`, og `/hvordan-heve-sjekk-fra-utlandet-i-norge/` til `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`.
+- **`/verdifulle-tips-fra-simon/` er beholdt** som historisk gjestepost, fordi GSC viser reell aktivitet (ca. 22 klikk siste ~16 måneder). Dette erstatter MERGE-forslaget fra bølge 3. Én konkret programanbefaling er fjernet og merket. Simons egne råd og tall er beholdt som hans, fra 2017.
+- **`/amazon-julehandel-over-alle-stovelskaft/` er migrert minimalt** som historie, uten `updated`. Merknaden forklarer at mellomtittelen opprinnelig sa «2016», mens innholdet gjelder julen 2015.
+
+## Gjenstår før domenet kan flyttes
+
+1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
+2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
+3. **Arkiv- og vedleggs-URL-er fra WordPress er ikke behandlet.** Det gjelder kategori- og tag-arkiver, `/feed/`, forfattersider, sidetall som `/page/2/`, vedleggssider og bilder under `/wp-content/uploads/`. Disse er ikke blant de 39, men kan ha visninger eller lenker inn. Trenger en enkel regel (for eksempel 301 til `/artikler/` for arkivene) og en beslutning om gamle bilde-URL-er.
+4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
+5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
+6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).
+7. **Vercel og domene** (krever godkjenning fra Andreas): sette opp prosjektet, sette `SITE_INDEXABLE=true` og miljøvariablene, teste på en forhåndsvisningsadresse, og deretter flytte DNS. WordPress-produksjonen skal ikke røres før dette er bestemt.
+8. **Etter flyttingen:** kjøre alle 39 gamle URL-er og Pretty Links-rutene mot det nye domenet, sende inn sitemapen i Search Console og følge med på 404-feil de første ukene.
+
+Mindre, ikke blokkerende: `npm audit fix` for sharp og source-map-js, bytte avviklet `priority` på heltebildet, og fullt forfatternavn i Article-schema hvis Andreas ønsker det.
+
 ## Status 09.10.2026: bølge 3 migrert
 
 | URL | Hva som ble gjort |

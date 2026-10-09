@@ -19,13 +19,18 @@ export const legacySlugRedirects: { from: string; to: string }[] = [
 ];
 
 /**
- * Gamle sider som er erstattet av en ny side med samme formål (301).
- * Bare godkjente 301-er legges inn her. MERGE-forslag og 410-kandidater står i
- * docs/migration/url-inventory.md og venter på GSC-kontroll.
+ * Gamle sider som er erstattet av, eller slått sammen med, en side med samme formål (301).
+ * Bare godkjente 301-er legges inn her. 410-kandidatene står i
+ * docs/migration/url-inventory.md og venter på kontroll av lenker inn.
  */
 export const replacedPageRedirects: { from: string; to: string }[] = [
   { from: "/blogg/", to: "/artikler/" },
   { from: "/om-meg/", to: "/om/" },
   { from: "/privacy-policy/", to: "/personvern/" },
   { from: "/wealthy-affiliate-black-friday-salg/", to: "/wealthy-affiliate/" },
+  // MERGE → 301, godkjent etter GSC-kontroll
+  { from: "/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/", to: "/seriose-mater-a-tjene-penger-pa-nettet/" },
+  { from: "/er-det-umulig-a-tjene-penger-pa-nett/", to: "/seriose-mater-a-tjene-penger-pa-nettet/" },
+  { from: "/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/", to: "/hva-er-seo/" },
+  { from: "/hvordan-heve-sjekk-fra-utlandet-i-norge/", to: "/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/" },
 ];

@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 03.11.2026
 **Status:** Legacy-arkivet er komplett. Alle 39 gamle URL-er har en endelig behandling: 15 moderniserte artikler, 13 historiske (4 av dem noindex), 3 rebygget og 8 med 301. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Refresh affiliate links and enable GA4» (`git log -1`)
+**Siste commit:** «Sync Pretty Links status and legal entity» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -113,44 +113,17 @@ Fra før er sju innlegg historiske legacy-artikler med `historical: true`: `/ama
 
 ## Partnerlenker
 
-**Aktive, oppdatert eller bekreftet av Andreas 03.11.2026:**
+Alle 30 gamle Pretty Links virker. Status per 03.11.2026:
 
-| Slug | Destinasjon | Brukt i |
-|---|---|---|
-| `wealthy-affiliate` | `https://www.wealthyaffiliate.com/?a_aid=fe112df7` | `/wealthy-affiliate/`, `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` |
-| `adtraction` | `https://track.adtraction.com/t/t?a=923786618&as=1156469187&t=2&tk=1` (uendret) | `/norske-affiliate-programmer/` |
-| `tradetracker` | `https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=` | `/norske-affiliate-programmer/` |
-| `partner-ads` | `https://www.partner-ads.com/no/klikbanner.php?partnerid=27345&bannerid=54626` (uendret) | `/norske-affiliate-programmer/` |
-| `addrevenue` | `https://addrevenue.io/t?a=984405&c=3455267` | `/norske-affiliate-programmer/` |
-| `daisycon` | `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F` | `/norske-affiliate-programmer/` |
-| `orion-media` | `https://orionious.com/click.track?CID=438863&AFID=434772` | `/norske-affiliate-programmer/` |
+- **AKTIV / BEKREFTET (10):** Wealthy Affiliate, TradeTracker, Adtraction, Partner-ads, KWFinder, Daisycon, Namecheap, Orion Media, Morningscore, Addrevenue.
+- **LEGACY / IKKE KONTROLLERT (14):** Payoneer, Adsninja, ProISP, Adservice, Link Whisper, Depositphotos, Apotera, Pretty Links, Shopify, YouGov, Nordnet, TopSurveys, Prime Opinion, HeyCash. Rutene virker, men brukes ikke som annonselenker.
+- **INAKTIV / IKKE AFFILIATE (5):** Tradedoubler, Awin, Adrecord, One.com, Jaaxy. Omtales bare redaksjonelt.
 
-**Ikke aktiv affiliate** (`inactive` i `lib/affiliate-links.ts`). Ruten og den gamle Pretty Links-ruten virker fortsatt for gamle lenker, men `<AffiliateLink>` stopper bygget hvis noen prøver å bruke dem som annonselenke:
-
-| Slug | Hvorfor | Omtales i |
-|---|---|---|
-| `tradedoubler` | Ingen aktiv affiliateavtale | `/norske-affiliate-programmer/`, med vanlig lenke til tradedoubler.com |
-| `awin` | **Affiliate-destinasjon mangler / ikke aktiv.** Den gamle lenken går til én annonsør, ikke til nettverket | `/norske-affiliate-programmer/`, med vanlig lenke til awin.com |
-| `adrecord` | Sporingsdomenet og adrecord.com svarte ikke på DNS 03.11.2026 | `/norske-affiliate-programmer/`, uten lenke |
-| `jaaxy` | Destinasjonen svarer ikke | `/hva-er-seo/` og `/gode-verktoy-for-sokeordsanalyse/`, bare som tekst |
-
-**Manuell kontroll senere** (uendret, fortsatt i bruk som annonselenke):
-
-| Slug | Hvorfor | Brukt i |
-|---|---|---|
-| `payoneer` | Delingslenke fra 2018 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` |
-| `kwfinder` | Sporings-ID-en ligger i et URL-fragment (`#…`) | `/hva-er-seo/` |
-| `one-com` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
-| `namecheap` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
-| `adservice` | Samme destinasjon som `adtraction` | Ikke brukt |
-
-Også i bruk, men ikke vurdert i denne runden: `morningscore` (`/morningscore-anmeldelse-for-norsk-seo/`) og `depositphotos` (`/gratis-bilder/`). Begge svarte på DNS 03.11.2026.
-
-Når Andreas leverer en ny partnerlenke, endres bare `destination`, og eventuelt `inactive` fjernes, for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter fortsetter å virke.
+Bare `status: "active"` kan brukes i innhold, og bygget stopper ellers. Payoneer (Amazon-artikkelen), Depositphotos (`/gratis-bilder/`) og One.com (nettside-artikkelen) er gjort om fra annonselenker til vanlig tekst 03.11.2026. Full tabell med destinasjoner står i `docs/migration/affiliate-redirects.md`.
 
 ## Redirects implementert
 
-**Affiliate (`/go/<slug>/`):** 29 ruter i `lib/affiliate-links.ts`. Destinasjonene er kopiert fra Pretty Links-eksporten 28.09.2026, og sju av dem er oppdatert eller bekreftet av Andreas 03.11.2026 (se «Partnerlenker»). Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Ruter merket `review` eller `inactive` virker, men skal ikke brukes i nytt innhold. `inactive` stopper bygget hvis det skjer (se `docs/migration/affiliate-redirects.md`).
+**Affiliate (`/go/<slug>/`):** 29 ruter i `lib/affiliate-links.ts`. Destinasjonene er kopiert fra Pretty Links-eksporten 28.09.2026, og ti er bekreftet som aktive av Andreas 03.11.2026 (se «Partnerlenker»). Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Hver rute har `status` (`active`, `legacy` eller `inactive`). Alle virker, men bare `active` kan brukes i innhold, og bygget stopper ellers (se `docs/migration/affiliate-redirects.md`).
 
 **Gamle Pretty Links-ruter:** Alle 30 videresendes med 301 til riktig `/go/`-rute. 30 gamle ruter går til 29 `/go/`-ruter fordi `/one` og `/one_rabatt` har identisk destinasjon i Pretty Links og deler `/go/one-com/`. Alle 30 kjeder er testet helt fram, for eksempel `/wealthyaffiliate` → `/go/wealthy-affiliate/` → Wealthy Affiliate. Uten avsluttende skråstrek blir det ett ekstra hopp (308), fordi Next legger til skråstreken først. Matchingen skiller ikke mellom store og små bokstaver.
 
@@ -224,6 +197,14 @@ Forsidens tre guide-lenker peker midlertidig til ankrene på `/guider/` (`#nisje
 - `/guider/bygge-nettside/`
 - `/guider/trafikk-fra-google-og-ai-sok/`
 
+## Juridisk avsender (03.11.2026)
+
+Min Egen Sjef drives av **Swane Creative, enkeltpersonforetak, org.nr. 917 248 834**. Det står på `/personvern/` (behandlingsansvarlig) og `/ansvarsfraskrivelse/`. Swane Creative er mottaker av affiliateprovisjon. Det står i artikkelmalen, footeren, WA-huben, WA-anmeldelsen og `/om/`, uten organisasjonsnummer. Kontaktadressen `kontakt@swanecreative.no` står fortsatt bare på `/kontakt/`.
+
+## Innholdsbacklog
+
+- **«Slik bruker jeg KWFinder/Mangools sammen med ChatGPT via MCP».** Andreas har brukt KWFinder i mange år, og Mangools tilbyr nå MCP-integrasjon. Vinkel: søkeordsanalyse direkte sammen med ChatGPT, norsk søkeordsanalyse, forskjellen mellom søkevolumdata og AI-research, en praktisk arbeidsflyt, og åpenhet om at KWFinder-lenken er en annonselenke. **Skrives først når arbeidsflyten er testet i praksis.** Ikke en hypotetisk artikkel.
+
 ## Åpne beslutninger
 
 Fra PRD §20 (fortsatt åpne):
@@ -239,9 +220,7 @@ MDX er nå valgt for innhold (se `docs/content.md`).
 
 Fra forside- og grunnmurarbeidet:
 
-- **Behandlingsansvarlig i personvernerklæringen.** Det står at Swane Creative er ansvarlig. Organisasjonsform og organisasjonsnummer mangler og bør legges inn.
 - Ordlyd og URL for Swane Creative-lenken i footeren.
-- Hvem som formelt mottar provisjon: Min Egen Sjef eller Swane Creative. Påvirker teksten i footer, artikkelmal, WA-huben og ansvarsfraskrivelsen.
 - Om «siden 2014» i Om-signaturen og på `/om/` stemmer for nettsider og affiliate generelt. Det dokumenterte er WA-medlemskap fra 2014.
 - WA-påstandene (at plattformen moderniseres) er ikke kontrollert mot WA.
 - Forfatter i Article-schema er bare «Andreas». Fullt navn ville styrket E-E-A-T, hvis du ønsker det.
@@ -259,10 +238,9 @@ Fra forside- og grunnmurarbeidet:
 ## Gjenstår før domenet kan flyttes
 
 1. **Legacy-innhold er ferdig.** Alle 39 URL-er, vedleggssider, WordPress-ID-er, arkiver, feeder og media er behandlet.
-4. **Partnerlenkene** er oppdatert for de sju aktive nettverkene. Tradedoubler, Awin, Adrecord og Jaaxy er ikke aktive, og brukes ikke som annonselenker. Payoneer, KWFinder, One.com og Namecheap er fortsatt i bruk og bør kontrolleres, men blokkerer ikke flyttingen.
-6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).
-7. **Domene** (krever godkjenning fra Andreas): Vercel-prosjektet deployer `main` til `minegensjef.vercel.app`, og `NEXT_PUBLIC_GA_ID` er satt i Production. Gjenstår: bestemme Deployment Protection og om pushes til `main` skal gå rett live, legge til `minegensjef.no` og `www`, sette `SITE_INDEXABLE=true` i Production, deploye på nytt og flytte DNS. WordPress-produksjonen skal ikke røres før dette er bestemt.
-8. **Etter flyttingen:** kjøre alle 39 gamle URL-er og Pretty Links-rutene mot det nye domenet, sende inn sitemapen i Search Console og følge med på 404-feil de første ukene.
+2. **Partnerlenkene** er avklart: 10 aktive, 14 legacy og 5 inaktive. Legacy-lenkene blokkerer ikke flyttingen.
+3. **Domene** (krever godkjenning fra Andreas): Vercel-prosjektet deployer `main` til `minegensjef.vercel.app`, og `NEXT_PUBLIC_GA_ID` er satt i Production. Gjenstår: bestemme Deployment Protection og om pushes til `main` skal gå rett live, legge til `minegensjef.no` og `www`, sette `SITE_INDEXABLE=true` i Production, deploye på nytt og flytte DNS. WordPress-produksjonen skal ikke røres før dette er bestemt.
+4. **Etter flyttingen:** kjøre alle 39 gamle URL-er og Pretty Links-rutene mot det nye domenet, sende inn sitemapen i Search Console og følge med på 404-feil de første ukene.
 
 Mindre, ikke blokkerende: `npm audit fix` for sharp og source-map-js, bytte avviklet `priority` på heltebildet, og fullt forfatternavn i Article-schema hvis Andreas ønsker det.
 

@@ -56,8 +56,8 @@ export default function AboutPage() {
 
           <h2>Slik tjener nettstedet penger</h2>
           <p>
-            Noen lenker er annonselenker. Kjøper du noe eller registrerer deg via en slik lenke, kan Min Egen Sjef få
-            provisjon. Det koster deg ikke noe ekstra. Artikler med annonselenker er merket øverst. Mer om dette står
+            Noen lenker er annonselenker. Kjøper du noe eller registrerer deg via en slik lenke, kan Swane Creative,
+            som driver nettstedet, få provisjon. Det koster deg ikke noe ekstra. Artikler med annonselenker er merket øverst. Mer om dette står
             i <Link href="/ansvarsfraskrivelse/">ansvarsfraskrivelsen</Link>.
           </p>
 

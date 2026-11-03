@@ -101,8 +101,8 @@ export default function WealthyAffiliatePage() {
             Annonselenke
           </p>
           <p className="mt-3 text-base leading-relaxed text-muted">
-            Vil du se Wealthy Affiliate selv, kan du gå via lenken under. Blir du betalende medlem, kan Min Egen
-            Sjef få provisjon. Det koster deg ikke noe ekstra.
+            Vil du se Wealthy Affiliate selv, kan du gå via lenken under. Blir du betalende medlem, kan Swane
+            Creative, som driver Min Egen Sjef, få provisjon. Det koster deg ikke noe ekstra.
           </p>
           <AffiliateLink
             slug="wealthy-affiliate"

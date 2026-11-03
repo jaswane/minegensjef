@@ -50,7 +50,7 @@ export function SiteFooter() {
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-subtle">
               Enkelte lenker på siden er annonselenker (affiliatelenker). Kjøper
-              du noe eller registrerer deg via en slik lenke, kan Min Egen Sjef
+              du noe eller registrerer deg via en slik lenke, kan Swane Creative
               få provisjon. Det koster deg ikke noe ekstra.
             </p>
           </div>

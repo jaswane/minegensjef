@@ -16,42 +16,65 @@ Ingen partnerlenker ble fulgt, så ingen klikk er registrert hos nettverkene.
 
 **Eksporten inneholder ikke klikktall.** Pretty Links lagrer klikk i en egen tabell som ikke er med i denne CSV-en. Historiske klikk per lenke må hentes fra Pretty Links-oversikten i WordPress før den stenges. Merk at historiske klikk er et migreringssignal, ikke bevis på dagens trafikk.
 
-## Status 03.11.2026: oppdaterte destinasjoner
+## Status 03.11.2026: alle 30 Pretty Links
 
-**Aktive, oppdatert eller bekreftet av Andreas 03.11.2026:**
+**Fasit for de gamle rutene og destinasjonene:** Pretty Links-eksporten `261103100820_pretty_links.csv` (03.11.2026), som ligger utenfor repoet i `C:\_Nettsider\_backups\minegensjef\affiliate-redirects\`. Den er byte-identisk med eksporten fra 28.09.2026. Alle 30 ruter finnes i `lib/affiliate-links.ts` og gir 301 til `/go/<slug>/`, som gir 307 til destinasjonen. `/one` og `/one_rabatt` deler `/go/one-com/`, så det er 29 `/go/`-ruter.
 
-| Slug | Destinasjon | Brukt i |
+Hver oppføring har én `status`. Bare `active` kan brukes som annonselenke i innhold. `<AffiliateLink>` stopper bygget for de andre.
+
+### AKTIV / BEKREFTET (10 slugs)
+
+Kontrollert av Andreas 03.11.2026.
+
+| Slug | Gammel rute | Destinasjon | Endret fra CSV | Brukt i |
+|---|---|---|---|---|
+| `wealthy-affiliate` | `/wealthyaffiliate` | `https://www.wealthyaffiliate.com/?a_aid=fe112df7` | CSV: `https://www.wealthyaffiliate.com?a_aid=fe112df7` | `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/`, `/wealthy-affiliate/` |
+| `tradetracker` | `/tradetracker` | `https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=` | CSV: `http://tc.tradetracker.net/?c=5187&m=12&a=233877` | `/norske-affiliate-programmer/` |
+| `adtraction` | `/adtraction` | `https://track.adtraction.com/t/t?a=923786618&as=1156469187&t=2&tk=1` | Nei | `/norske-affiliate-programmer/` |
+| `partner-ads` | `/partnerads` | `https://www.partner-ads.com/no/klikbanner.php?partnerid=27345&bannerid=54626` | Nei | `/norske-affiliate-programmer/` |
+| `kwfinder` | `/kwfinder` | `https://app.kwfinder.com#a573d835c285f735d9b85f00c` | Nei | `/hva-er-seo/` |
+| `daisycon` | `/daisycon` | `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F` | CSV: `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=` | `/norske-affiliate-programmer/` |
+| `namecheap` | `/namecheap` | `https://namecheap.pxf.io/692ZV` | CSV: `http://namecheap.pxf.io/692ZV`. HTTPS gir samme Impact-sporing (konto 352841, kampanje 5618), testet 03.11.2026 | `/hvordan-lage-nettside-na-til-dags/` |
+| `orion-media` | `/orionmedia` | `https://orionious.com/click.track?CID=438863&AFID=434772` | CSV: `https://orsearchlink.com/click.track?CID=438863&AFID=434772` | `/norske-affiliate-programmer/` |
+| `morningscore` | `/morningscore` | `https://morningscore.io?fpr=andreas-swane57` | Nei | `/morningscore-anmeldelse-for-norsk-seo/` |
+| `addrevenue` | `/addrevenue` | `https://addrevenue.io/t?a=984405&c=3455267` | CSV: `https://addrevenue.io/t?c=3455267&a=984405&m=DK` | `/norske-affiliate-programmer/` |
+
+KWFinder: Affiliate-ID-en står etter `#`, og det er riktig. Mangools legger ID-en som en hash på en hvilken som helst Mangools-side, og Andreas har kontrollert det i Mangools' affiliate-dashboard.
+
+### LEGACY / IKKE KONTROLLERT (14 slugs)
+
+Gamle ruter og destinasjoner beholdes uendret, så eksterne lenker fortsatt virker. De brukes ikke som annonselenker, og det bygges ingen nye CTA-er rundt dem før Andreas har kontrollert dem.
+
+| Slug | Gammel rute | Merknad |
 |---|---|---|
-| `wealthy-affiliate` | `https://www.wealthyaffiliate.com/?a_aid=fe112df7` | `/wealthy-affiliate/`, `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` |
-| `adtraction` | `https://track.adtraction.com/t/t?a=923786618&as=1156469187&t=2&tk=1` (uendret) | `/norske-affiliate-programmer/` |
-| `tradetracker` | `https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=` | `/norske-affiliate-programmer/` |
-| `partner-ads` | `https://www.partner-ads.com/no/klikbanner.php?partnerid=27345&bannerid=54626` (uendret) | `/norske-affiliate-programmer/` |
-| `addrevenue` | `https://addrevenue.io/t?a=984405&c=3455267` | `/norske-affiliate-programmer/` |
-| `daisycon` | `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F` | `/norske-affiliate-programmer/` |
-| `orion-media` | `https://orionious.com/click.track?CID=438863&AFID=434772` | `/norske-affiliate-programmer/` |
+| `payoneer` | `/payoneer` | Delingslenke fra 2018. |
+| `adsninja` | `/adsninja` | Ukjent sporingsdomene. |
+| `proisp` | `/proisp` | Destinasjonen er forsiden uten sporingsparametre. |
+| `adservice` | `/adservice` | Samme destinasjon som adtraction. |
+| `link-whisper` | `/linkwhisper` | Ikke kontrollert for 2026. |
+| `depositphotos` | `/depositphotos` | Ikke kontrollert for 2026. |
+| `apotera` | `/apotera` | Destinasjonen er forsiden uten sporingsparametre, og temaet ligger utenfor nettstedet. |
+| `pretty-links` | `/prettylinks` | Affiliatelenke til en WordPress-plugin den nye løsningen ikke bruker. |
+| `shopify` | `/shopify` | Ikke kontrollert for 2026. |
+| `yougov` | `/yougov` | Spørreundersøkelser passer dårlig med «uten hype». |
+| `nordnet` | `/nordnet` | Redaksjonell beslutning om finanslenker gjenstår. |
+| `topsurveys` | `/topsurveys` | Spørreundersøkelser passer dårlig med «uten hype». |
+| `prime-opinion` | `/PrimeOpinion` | Spørreundersøkelser passer dårlig med «uten hype». |
+| `heycash` | `/heycash` | Spørreundersøkelser passer dårlig med «uten hype». |
 
-**Ikke aktiv affiliate** (`inactive` i `lib/affiliate-links.ts`). Ruten og den gamle Pretty Links-ruten virker fortsatt for gamle lenker, men `<AffiliateLink>` stopper bygget hvis noen prøver å bruke dem som annonselenke:
+### INAKTIV / IKKE AFFILIATE (5 slugs)
 
-| Slug | Hvorfor | Omtales i |
+Ruten virker for gamle lenker, men nettverket omtales bare redaksjonelt, uten annonselenke.
+
+| Slug | Gamle ruter | Hvorfor |
 |---|---|---|
-| `tradedoubler` | Ingen aktiv affiliateavtale | `/norske-affiliate-programmer/`, med vanlig lenke til tradedoubler.com |
-| `awin` | **Affiliate-destinasjon mangler / ikke aktiv.** Den gamle lenken går til én annonsør, ikke til nettverket | `/norske-affiliate-programmer/`, med vanlig lenke til awin.com |
-| `adrecord` | Sporingsdomenet og adrecord.com svarte ikke på DNS 03.11.2026 | `/norske-affiliate-programmer/`, uten lenke |
-| `jaaxy` | Destinasjonen svarer ikke | `/hva-er-seo/` og `/gode-verktoy-for-sokeordsanalyse/`, bare som tekst |
+| `tradedoubler` | `/tradedoubler` | Ingen aktiv affiliateavtale. |
+| `awin` | `/awin` | Ingen aktiv affiliate-destinasjon funnet. Den gamle lenken går til én annonsør, ikke til Awin-nettverket. |
+| `adrecord` | `/adrecord` | Nettstedet og det gamle sporingsdomenet svarer ikke (DNS, november 2026). |
+| `one-com` | `/one`, `/one_rabatt` | Affiliateprogrammet er ikke lenger aktivt for Andreas (bekreftet 03.11.2026). |
+| `jaaxy` | `/jaaxy` | Den gamle destinasjonen svarer ikke. |
 
-**Manuell kontroll senere** (uendret, fortsatt i bruk som annonselenke):
-
-| Slug | Hvorfor | Brukt i |
-|---|---|---|
-| `payoneer` | Delingslenke fra 2018 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` |
-| `kwfinder` | Sporings-ID-en ligger i et URL-fragment (`#…`) | `/hva-er-seo/` |
-| `one-com` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
-| `namecheap` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
-| `adservice` | Samme destinasjon som `adtraction` | Ikke brukt |
-
-Også i bruk, men ikke vurdert i denne runden: `morningscore` (`/morningscore-anmeldelse-for-norsk-seo/`) og `depositphotos` (`/gratis-bilder/`). Begge svarte på DNS 03.11.2026.
-
-Når Andreas leverer en ny partnerlenke, endres bare `destination`, og eventuelt `inactive` fjernes, for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter fortsetter å virke.
+Når Andreas bekrefter eller leverer en ny lenke, endres bare `destination` og `status` for riktig slug i `lib/affiliate-links.ts`.
 
 Resten av dokumentet beskriver Pretty Links-eksporten fra 28.09.2026 og er historikk.
 

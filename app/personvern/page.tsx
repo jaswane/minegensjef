@@ -33,8 +33,9 @@ export default function PrivacyPage() {
         <div className="prose-mes">
           <h2>Hvem som er ansvarlig</h2>
           <p>
-            Min Egen Sjef drives av Swane Creative, som er ansvarlig for behandlingen av personopplysninger på
-            nettstedet. Spørsmål om personvern sender du via <Link href="/kontakt/">kontaktsiden</Link>.
+            Min Egen Sjef drives av Swane Creative, enkeltpersonforetak, org.nr. 917 248 834. Swane Creative er
+            ansvarlig for behandlingen av personopplysninger på nettstedet. Spørsmål om personvern sender du via{" "}
+            <Link href="/kontakt/">kontaktsiden</Link>.
           </p>
 
           <h2>Analyse, bare med samtykke</h2>

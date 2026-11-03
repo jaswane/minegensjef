@@ -50,7 +50,8 @@ export default function DisclaimerPage() {
 
           <h2>Annonselenker</h2>
           <p>
-            Noen lenker er annonselenker. Kjøper du noe eller registrerer deg via en slik lenke, kan Min Egen Sjef få
+            Min Egen Sjef drives av Swane Creative, enkeltpersonforetak, org.nr. 917 248 834. Noen lenker på
+            nettstedet er annonselenker. Kjøper du noe eller registrerer deg via en slik lenke, kan Swane Creative få
             provisjon. Det koster deg ikke noe ekstra. Artikler som inneholder annonselenker, er merket øverst.
           </p>
 

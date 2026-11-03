@@ -27,8 +27,10 @@ export function AffiliateLink({
   if (!link) {
     throw new Error(`Ukjent affiliatelenke: ${slug}. Legg den inn i lib/affiliate-links.ts.`);
   }
-  if (link.inactive) {
-    throw new Error(`Affiliatelenken «${slug}» er ikke aktiv og kan ikke brukes i innhold: ${link.inactive}`);
+  if (link.status !== "active") {
+    throw new Error(
+      `Affiliatelenken «${slug}» har status «${link.status}» og kan ikke brukes i innhold. ${link.note ?? ""}`,
+    );
   }
 
   return (

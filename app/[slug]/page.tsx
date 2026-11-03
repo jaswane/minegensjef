@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: PageProps<"/[slug]">) {
         {article.affiliate ? (
           <p className="mb-10 max-w-reading border-l-2 border-line-strong pl-4 text-sm leading-relaxed text-subtle">
             Artikkelen inneholder annonselenker. Kjøper du noe eller registrerer deg via en slik lenke, kan
-            Min Egen Sjef få provisjon. Det koster deg ikke noe ekstra.{" "}
+            Swane Creative, som driver Min Egen Sjef, få provisjon. Det koster deg ikke noe ekstra.{" "}
             <Link href="/ansvarsfraskrivelse/" className="underline underline-offset-2 hover:text-text">
               Les mer
             </Link>

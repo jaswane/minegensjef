@@ -431,7 +431,8 @@ MVP-en skal ikke få et kunstig inntektsmål. Første mål er å bygge en trover
 - [ ] Hvilke gamle artikler som prioriteres til full rewrite før launch
 - [ ] Endelig WA-understruktur etter at den nye plattformen/opplæringen er gått gjennom
 - [ ] Om `/blogg/` skal beholdes/redirectes eller erstattes av `/artikler/`
-- [ ] Hvordan `/norske-affiliate-programmer/` skal posisjoneres mot AffiliateProgrammer.no uten intern konkurranse
+- [x] Hvordan `/norske-affiliate-programmer/` skal posisjoneres mot AffiliateProgrammer.no: Artikkelen er Andreas' egen erfaring, og AffiliateProgrammer.no er den løpende oppdaterte oversikten, med opplysning om at det er et prosjekt fra Swane Creative (03.11.2026)
+- [x] Juridisk avsender: Swane Creative, enkeltpersonforetak, org.nr. 917 248 834. Swane Creative mottar affiliateprovisjon (03.11.2026)
 - [ ] Hvor mye av historiske regnskapstall som vises offentlig og i hvilken grafisk form
 - [ ] E-postliste/newsletter: MVP eller senere
 

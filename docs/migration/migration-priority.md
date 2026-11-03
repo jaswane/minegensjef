@@ -3,6 +3,22 @@
 **Dato:** 28.09.2026
 **Status:** Første bølge migrert 08.10.2026, se under. Resten av dokumentet er den opprinnelige planen.
 
+## Status 03.11.2026: historiske innlegg merket
+
+Ingen gamle innlegg gjensto å migrere. Alle 39 URL-er var allerede behandlet, og de to utsatte artiklene og de fire 410-kandidatene er ikke rørt. Denne runden har delt de 22 levende artiklene i to grupper og gitt de historiske en felles merking:
+
+| Gruppe | Antall |
+|---|---|
+| Modernisert (skrevet om, med `updated`) | 15 |
+| Historisk legacy (`historical: true`, uten `updated`) | 7 |
+| Permanent 301 | 8 |
+| Ny side / rebygget | 3 |
+| Utsatt | 2 |
+| 410-kandidat | 4 |
+| **Sum** | **39** |
+
+De historiske innleggene er `/amazon-julehandel-over-alle-stovelskaft/`, `/har-jeg-gitt-opp/`, `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/min-forste-sjekk-pa-over-1000/`, `/suksess-motbakke-status-og-nye-mal-for-2017/`, `/verdifulle-tips-fra-simon/`, `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`. Det felles i de tidligere merknadene står nå i den felles merknaden. Bare det spesifikke står igjen i hvert innlegg, som en kort «Merk»-boks. Ingen tekst, dato eller lenke er ellers endret.
+
 ## Status 09.10.2026: bølge 4, migreringen lukket
 
 Alle 39 gamle offentlige URL-er har nå en dokumentert behandling. Sluttregnskapet står i `url-inventory.md` («Sluttregnskap»):

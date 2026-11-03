@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
-**Sist oppdatert:** 09.10.2026
-**Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 22 migrert, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Return 410 for old WordPress media and query archives» (`git log -1`)
+**Sist oppdatert:** 03.11.2026
+**Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 15 moderniserte og 7 historiske artikler, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
+**Siste commit:** «Mark historical legacy posts consistently» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -97,6 +97,10 @@ Detaljer, antall og begrunnelser står i `docs/migration/wordpress-archives-and-
 - **410 også for** `/wp-content/uploads/...` og `?cat=`, `?tag=`, `?author=`, `?s=` på forsiden.
 - **Ikke behandlet:** 28 vedleggssider som følger de fire 410-kandidatene og de to utsatte artiklene.
 - **Media:** Ikke kopiert inn i repoet. Backupen har 3 065 filer (81,7 MB), og ingen av de 22 migrerte artiklene bruker gamle bilder. Bare filer som faktisk tas i bruk, bevares, og gamle bildeadresser gir 410.
+
+## Historiske innlegg (03.11.2026)
+
+Sju innlegg er historiske legacy-artikler med `historical: true`: `/amazon-julehandel-over-alle-stovelskaft/`, `/har-jeg-gitt-opp/`, `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/min-forste-sjekk-pa-over-1000/`, `/suksess-motbakke-status-og-nye-mal-for-2017/`, `/verdifulle-tips-fra-simon/`, `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`. Malen viser da en felles merknad (`components/historical-note.tsx`), og `/artikler/` viser merket «Historisk». Bygget stopper hvis et historisk innlegg får `updated`. De 15 andre artiklene er modernisert.
 
 ## Partnerlenker Andreas skal kontrollere
 

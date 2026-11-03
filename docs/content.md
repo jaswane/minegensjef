@@ -44,6 +44,7 @@ Ingressen er første avsnitt.
 | `affiliate` | nei | `true` viser annonsemerking øverst |
 | `draft` | nei | `true` viser artikkelen bare i `npm run dev` |
 | `author` | nei | Forfatter i Article-schema når det ikke er Andreas, for eksempel ved gjesteinnlegg |
+| `historical` | nei | `true` for innlegg som er bevart historisk, ikke skrevet om. Gir felles merknad og merket «Historisk» på `/artikler/`. Kan ikke kombineres med `updated` |
 
 Bygget stopper med en tydelig feilmelding hvis et påkrevd felt mangler eller en dato har feil format.
 

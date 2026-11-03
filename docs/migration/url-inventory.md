@@ -42,42 +42,50 @@ De tre publiserte URL-ene som ikke ligger i sitemapen, er `/privacy-policy/` og 
 4. **410 er aldri endelig her.** Alle er merket «410-kandidat – må valideres» og krever GSC-kontroll av visninger, klikk og backlinks først.
 5. **MERGE → 301 fjerner også en URL** og bør kontrolleres på samme måte som 410-kandidatene, om enn med lavere risiko, siden trafikken føres til en tematisk nær side.
 
-## Sluttregnskap: alle 39 gamle offentlige URL-er (09.10.2026)
+## Sluttregnskap: alle 39 gamle offentlige URL-er (oppdatert 03.11.2026)
 
 Generert fra oversiktstabellen under, `content/artikler/` og `lib/legacy-redirects.ts`. Hver URL står i nøyaktig én kategori.
 
 | Behandling | Antall |
 |---|---|
-| Migrert, svarer 200 på samme URL | 22 |
+| Levende moderne artikkel, 200 på samme URL | 15 |
+| Levende historisk legacy-artikkel, 200 på samme URL | 7 |
 | Ny side / rebygget på samme URL | 3 |
 | Permanent 301 til endelig mål | 8 |
 | Utsatt, KEEP/REWRITE | 2 |
 | 410 candidate – backlink validation required | 4 |
 | **Sum** | **39** |
 
-### Migrert, svarer 200 (22)
+### Levende moderne artikkel (15)
 
-- `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/`
-- `/norske-affiliate-programmer/`
+Skrevet om eller oppdatert for i dag, med `updated`.
+
+- `/affiliate-markedsforing-i-norge-er-det-enklere/`
+- `/de-beste-norske-seo-bloggene/`
+- `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/`
+- `/gode-verktoy-for-sokeordsanalyse/`
+- `/gratis-bilder/`
 - `/hva-er-affiliate-markedsforing/`
 - `/hva-er-seo/`
-- `/regnskap-og-skatt-pa-affiliate-inntekter/`
-- `/merverdiavgift-og-affiliate-markedsforing/`
-- `/seriose-mater-a-tjene-penger-pa-nettet/`
-- `/hvordan-lage-nettside-na-til-dags/`
-- `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/`
-- `/affiliate-markedsforing-i-norge-er-det-enklere/`
-- `/gode-verktoy-for-sokeordsanalyse/`
-- `/morningscore-anmeldelse-for-norsk-seo/`
 - `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`
-- `/de-beste-norske-seo-bloggene/`
-- `/gratis-bilder/`
-- `/min-forste-sjekk-pa-over-1000/`
-- `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`
-- `/suksess-motbakke-status-og-nye-mal-for-2017/`
-- `/har-jeg-gitt-opp/`
-- `/verdifulle-tips-fra-simon/`
+- `/hvordan-lage-nettside-na-til-dags/`
+- `/merverdiavgift-og-affiliate-markedsforing/`
+- `/morningscore-anmeldelse-for-norsk-seo/`
+- `/norske-affiliate-programmer/`
+- `/regnskap-og-skatt-pa-affiliate-inntekter/`
+- `/seriose-mater-a-tjene-penger-pa-nettet/`
+- `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/`
+
+### Levende historisk legacy-artikkel (7)
+
+Opprinnelig tekst, dato og jeg-form er bevart, uten `updated`. Merket med `historical: true`, som gir en felles merknad i artikkelen og merket «Historisk» på `/artikler/`. Der noe kan misforstås i dag, står en kort «Merk»-boks.
+
 - `/amazon-julehandel-over-alle-stovelskaft/`
+- `/har-jeg-gitt-opp/`
+- `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`
+- `/min-forste-sjekk-pa-over-1000/`
+- `/suksess-motbakke-status-og-nye-mal-for-2017/`
+- `/verdifulle-tips-fra-simon/`
 - `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`
 
 ### Ny side / rebygget (3)

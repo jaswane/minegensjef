@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HistoricalNote } from "@/components/historical-note";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
 import { HUBS, formatDate, getArticle, getArticles } from "@/lib/articles";
@@ -92,6 +93,8 @@ export default async function ArticlePage({ params }: PageProps<"/[slug]">) {
             </Link>
           </p>
         ) : null}
+
+        {article.historical ? <HistoricalNote year={article.published.slice(0, 4)} /> : null}
 
         <article className="prose-mes">
           <Content />

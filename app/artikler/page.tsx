@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HistoricalBadge } from "@/components/historical-note";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
 import { formatDate, getArticles } from "@/lib/articles";
@@ -27,7 +28,7 @@ export default async function ArticlesPage() {
       <PageHeader
         crumbs={crumbs}
         title="Artikler"
-        lead="Artikler om affiliate-markedsføring, SEO og å bygge nettsider. Hver artikkel viser når den ble publisert, og når den sist ble oppdatert."
+        lead="Artikler om affiliate-markedsføring, SEO og å bygge nettsider. Hver artikkel viser når den ble publisert, og når den sist ble oppdatert. Innlegg merket «Historisk» er bevart slik de ble skrevet."
       />
 
       <div className="container-page py-14 lg:py-20">
@@ -51,6 +52,7 @@ export default async function ArticlesPage() {
                       : formatDate(article.published)}
                   </time>
                   {article.draft ? " · Utkast (bare lokalt)" : null}
+                  {article.historical ? <HistoricalBadge /> : null}
                 </p>
                 <h2 className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-balance lg:text-[2rem]">
                   <Link

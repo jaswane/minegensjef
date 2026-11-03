@@ -34,6 +34,11 @@ export type ArticleMeta = {
   draft?: boolean;
   /** Forfatter i Article-schema når det ikke er Andreas, for eksempel ved gjesteinnlegg. */
   author?: string;
+  /**
+   * Historisk innlegg: bevart med opprinnelig tekst og dato, ikke skrevet om for i dag.
+   * Gir en felles merknad i artikkelen og merket «Historisk» på /artikler/. Settes ikke sammen med `updated`.
+   */
+  historical?: boolean;
 };
 
 export type Article = ArticleMeta & { slug: string; path: string };
@@ -66,6 +71,7 @@ function validate(slug: string, meta: ArticleMeta | undefined): ArticleMeta {
     if (!meta.published || !DATE.test(meta.published)) problems.push("published må være ÅÅÅÅ-MM-DD");
     if (meta.updated && !DATE.test(meta.updated)) problems.push("updated må være ÅÅÅÅ-MM-DD");
     if (meta.hub && !(meta.hub in HUBS)) problems.push(`ukjent hub «${meta.hub}»`);
+    if (meta.historical && meta.updated) problems.push("historiske innlegg skal ikke ha updated");
   }
   if (problems.length) throw new Error(`content/artikler/${slug}.mdx: ${problems.join(", ")}`);
   return meta as ArticleMeta;

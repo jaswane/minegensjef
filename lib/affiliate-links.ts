@@ -3,6 +3,8 @@
  * Pretty Links-eksporten 28.09.2026 (se docs/migration/affiliate-redirects.md).
  *
  * Ikke «reparer» en destinasjon her uten godkjenning, selv om den ser feil ut.
+ * Destinasjonene for Wealthy Affiliate, Adtraction, TradeTracker, Partner-ads, Addrevenue,
+ * Daisycon og Orion Media er bekreftet av Andreas 03.11.2026.
  * Lenker med `review` er markert for manuell vurdering og skal ikke brukes i nytt
  * innhold før de er avklart, men de beholdes slik at gamle lenker fortsatt virker.
  *
@@ -19,19 +21,25 @@ export type AffiliateLink = {
   legacyRoutes: string[];
   /** Satt når lenken må vurderes manuelt før den brukes i nytt innhold. */
   review?: string;
+  /**
+   * Satt når det ikke finnes en aktiv affiliateavtale eller fungerende partnerlenke.
+   * Ruten virker fortsatt for gamle lenker, men <AffiliateLink> nekter å bruke den,
+   * så den ikke kan bli en merket annonselenke i innhold.
+   */
+  inactive?: string;
 };
 
 export const affiliateLinks: AffiliateLink[] = [
   {
     slug: "wealthy-affiliate",
     partner: "Wealthy Affiliate",
-    destination: "https://www.wealthyaffiliate.com?a_aid=fe112df7",
+    destination: "https://www.wealthyaffiliate.com/?a_aid=fe112df7",
     legacyRoutes: ["/wealthyaffiliate"],
   },
   {
     slug: "tradetracker",
     partner: "TradeTracker",
-    destination: "http://tc.tradetracker.net/?c=5187&m=12&a=233877",
+    destination: "https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=",
     legacyRoutes: ["/tradetracker"],
   },
   {
@@ -45,19 +53,21 @@ export const affiliateLinks: AffiliateLink[] = [
     partner: "Tradedoubler",
     destination: "https://www.tradedoubler.com/",
     legacyRoutes: ["/tradedoubler"],
-    review: "Destinasjonen er forsiden uten sporingsparametre.",
+    inactive: "Ingen aktiv affiliateavtale. Ruten finnes bare så gamle lenker ikke brekker.",
   },
   {
     slug: "awin",
     partner: "Awin",
     destination: "https://www.awin1.com/cread.php?awinmid=4030&awinaffid=340337",
     legacyRoutes: ["/awin"],
+    inactive: "Affiliate-destinasjon mangler. Den gamle lenken går til én annonsør, ikke til Awin-nettverket. Beholdes bare for kompatibilitet.",
   },
   {
     slug: "adrecord",
     partner: "Adrecord",
     destination: "https://click.adrecord.com/?c=23765&p=120",
     legacyRoutes: ["/adrecord"],
+    inactive: "Sporingsdomenet finnes ikke lenger (DNS, november 2026). Beholdes bare for kompatibilitet.",
   },
   {
     slug: "partner-ads",
@@ -76,6 +86,7 @@ export const affiliateLinks: AffiliateLink[] = [
     partner: "Jaaxy",
     destination: "https://www.jaaxy.com/?a_aid=fc8cf5cc",
     legacyRoutes: ["/jaaxy"],
+    inactive: "Destinasjonen svarer ikke (november 2026). Beholdes bare for kompatibilitet.",
   },
   {
     slug: "kwfinder",
@@ -93,7 +104,7 @@ export const affiliateLinks: AffiliateLink[] = [
   {
     slug: "daisycon",
     partner: "Daisycon",
-    destination: "https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=",
+    destination: "https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F",
     legacyRoutes: ["/daisycon"],
   },
   {
@@ -138,7 +149,7 @@ export const affiliateLinks: AffiliateLink[] = [
   {
     slug: "orion-media",
     partner: "Orion Media",
-    destination: "https://orsearchlink.com/click.track?CID=438863&AFID=434772",
+    destination: "https://orionious.com/click.track?CID=438863&AFID=434772",
     legacyRoutes: ["/orionmedia"],
   },
   {
@@ -164,7 +175,7 @@ export const affiliateLinks: AffiliateLink[] = [
   {
     slug: "addrevenue",
     partner: "Addrevenue",
-    destination: "https://addrevenue.io/t?c=3455267&a=984405&m=DK",
+    destination: "https://addrevenue.io/t?a=984405&c=3455267",
     legacyRoutes: ["/addrevenue"],
   },
   {

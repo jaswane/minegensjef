@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 03.11.2026
 **Status:** Legacy-arkivet er komplett. Alle 39 gamle URL-er har en endelig behandling: 15 moderniserte artikler, 13 historiske (4 av dem noindex), 3 rebygget og 8 med 301. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Complete Minegensjef legacy archive» (`git log -1`)
+**Siste commit:** «Refresh affiliate links and enable GA4» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -111,27 +111,46 @@ Detaljer, antall og begrunnelser står i `docs/migration/wordpress-archives-and-
 
 Fra før er sju innlegg historiske legacy-artikler med `historical: true`: `/amazon-julehandel-over-alle-stovelskaft/`, `/har-jeg-gitt-opp/`, `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/min-forste-sjekk-pa-over-1000/`, `/suksess-motbakke-status-og-nye-mal-for-2017/`, `/verdifulle-tips-fra-simon/`, `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`. Malen viser da en felles merknad (`components/historical-note.tsx`), og `/artikler/` viser merket «Historisk». Bygget stopper hvis et historisk innlegg får `updated`. De 15 andre artiklene er modernisert.
 
-## Partnerlenker Andreas skal kontrollere
+## Partnerlenker
 
-Ingen destinasjoner er endret. Når Andreas leverer en ny partnerlenke, endres bare `destination` for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter (`legacyRoutes`) fortsetter å virke uten andre endringer.
+**Aktive, oppdatert eller bekreftet av Andreas 03.11.2026:**
 
-| Slug | Gamle ruter | Hvorfor den bør kontrolleres |
+| Slug | Destinasjon | Brukt i |
 |---|---|---|
-| `tradedoubler` | `/tradedoubler` | Lenken mangler sporingsparametre. En gammel artikkel hadde en sporet `clk.tradedoubler.com`-lenke |
-| `awin` | `/awin` | Peker til én bestemt annonsør (`awinmid=4030`), ikke til nettverket |
-| `partner-ads` | `/partnerads` | Peker til en bannerlenke |
-| `addrevenue` | `/addrevenue` | Peker til den danske versjonen (`m=DK`) |
-| `payoneer` | `/payoneer` | Delingslenke fra 2018 |
-| `kwfinder` | `/kwfinder` | Sporings-ID-en ligger i et URL-fragment (`#…`), som ofte ikke blir registrert |
-| `tradetracker` | `/tradetracker` | HTTP, ikke HTTPS. Trengs også før TradeTracker-artikkelen kan migreres |
-| `one-com` | `/one`, `/one_rabatt` | HTTP, ikke HTTPS |
-| `namecheap` | `/namecheap` | HTTP, ikke HTTPS |
-| `adservice` | `/adservice` | Samme destinasjon som `adtraction` |
-| `jaaxy` | `/jaaxy` | **Ny 09.10.2026:** jaaxy.com sender videre til www.jaaxy.com, som ikke svarte da lenken ble sjekket. Brukes i `/hva-er-seo/` |
+| `wealthy-affiliate` | `https://www.wealthyaffiliate.com/?a_aid=fe112df7` | `/wealthy-affiliate/`, `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` |
+| `adtraction` | `https://track.adtraction.com/t/t?a=923786618&as=1156469187&t=2&tk=1` (uendret) | `/norske-affiliate-programmer/` |
+| `tradetracker` | `https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=` | `/norske-affiliate-programmer/` |
+| `partner-ads` | `https://www.partner-ads.com/no/klikbanner.php?partnerid=27345&bannerid=54626` (uendret) | `/norske-affiliate-programmer/` |
+| `addrevenue` | `https://addrevenue.io/t?a=984405&c=3455267` | `/norske-affiliate-programmer/` |
+| `daisycon` | `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F` | `/norske-affiliate-programmer/` |
+| `orion-media` | `https://orionious.com/click.track?CID=438863&AFID=434772` | `/norske-affiliate-programmer/` |
+
+**Ikke aktiv affiliate** (`inactive` i `lib/affiliate-links.ts`). Ruten og den gamle Pretty Links-ruten virker fortsatt for gamle lenker, men `<AffiliateLink>` stopper bygget hvis noen prøver å bruke dem som annonselenke:
+
+| Slug | Hvorfor | Omtales i |
+|---|---|---|
+| `tradedoubler` | Ingen aktiv affiliateavtale | `/norske-affiliate-programmer/`, med vanlig lenke til tradedoubler.com |
+| `awin` | **Affiliate-destinasjon mangler / ikke aktiv.** Den gamle lenken går til én annonsør, ikke til nettverket | `/norske-affiliate-programmer/`, med vanlig lenke til awin.com |
+| `adrecord` | Sporingsdomenet og adrecord.com svarte ikke på DNS 03.11.2026 | `/norske-affiliate-programmer/`, uten lenke |
+| `jaaxy` | Destinasjonen svarer ikke | `/hva-er-seo/` og `/gode-verktoy-for-sokeordsanalyse/`, bare som tekst |
+
+**Manuell kontroll senere** (uendret, fortsatt i bruk som annonselenke):
+
+| Slug | Hvorfor | Brukt i |
+|---|---|---|
+| `payoneer` | Delingslenke fra 2018 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` |
+| `kwfinder` | Sporings-ID-en ligger i et URL-fragment (`#…`) | `/hva-er-seo/` |
+| `one-com` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
+| `namecheap` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
+| `adservice` | Samme destinasjon som `adtraction` | Ikke brukt |
+
+Også i bruk, men ikke vurdert i denne runden: `morningscore` (`/morningscore-anmeldelse-for-norsk-seo/`) og `depositphotos` (`/gratis-bilder/`). Begge svarte på DNS 03.11.2026.
+
+Når Andreas leverer en ny partnerlenke, endres bare `destination`, og eventuelt `inactive` fjernes, for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter fortsetter å virke.
 
 ## Redirects implementert
 
-**Affiliate (`/go/<slug>/`):** 29 ruter i `lib/affiliate-links.ts`, med destinasjoner byte-identiske med Pretty Links-eksporten 28.09.2026. Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Ruter merket `review` virker, men skal ikke brukes i nytt innhold før de er vurdert (se `docs/migration/affiliate-redirects.md`).
+**Affiliate (`/go/<slug>/`):** 29 ruter i `lib/affiliate-links.ts`. Destinasjonene er kopiert fra Pretty Links-eksporten 28.09.2026, og sju av dem er oppdatert eller bekreftet av Andreas 03.11.2026 (se «Partnerlenker»). Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Ruter merket `review` eller `inactive` virker, men skal ikke brukes i nytt innhold. `inactive` stopper bygget hvis det skjer (se `docs/migration/affiliate-redirects.md`).
 
 **Gamle Pretty Links-ruter:** Alle 30 videresendes med 301 til riktig `/go/`-rute. 30 gamle ruter går til 29 `/go/`-ruter fordi `/one` og `/one_rabatt` har identisk destinasjon i Pretty Links og deler `/go/one-com/`. Alle 30 kjeder er testet helt fram, for eksempel `/wealthyaffiliate` → `/go/wealthy-affiliate/` → Wealthy Affiliate. Uten avsluttende skråstrek blir det ett ekstra hopp (308), fordi Next legger til skråstreken først. Matchingen skiller ikke mellom store og små bokstaver.
 
@@ -163,7 +182,9 @@ Ingen destinasjoner er endret. Når Andreas leverer en ny partnerlenke, endres b
 
 - GA4 med Consent Mode v2 (basic), etter samme mønster som barbere.no. Taggen lastes først etter samtykke, og consent-standarden settes til «denied» før lasting. Avslå og Godta er like store.
 - `affiliate_click` sendes med `partner`, `placement` og `link_slug` ved klikk på `/go/`-lenker, bare med samtykke. Mål-URL-en sendes ikke.
-- **Måle-ID mangler.** Den finnes verken i dokumentasjonen eller i kildekoden på den live siden. Hent ID-en for «Min egen sjef - GA4» fra GA-admin og sett `NEXT_PUBLIC_GA_ID`. Uten den er analyse og samtykkebanner helt av.
+- **Måle-ID: `G-ZXPXGQWV79`** (propertyen «Min egen sjef - GA4»). Den hentes fra `NEXT_PUBLIC_GA_ID`, og er ikke hardkodet. Den står i `.env.example`, og er satt i Vercel for **Production** 03.11.2026. Preview og Development har den ikke, så testdeployer sender ikke data.
+- Testet 03.11.2026 med ID-en satt: Før samtykke er det banner, men ingen GA-forespørsel og ingen cookies. Etter Avslå lastes ikke GA, heller ikke etter ny innlasting. Etter Godta lastes gtag.js, `page_view` sendes, og `_ga`-cookies settes. `affiliate_click` sendes med `partner`, `placement` og `link_slug`.
+- Production-adressen `minegensjef.vercel.app` får GA fra neste deploy. Besøk der før domeneflyttingen havner altså i samme GA4-property, men bare fra dem som godtar analyse.
 
 ## Branding og assets
 
@@ -238,10 +259,9 @@ Fra forside- og grunnmurarbeidet:
 ## Gjenstår før domenet kan flyttes
 
 1. **Legacy-innhold er ferdig.** Alle 39 URL-er, vedleggssider, WordPress-ID-er, arkiver, feeder og media er behandlet.
-4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
-5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
+4. **Partnerlenkene** er oppdatert for de sju aktive nettverkene. Tradedoubler, Awin, Adrecord og Jaaxy er ikke aktive, og brukes ikke som annonselenker. Payoneer, KWFinder, One.com og Namecheap er fortsatt i bruk og bør kontrolleres, men blokkerer ikke flyttingen.
 6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).
-7. **Vercel og domene** (krever godkjenning fra Andreas): sette opp prosjektet, sette `SITE_INDEXABLE=true` og miljøvariablene, teste på en forhåndsvisningsadresse, og deretter flytte DNS. WordPress-produksjonen skal ikke røres før dette er bestemt.
+7. **Domene** (krever godkjenning fra Andreas): Vercel-prosjektet deployer `main` til `minegensjef.vercel.app`, og `NEXT_PUBLIC_GA_ID` er satt i Production. Gjenstår: bestemme Deployment Protection og om pushes til `main` skal gå rett live, legge til `minegensjef.no` og `www`, sette `SITE_INDEXABLE=true` i Production, deploye på nytt og flytte DNS. WordPress-produksjonen skal ikke røres før dette er bestemt.
 8. **Etter flyttingen:** kjøre alle 39 gamle URL-er og Pretty Links-rutene mot det nye domenet, sende inn sitemapen i Search Console og følge med på 404-feil de første ukene.
 
 Mindre, ikke blokkerende: `npm audit fix` for sharp og source-map-js, bytte avviklet `priority` på heltebildet, og fullt forfatternavn i Article-schema hvis Andreas ønsker det.

@@ -16,6 +16,45 @@ Ingen partnerlenker ble fulgt, så ingen klikk er registrert hos nettverkene.
 
 **Eksporten inneholder ikke klikktall.** Pretty Links lagrer klikk i en egen tabell som ikke er med i denne CSV-en. Historiske klikk per lenke må hentes fra Pretty Links-oversikten i WordPress før den stenges. Merk at historiske klikk er et migreringssignal, ikke bevis på dagens trafikk.
 
+## Status 03.11.2026: oppdaterte destinasjoner
+
+**Aktive, oppdatert eller bekreftet av Andreas 03.11.2026:**
+
+| Slug | Destinasjon | Brukt i |
+|---|---|---|
+| `wealthy-affiliate` | `https://www.wealthyaffiliate.com/?a_aid=fe112df7` | `/wealthy-affiliate/`, `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` |
+| `adtraction` | `https://track.adtraction.com/t/t?a=923786618&as=1156469187&t=2&tk=1` (uendret) | `/norske-affiliate-programmer/` |
+| `tradetracker` | `https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=` | `/norske-affiliate-programmer/` |
+| `partner-ads` | `https://www.partner-ads.com/no/klikbanner.php?partnerid=27345&bannerid=54626` (uendret) | `/norske-affiliate-programmer/` |
+| `addrevenue` | `https://addrevenue.io/t?a=984405&c=3455267` | `/norske-affiliate-programmer/` |
+| `daisycon` | `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F` | `/norske-affiliate-programmer/` |
+| `orion-media` | `https://orionious.com/click.track?CID=438863&AFID=434772` | `/norske-affiliate-programmer/` |
+
+**Ikke aktiv affiliate** (`inactive` i `lib/affiliate-links.ts`). Ruten og den gamle Pretty Links-ruten virker fortsatt for gamle lenker, men `<AffiliateLink>` stopper bygget hvis noen prøver å bruke dem som annonselenke:
+
+| Slug | Hvorfor | Omtales i |
+|---|---|---|
+| `tradedoubler` | Ingen aktiv affiliateavtale | `/norske-affiliate-programmer/`, med vanlig lenke til tradedoubler.com |
+| `awin` | **Affiliate-destinasjon mangler / ikke aktiv.** Den gamle lenken går til én annonsør, ikke til nettverket | `/norske-affiliate-programmer/`, med vanlig lenke til awin.com |
+| `adrecord` | Sporingsdomenet og adrecord.com svarte ikke på DNS 03.11.2026 | `/norske-affiliate-programmer/`, uten lenke |
+| `jaaxy` | Destinasjonen svarer ikke | `/hva-er-seo/` og `/gode-verktoy-for-sokeordsanalyse/`, bare som tekst |
+
+**Manuell kontroll senere** (uendret, fortsatt i bruk som annonselenke):
+
+| Slug | Hvorfor | Brukt i |
+|---|---|---|
+| `payoneer` | Delingslenke fra 2018 | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` |
+| `kwfinder` | Sporings-ID-en ligger i et URL-fragment (`#…`) | `/hva-er-seo/` |
+| `one-com` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
+| `namecheap` | HTTP, ikke HTTPS | `/hvordan-lage-nettside-na-til-dags/` |
+| `adservice` | Samme destinasjon som `adtraction` | Ikke brukt |
+
+Også i bruk, men ikke vurdert i denne runden: `morningscore` (`/morningscore-anmeldelse-for-norsk-seo/`) og `depositphotos` (`/gratis-bilder/`). Begge svarte på DNS 03.11.2026.
+
+Når Andreas leverer en ny partnerlenke, endres bare `destination`, og eventuelt `inactive` fjernes, for riktig slug i `lib/affiliate-links.ts`. `/go/<slug>/` og alle gamle Pretty Links-ruter fortsetter å virke.
+
+Resten av dokumentet beskriver Pretty Links-eksporten fra 28.09.2026 og er historikk.
+
 ## Sammendrag
 
 | | Antall |

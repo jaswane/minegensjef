@@ -36,7 +36,7 @@ Reglene ligger i `next.config.ts`. 410-svarene kommer fra `app/gone/route.ts` vi
 | `/author/andreas/` | `/om/` | Eneste forfatter. `/om/` handler om ham |
 | 137 vedleggssider med publisert parent | parent-artikkelens endelige URL | Generert fra WXR i `lib/legacy-attachments.ts`. Er parent selv sendt videre med 301, går vedlegget direkte til det endelige målet, uten kjede |
 
-Av de 137 vedleggssidene går 116 til en migrert artikkel, 14 til målet for en parent som har fått 301, og 7 til forsiden, fordi parent var forsiden («hjem»).
+Av de 137 vedleggssidene går 116 til en migrert artikkel, 14 til målet for en parent som har fått 301, og 7 til forsiden, fordi parent var forsiden («hjem»). **03.11.2026:** De 28 som fulgte de seks siste artiklene, går nå også til parent. Til sammen har 165 vedleggssider 301.
 
 ### 410
 
@@ -63,13 +63,12 @@ Gamle spørringsadresser på forsiden går til `app/wp-id/route.ts`. Den slår o
 
 - **Kjent ID** betyr en offentlig ID med et mål: 33 innlegg, 6 sider og 165 vedlegg, til sammen 204. Målet er alltid det endelige: Har siden fått 301, går ID-en direkte dit, uten kjede.
 - **Ukjent ID** betyr en ID som ikke finnes i WXR, et utkast (19), et vedlegg uten publisert parent (37), feil type for parameteren (for eksempel `?page_id=` med ID-en til et innlegg) eller en verdi som ikke er et tall. Alle gir 410, aldri forsiden.
-- **34 ID-er følger en artikkel som venter på beslutning:** 6 innlegg og 28 vedlegg hører til de utsatte artiklene eller 410-kandidatene. De går i dag til artikkelens egen URL, som gir 404 til den er avgjort. Får artikkelen 301, må tabellen genereres på nytt, så det ikke blir kjede.
+- **03.11.2026:** De 34 ID-ene som tidligere fulgte utsatte artikler og 410-kandidater (6 innlegg og 28 vedlegg), går nå direkte til de seks historiske artiklene, som svarer 200.
 - **Andre parametre påvirkes ikke.** `utm_source`, `utm_campaign` og lignende gir vanlig sideoppførsel.
 - **Tom verdi** (`/?p=`, også `?s=` og de andre) viser forsiden. Dette er akseptert. Next matcher ikke en tom spørringsverdi i `has`, og en tom verdi er heller ingen ID. WordPress gjorde det samme.
 
-### Ikke behandlet ennå (gir 404)
+### Gir 404 med vilje
 
-- **28 vedleggssider der parent venter på beslutning:** 23 hører til de fire 410-kandidatene, og 5 til de to utsatte artiklene. De skal følge parent-artikkelens beslutning, og legges inn i `lib/legacy-attachments.ts` når den er tatt.
 - **WordPress-systemadresser** (`/wp-admin/`, `/wp-login.php`, `/xmlrpc.php`, `/wp-json/`) gir 404. Det er riktig.
 
 ## Media: måling

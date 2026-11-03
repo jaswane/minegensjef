@@ -3,8 +3,7 @@
  * Kilde: docs/migration/url-inventory.md («Historiske slugger som må videresendes»).
  *
  * Målet skal være den endelige adressen, ikke en annen gammel adresse, så det ikke
- * blir redirect-kjeder. SEO That Works-sluggen venter på beslutningen om
- * `/anmeldelse_seo-that-works-2/` (410-kandidat) og gir 404 til da.
+ * blir redirect-kjeder. Alle seks mål er publiserte artikler som svarer 200.
  */
 export const legacySlugRedirects: { from: string; to: string }[] = [
   { from: "/hva-er-egentlig-affiliate-markedsforing/", to: "/hva-er-affiliate-markedsforing/" },
@@ -20,8 +19,7 @@ export const legacySlugRedirects: { from: string; to: string }[] = [
 
 /**
  * Gamle sider som er erstattet av, eller slått sammen med, en side med samme formål (301).
- * Bare godkjente 301-er legges inn her. 410-kandidatene står i
- * docs/migration/url-inventory.md og venter på kontroll av lenker inn.
+ * Bare godkjente 301-er legges inn her. Hele regnskapet står i docs/migration/url-inventory.md.
  */
 export const replacedPageRedirects: { from: string; to: string }[] = [
   { from: "/blogg/", to: "/artikler/" },

@@ -1,0 +1,84 @@
+export const metadata = {
+  title: "IFTTT er et nyttig verktøy for å automatisere små oppgaver",
+  description:
+    "Januar 2016: hvordan jeg brukte IFTTT til å koble sammen tjenester, en steg-for-steg-oppskrift fra den gang, og hvordan jeg spredte nye Flickr-bilder automatisk.",
+  published: "2016-01-12",
+  historical: true,
+  noindex: true,
+  related: ["introduksjon-drommen-om-a-bli-sin-egen-sjef", "hva-er-seo", "gratis-bilder"],
+}
+
+<Note>**Merk:** Menyene, navnene og stegene under er fra IFTTT slik tjenesten så ut i 2016. Grensesnitt, priser og hvilke tjenester som kan kobles sammen, har endret seg siden.</Note>
+
+## Enkelt og nyttig
+
+Jeg fikk et godt tips om IFTTT for noen dager siden, og det er nesten utrolig at jeg ikke har visst om det før. Men hva er IFTTT? Bokstavene står for *If This Then That*. Det er et gratis verktøy på nett som kobler sammen apper, nettjenester, dingser og kontoer i sosiale medier, og utfører handlinger automatisk etter enkle regler du setter opp selv.
+
+Du kan til og med styre lyset i huset hvis du har et lyssystem som kan styres fra telefonen, som Philips Hue. Hva med at lyset skifter farge når du får en e-post, blinker når noen nevner deg på Twitter, eller skrur seg av og på til faste tider? Selv har jeg ikke et sånt lyssystem, men det finnes tonnevis av andre måter å bruke verktøyet på.
+
+Grunnideen er at du lager små regler: *Hvis* noe skjer, så skal *dette* skje etterpå. Det kalles oppskrifter. De mest nyttige er kanskje automatiske oppgaver mellom Twitter, Facebook, Reddit, Gmail, Instagram, YouTube, værtjenester, sted og tid, men det finnes hundrevis av kanaler å koble sammen.
+
+Litt inspirert av Wikipedia, dette er byggesteinene:
+
+- **Kanaler** er de grunnleggende byggesteinene. En kanal er data fra en bestemt nettjeneste, et produkt eller en app, som YouTube eller eBay, eller bestemte handlinger som SMS. Hver kanal har sine egne utløsere og handlinger.
+- **Utløsere** er «hvis noe skjer»-delen av en oppskrift. Via Reddit eller en RSS-feed kan du for eksempel få et varsel basert på et nøkkelord.
+- **Handlinger** er «da skal dette skje»-delen.
+- **Oppskrifter** er kombinasjonen av en utløser og en handling. Liker du et bilde på Instagram (utløser), blir bildet sendt til Dropbox (handling).
+- **Ingredienser** er data som en utløser gjør tilgjengelig. En e-post kan for eksempel gi emne, tekst, vedlegg, dato og avsender.
+
+Det skilles også mellom IF-oppskrifter, som kjører automatisk, og DO-oppskrifter, som du starter selv fra DO-appen på telefonen.
+
+## Eksempler på hva IFTTT kan gjøre
+
+- Lagre bilder du er tagget i på Facebook, på telefonen din.
+- Sette telefonen på lydløs når du har avtaler i kalenderen.
+- Slå på ringelyden når du drar hjemmefra.
+- Sende en bestemt tweet på en bestemt dato, for eksempel «Godt nyttår».
+- Gi beskjed hvis det blir regn i morgen.
+- Varsle når noen legger ut bilder på Instagram i nærheten av der du bor.
+- Sende e-post hvis noen skriver om et bestemt tema på Reddit.
+- Sende en tekstmelding når du snart er hjemme.
+- Få lyspærene til å blinke når favorittlaget scorer.
+- Følge med på når du eller firmaet ditt blir nevnt i RSS-feeder.
+- Oppdatere profilbildet på Twitter når du legger ut et bilde på Facebook.
+- Ringe deg selv hvis du havner i en klein situasjon og trenger en unnskyldning for å komme deg unna.
+
+Jeg kunne fortsatt i det uendelige. Det ligger mange ferdige oppskrifter klare, og du kan dele dine egne.
+
+## Slik lager du din første oppskrift
+
+Denne oppskriften sender «God helg!» på Twitter-kontoen din hver fredag klokken 16.00.
+
+1. Lag en gratis konto på IFTTT, eller logg inn.
+2. Trykk på **My Recipes** i menyen øverst.
+3. Dette er en IF-oppskrift, så sjekk at du står i IF-fanen. Trykk **Create a Recipe**.
+4. Klikk på det blå ordet **this** for å velge kanalen som utløser oppskriften.
+5. Finn kanalen **Date & Time**, og velg den.
+6. Velg utløseren **Every day of the week at**.
+7. Velg **4 PM** og huk av for **Friday**. Trykk **Create Trigger**.
+8. Klikk på det blå ordet **that** for å velge kanalen for handlingen.
+9. Finn kanalen **Twitter**. Har du ikke koblet den til ennå, trykker du **Connect**.
+10. Velg handlingen **Post a tweet**.
+11. Teksten «Another {"{{DayOfWeek}}"}! It's {"{{CheckTime}}"}» står ferdig utfylt. Det i klammeparentesene er ingredienser. Bytt teksten ut med «God helg!», og trykk **Create Action**.
+12. Til slutt ser du en oversikt. Trykk **Create Recipe**, så er du ferdig.
+
+Husk at Twitter ikke liker spam og automatiske tweets, så vær litt forsiktig. Du kan heller ikke koble flere Twitter-kontoer til én bruker, så har du flere kontoer, trenger du flere IFTTT-brukere.
+
+## Slik sprer jeg nye Flickr-bilder automatisk
+
+Jeg har ganske mange bilder på Flickr på grunn av fotohobbyen, og det er alltid en jobb å spre dem i sosiale medier når jeg laster opp et nytt. Så det første jeg testet, var å automatisere delingen av nye Flickr-bilder. Det viste seg å være ganske enkelt.
+
+Jeg satte opp en rekke oppskrifter som delte nye bilder direkte til Facebook-siden min, Pinterest, en subreddit, Delicious, Tumblr og Twitter. Det fungerte fantastisk!
+
+[Bildet](https://www.flickr.com/photos/norue/24169676142/) kom også på Flickr Explore, et daglig utvalg av 500 bilder som blir vist til veldig mange. Jeg vet ikke om det var tilfeldig, eller fordi det ble delt så mange steder så fort. Det er ukjent hvordan algoritmen bak fungerer, men det handler ikke bare om kvaliteten på bildet.
+
+## IFTTT i markedsføring
+
+Tjenesten kan også forenkle oppgaver i markedsføring, enten du driver eget firma, jobber som markedsfører eller driver med innholds- og [affiliate-markedsføring](/hva-er-affiliate-markedsforing/). Den egner seg særlig til fire ting:
+
+- **Følge med på konkurrenter, kunder, merkevarer, eget nettsted og bransjen.** Få e-post når noen skriver om deg eller nisjen din, eller send informasjonen til Evernote eller et Google-regneark.
+- **Samle informasjon.** Vær først ute med nye trender og innhold fra blogger, sosiale medier og forum, og samle ideer til neste artikkel.
+- **Publisere i sosiale medier.** Send meldinger automatisk på Twitter og Facebook, eller del et innlegg mange steder samtidig.
+- **Ta vare på informasjon som e-post og bilder,** med automatisk sikkerhetskopi til Dropbox eller Google Drive.
+
+Sjansen er stor for at konkurrenten din ikke bruker IFTTT, så du kan kanskje slå dem på målstreken.

@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
 **Sist oppdatert:** 03.11.2026
-**Status:** Legacy-migreringen er lukket. Alle 39 gamle URL-er har en dokumentert behandling: 15 moderniserte og 7 historiske artikler, 3 rebygget, 8 med 301, 2 utsatt og 4 410-kandidater. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Mark historical legacy posts consistently» (`git log -1`)
+**Status:** Legacy-arkivet er komplett. Alle 39 gamle URL-er har en endelig behandling: 15 moderniserte artikler, 13 historiske (4 av dem noindex), 3 rebygget og 8 med 301. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
+**Siste commit:** «Complete Minegensjef legacy archive» (`git log -1`)
 
 Alt arbeid er lokalt. Den eksisterende WordPress-siden på minegensjef.no er live og skal ikke røres. **Domenet skal ikke flyttes**, og ingen DNS-, hosting- eller Vercel-endringer er gjort.
 
@@ -30,7 +30,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/` | Forside | ja |
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
-| `/artikler/` | Liste over publiserte artikler (22) | ja |
+| `/artikler/` | Liste over alle 28 publiserte artikler, også de fire med noindex | ja |
 | `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
@@ -84,8 +84,7 @@ Seks artikler, valgt ut fra GSC-data til og med 08.10.2026. Detaljer står i `do
 
 - `/verdifulle-tips-fra-simon/` er migrert som historisk gjestepost, og `/amazon-julehandel-over-alle-stovelskaft/` som historisk innlegg. Ingen av dem har `updated`.
 - Fire MERGE → 301 er implementert (se «Redirects implementert»).
-- `/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/` er KEEP/REWRITE, utsatt.
-- `/tanker-rundt-inspirasjon/`, `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/`, `/anmeldelse_seo-that-works-2/` og `/betalt-annonsering-med-google-adwords/` er markert «410 candidate – backlink validation required». Ingen 410 er implementert.
+- De to utsatte artiklene og de fire 410-kandidatene fra denne bølgen er migrert som historiske artikler 03.11.2026 (se «Legacy-arkivet komplett»).
 
 ## WordPress-arkiver, feeder og vedlegg (09.10.2026)
 
@@ -95,12 +94,22 @@ Detaljer, antall og begrunnelser står i `docs/migration/wordpress-archives-and-
 - **410** (`app/gone/route.ts` via rewrites): øvrige kategorier, alle tag-arkiver, øvrige forfatter-URL-er, `/page/<n>/`, alle feeder (`/feed/`, `/comments/feed/`, `/<slug>/feed/`, `?feed=`), og 20 vedleggssider uten publisert parent.
 - **WordPress-ID-er** (`/?p=`, `/?page_id=`, `/?attachment_id=`): kjent ID gir 301 til endelig mål, og ukjent ID gir 410 (`app/wp-id/route.ts`, `lib/legacy-wp-ids.ts`). Andre parametre som `utm_source` påvirkes ikke.
 - **410 også for** `/wp-content/uploads/...` og `?cat=`, `?tag=`, `?author=`, `?s=` på forsiden.
-- **Ikke behandlet:** 28 vedleggssider som følger de fire 410-kandidatene og de to utsatte artiklene.
+- **Alle 165 vedleggssider med publisert parent** har 301 til parent (03.11.2026).
 - **Media:** Ikke kopiert inn i repoet. Backupen har 3 065 filer (81,7 MB), og ingen av de 22 migrerte artiklene bruker gamle bilder. Bare filer som faktisk tas i bruk, bevares, og gamle bildeadresser gir 410.
+
+## Legacy-arkivet komplett (03.11.2026)
+
+- ChatGPT- og TradeTracker-artiklene er migrert som historiske artikler og kan indekseres. TradeTracker nevnes bare som tekst, uten annonselenke, til lenken er kontrollert.
+- De fire tidligere 410-kandidatene er historiske artikler med `noindex: true`. Det gir `noindex, follow` etter lansering, og de står ikke i sitemapen.
+- 28 vedleggssider og 34 WordPress-ID-er går nå direkte til de seks artiklene.
+- Et eksternt videresendingsdomene for WA-lenker fra den gamle siden er ikke lenger Andreas' og er fjernet fra dokumentasjonen. Det fantes ikke i kode eller innhold.
+- **Kontaktregel:** `kontakt@swanecreative.no` er den eneste kontaktadressen og står synlig bare på `/kontakt/`.
+- Ingen gammel reklame, bannerkode, widgets eller delingsknapper fra WordPress er med i 2.0.
+- Gamle kommentarer er kartlagt i `docs/migration/legacy-comments-review.md` (36 kandidater i 18 tråder), men ikke publisert.
 
 ## Historiske innlegg (03.11.2026)
 
-Sju innlegg er historiske legacy-artikler med `historical: true`: `/amazon-julehandel-over-alle-stovelskaft/`, `/har-jeg-gitt-opp/`, `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/min-forste-sjekk-pa-over-1000/`, `/suksess-motbakke-status-og-nye-mal-for-2017/`, `/verdifulle-tips-fra-simon/`, `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`. Malen viser da en felles merknad (`components/historical-note.tsx`), og `/artikler/` viser merket «Historisk». Bygget stopper hvis et historisk innlegg får `updated`. De 15 andre artiklene er modernisert.
+Fra før er sju innlegg historiske legacy-artikler med `historical: true`: `/amazon-julehandel-over-alle-stovelskaft/`, `/har-jeg-gitt-opp/`, `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`, `/min-forste-sjekk-pa-over-1000/`, `/suksess-motbakke-status-og-nye-mal-for-2017/`, `/verdifulle-tips-fra-simon/`, `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`. Malen viser da en felles merknad (`components/historical-note.tsx`), og `/artikler/` viser merket «Historisk». Bygget stopper hvis et historisk innlegg får `updated`. De 15 andre artiklene er modernisert.
 
 ## Partnerlenker Andreas skal kontrollere
 
@@ -128,22 +137,18 @@ Ingen destinasjoner er endret. Når Andreas leverer en ny partnerlenke, endres b
 
 **Gamle slugger:** De seks `_wp_old_slug`-redirectene (301) fra `docs/migration/url-inventory.md`, i `lib/legacy-redirects.ts`.
 
-**Status:** Fem av seks går til en side som svarer 200. Bare SEO That Works gir 404.
+**Status:** Alle seks går til en side som svarer 200.
 
 | Gammel URL | Mål | Mål i dag |
 |---|---|---|
 | `/hva-er-egentlig-affiliate-markedsforing/` | `/hva-er-affiliate-markedsforing/` | 200, migrert |
 | `/hvordan-lage-nettside-na-til-dags-det-er-enkelt/` | `/hvordan-lage-nettside-na-til-dags/` | 200, migrert |
 | `/hva-er-sokemotoroptimalisering-seo/` | `/hva-er-seo/` | 200, migrert |
-| `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` | 404, ikke migrert. **Målet er selv en 410-kandidat** |
+| `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` | 200, historisk artikkel med noindex |
 | `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate/` | 200, går direkte uten kjede |
 | `/hvordan-motta-inntekter-fra-amazon-pa-enklest-mulig-vis/` | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` | 200, migrert |
 
-Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen peke rett til det endelige målet (eller gi 410), så det ikke blir en kjede.
-
 **Erstattede og sammenslåtte sider (301, `replacedPageRedirects` i `lib/legacy-redirects.ts`):** `/blogg/` → `/artikler/`, `/om-meg/` → `/om/`, `/privacy-policy/` → `/personvern/`, `/wealthy-affiliate-black-friday-salg/` → `/wealthy-affiliate/`, `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` og `/er-det-umulig-a-tjene-penger-pa-nett/` → `/seriose-mater-a-tjene-penger-pa-nettet/`, `/slik-vurderer-google-kvalitet-9-ting-du-ma-vaere-klar-over/` → `/hva-er-seo/`, og `/hvordan-heve-sjekk-fra-utlandet-i-norge/` → `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`. Alle er én direkte 301 til et mål som svarer 200.
-
-**Ikke implementert:** De fire 410-kandidatene. De venter på kontroll av lenker inn.
 
 ## SEO
 
@@ -184,11 +189,9 @@ Når beslutningene for de to merkede målene er tatt, bør den gamle sluggen pek
 
 ## Ikke implementert
 
-- De to utsatte artiklene (ChatGPT og TradeTracker).
 - Guidesidene (`/guider/<slug>/`) og temahubene (`/nisje/`, `/nettsider/`, `/seo/`, `/ai/`, `/affiliate-markedsforing/`).
-- 410 for de fire kandidatene.
-- De 28 vedleggssidene som følger parent-artiklene.
-- Vercel-oppsett og domeneovergang.
+- Domeneovergang. Vercel-prosjektet finnes og deployer `main` til `minegensjef.vercel.app` med noindex, men `minegensjef.no` er ikke koblet til.
+- Publisering av gamle kommentarer (kartlagt, ikke publisert).
 
 ## Lenker
 
@@ -234,9 +237,7 @@ Fra forside- og grunnmurarbeidet:
 
 ## Gjenstår før domenet kan flyttes
 
-1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
-2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
-3. **WordPress-arkiver, feeder, vedlegg, ID-spørringer og gamle bildeadresser er behandlet** (se `docs/migration/wordpress-archives-and-media.md`). Det som gjenstår, er 28 vedleggssider som følger parent-artiklene og avgjøres sammen med dem.
+1. **Legacy-innhold er ferdig.** Alle 39 URL-er, vedleggssider, WordPress-ID-er, arkiver, feeder og media er behandlet.
 4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
 5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
 6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).

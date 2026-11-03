@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps<"/[slug]">): Promis
     title: article.title,
     description: article.description,
     path: article.path,
-    index: !article.draft,
+    index: !article.draft && !article.noindex,
   });
   return {
     ...base,

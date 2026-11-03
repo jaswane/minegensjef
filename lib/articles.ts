@@ -39,6 +39,11 @@ export type ArticleMeta = {
    * Gir en felles merknad i artikkelen og merket «Historisk» på /artikler/. Settes ikke sammen med `updated`.
    */
   historical?: boolean;
+  /**
+   * `noindex, follow` etter lansering, og ikke i sitemap. For historiske innlegg som skal
+   * være tilgjengelige for lesere og gamle lenker, men ikke være landingssider i søk.
+   */
+  noindex?: boolean;
 };
 
 export type Article = ArticleMeta & { slug: string; path: string };

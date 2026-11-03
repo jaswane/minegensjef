@@ -3,6 +3,24 @@
 **Dato:** 28.09.2026
 **Status:** Første bølge migrert 08.10.2026, se under. Resten av dokumentet er den opprinnelige planen.
 
+## Status 03.11.2026: legacy-arkivet komplett
+
+Alle 39 gamle URL-er har nå en endelig behandling. Ingen står som utsatt eller 410-kandidat.
+
+| Behandling | Antall |
+|---|---|
+| Modernisert, 200 | 15 |
+| Historisk legacy, 200, indekserbar | 9 |
+| Historisk legacy, 200, noindex | 4 |
+| Ny side / rebygget, 200 | 3 |
+| Permanent 301 | 8 |
+| **Sum** | **39** |
+
+- `/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/` er migrert som historiske artikler og kan indekseres. ChatGPT-artikkelen kan oppdateres når WA/Ace-gjennomgangen er i gang. TradeTracker nevnes bare som vanlig tekst, til Andreas leverer en kontrollert partnerlenke.
+- De fire tidligere 410-kandidatene er bevart som historikk med `noindex, follow`, og står ikke i sitemapen: `/tanker-rundt-inspirasjon/`, `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/`, `/anmeldelse_seo-that-works-2/` og `/betalt-annonsering-med-google-adwords/`.
+- 28 vedleggssider og 34 WordPress-ID-er som fulgte disse seks artiklene, går nå direkte til dem.
+- Gamle kommentarer er kartlagt i `legacy-comments-review.md`, men ikke publisert.
+
 ## Status 03.11.2026: historiske innlegg merket
 
 Ingen gamle innlegg gjensto å migrere. Alle 39 URL-er var allerede behandlet, og de to utsatte artiklene og de fire 410-kandidatene er ikke rørt. Denne runden har delt de 22 levende artiklene i to grupper og gitt de historiske en felles merking:
@@ -40,9 +58,7 @@ Gjort i bølge 4:
 
 ## Gjenstår før domenet kan flyttes
 
-1. **De to utsatte artiklene** (`/chatgpt-og-affiliate-markedsforing/` og `/mine-erfaringer-med-affiliatenettverket-tradetracker/`) må migreres. Ellers gir de 404 etter flyttingen. ChatGPT-artikkelen venter på WA/Ace-gjennomgangen, og TradeTracker-artikkelen på en kontrollert partnerlenke.
-2. **De fire 410-kandidatene** må få endelig behandling (410, eller 301 hvis de har verdifulle lenker inn) etter at lenkene inn er kontrollert. Uten beslutning gir de 404.
-3. **WordPress-arkiver, feeder, vedlegg, ID-spørringer og gamle bildeadresser er behandlet** (se `docs/migration/wordpress-archives-and-media.md`). Det som gjenstår, er 28 vedleggssider som følger parent-artiklene og avgjøres sammen med dem.
+1. **Legacy-innhold er ferdig.** Alle 39 URL-er, vedleggssider, WordPress-ID-er, arkiver, feeder og media er behandlet.
 4. **Partnerlenkene** i listen over må kontrolleres. De virker teknisk, men flere er gamle eller mangler sporing. Jaaxy svarte ikke da lenken ble sjekket.
 5. **GA4-måle-ID** (`NEXT_PUBLIC_GA_ID`) mangler. Uten den er analyse og samtykkebanner av.
 6. **Juridiske detaljer:** organisasjonsform og organisasjonsnummer for behandlingsansvarlig i personvernerklæringen, og hvem som formelt mottar provisjon (Min Egen Sjef eller Swane Creative).

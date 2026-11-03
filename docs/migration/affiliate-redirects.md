@@ -183,7 +183,8 @@ Disse står ikke i noen publisert artikkel eller noe utkast. De kan likevel ha v
 1. **Klikktall per Pretty Link.** Det eneste som kan avgjøre hvilke av de sju ubrukte rutene som faktisk har vært i bruk. Finnes i Pretty Links-oversikten, ikke i CSV-eksporten.
 2. **Status på hver affiliatekonto** hos nettverkene.
 3. **Avklaring av `/adsninja`-destinasjonen** og det ukjente sporingsdomenet.
-4. **Er `goforwa.com` et eget videresendingsdomene for WA-lenker?** Det brukes i `/om-meg/` og på den gamle forsiden, og er ikke en Pretty Link.
+
+**Avklart 03.11.2026:** Et eksternt videresendingsdomene for WA-lenker som ble brukt på den gamle siden, eies ikke lenger av Andreas. Det er ikke en del av 2.0 og skal ikke brukes. WA-lenker går bare via `/go/wealthy-affiliate/`.
 
 ## Eksterne affiliate-lenker uten intern rute
 

@@ -4,7 +4,7 @@ import { absoluteUrl } from "@/lib/site";
 
 /**
  * Bare ekte, indekserbare sider. Ikke med: /go/ (affiliate), personvern og
- * ansvarsfraskrivelse (noindex), utkast og 404.
+ * ansvarsfraskrivelse (noindex), artikler med `noindex`, utkast og 404.
  */
 const staticPaths = [
   "/",
@@ -18,7 +18,7 @@ const staticPaths = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = (await getArticles()).filter((article) => !article.draft);
+  const articles = (await getArticles()).filter((article) => !article.draft && !article.noindex);
 
   return [
     ...staticPaths.map((path) => ({ url: absoluteUrl(path) })),

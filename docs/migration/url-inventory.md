@@ -3,6 +3,7 @@
 **Dato:** 28.09.2026
 **Kilde:** `minegensjef.WordPress.2026-09-28.xml` (rå backup utenfor repoet: `C:\_Nettsider\_backups\minegensjef\`), supplert med lesing av live-siden (statuskoder, `Location`-headere, sitemap, robots-meta).
 **Status:** Forslag. Ingen beslutninger er endelige før de er kontrollert mot Google Search Console og backlinks.
+**Oppdatert 03.11.2026:** Legacy-arkivet er komplett. De to utsatte artiklene og de fire tidligere 410-kandidatene er migrert som historiske artikler. Alle 39 URL-er har en endelig behandling.
 **Oppdatert 09.10.2026 (arkiver):** Kategori-, tag- og forfatterarkiver, feeder, paginering, vedleggssider og media er ikke blant de 39. De er behandlet i `wordpress-archives-and-media.md`.
 **Oppdatert 09.10.2026 (bølge 4):** Alle 39 gamle URL-er har nå en dokumentert behandling. Se «Sluttregnskap» under.
 **Oppdatert 09.10.2026 (bølge 3):** Bølge 3: `/gratis-bilder/`, `/gode-verktoy-for-sokeordsanalyse/` og tre personlige innlegg er migrert. Fire 301-er er implementert. Beslutningene for resten står i `migration-priority.md`.
@@ -44,49 +45,59 @@ De tre publiserte URL-ene som ikke ligger i sitemapen, er `/privacy-policy/` og 
 
 ## Sluttregnskap: alle 39 gamle offentlige URL-er (oppdatert 03.11.2026)
 
-Generert fra oversiktstabellen under, `content/artikler/` og `lib/legacy-redirects.ts`. Hver URL står i nøyaktig én kategori.
+Generert fra oversiktstabellen under, `content/artikler/` og `lib/legacy-redirects.ts`. Hver URL står i nøyaktig én kategori. Ingen URL står lenger som utsatt, 410-kandidat eller uavklart.
 
 | Behandling | Antall |
 |---|---|
-| Levende moderne artikkel, 200 på samme URL | 15 |
-| Levende historisk legacy-artikkel, 200 på samme URL | 7 |
-| Ny side / rebygget på samme URL | 3 |
+| Modernisert artikkel, 200 | 15 |
+| Historisk legacy-artikkel, 200, indekserbar | 9 |
+| Historisk legacy-artikkel, 200, `noindex, follow` og ikke i sitemap | 4 |
+| Ny side / rebygget, 200 | 3 |
 | Permanent 301 til endelig mål | 8 |
-| Utsatt, KEEP/REWRITE | 2 |
-| 410 candidate – backlink validation required | 4 |
 | **Sum** | **39** |
 
-### Levende moderne artikkel (15)
+### Modernisert artikkel (15)
 
 Skrevet om eller oppdatert for i dag, med `updated`.
 
-- `/affiliate-markedsforing-i-norge-er-det-enklere/`
-- `/de-beste-norske-seo-bloggene/`
-- `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/`
-- `/gode-verktoy-for-sokeordsanalyse/`
-- `/gratis-bilder/`
+- `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/`
+- `/norske-affiliate-programmer/`
 - `/hva-er-affiliate-markedsforing/`
 - `/hva-er-seo/`
-- `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`
-- `/hvordan-lage-nettside-na-til-dags/`
-- `/merverdiavgift-og-affiliate-markedsforing/`
-- `/morningscore-anmeldelse-for-norsk-seo/`
-- `/norske-affiliate-programmer/`
 - `/regnskap-og-skatt-pa-affiliate-inntekter/`
+- `/merverdiavgift-og-affiliate-markedsforing/`
 - `/seriose-mater-a-tjene-penger-pa-nettet/`
-- `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/`
+- `/hvordan-lage-nettside-na-til-dags/`
+- `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/`
+- `/affiliate-markedsforing-i-norge-er-det-enklere/`
+- `/gode-verktoy-for-sokeordsanalyse/`
+- `/morningscore-anmeldelse-for-norsk-seo/`
+- `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/`
+- `/de-beste-norske-seo-bloggene/`
+- `/gratis-bilder/`
 
-### Levende historisk legacy-artikkel (7)
+### Historisk legacy-artikkel, indekserbar (9)
 
-Opprinnelig tekst, dato og jeg-form er bevart, uten `updated`. Merket med `historical: true`, som gir en felles merknad i artikkelen og merket «Historisk» på `/artikler/`. Der noe kan misforstås i dag, står en kort «Merk»-boks.
+Opprinnelig tekst, dato og jeg-form er bevart, uten `updated`. Merket med `historical: true`.
 
-- `/amazon-julehandel-over-alle-stovelskaft/`
-- `/har-jeg-gitt-opp/`
-- `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`
+- `/chatgpt-og-affiliate-markedsforing/`
+- `/mine-erfaringer-med-affiliatenettverket-tradetracker/`
 - `/min-forste-sjekk-pa-over-1000/`
+- `/introduksjon-drommen-om-a-bli-sin-egen-sjef/`
 - `/suksess-motbakke-status-og-nye-mal-for-2017/`
+- `/har-jeg-gitt-opp/`
 - `/verdifulle-tips-fra-simon/`
+- `/amazon-julehandel-over-alle-stovelskaft/`
 - `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/`
+
+### Historisk legacy-artikkel, noindex (4)
+
+Tidligere 410-kandidater, bevart som historikk 03.11.2026 etter Andreas' beslutning. De har `historical: true` og `noindex: true`. Etter lansering får de `noindex, follow`, de står ikke i sitemapen, og de er tilgjengelige for lesere og gamle lenker.
+
+- `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/`
+- `/anmeldelse_seo-that-works-2/`
+- `/betalt-annonsering-med-google-adwords/`
+- `/tanker-rundt-inspirasjon/`
 
 ### Ny side / rebygget (3)
 
@@ -109,23 +120,7 @@ Opprinnelig tekst, dato og jeg-form er bevart, uten `updated`. Merket med `histo
 | `/er-det-umulig-a-tjene-penger-pa-nett/` | `/seriose-mater-a-tjene-penger-pa-nettet/` |
 | `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` | `/seriose-mater-a-tjene-penger-pa-nettet/` |
 
-### Utsatt, KEEP/REWRITE (2)
-
-Skal verken 301-es eller få 410. Til de er migrert, gir de 404 i den nye løsningen, så de må være ferdige før domenet flyttes.
-
-- `/chatgpt-og-affiliate-markedsforing/`: Venter på at Andreas har gått gjennom nye Wealthy Affiliate/Ace, så 2023-artikkelen kan settes inn i den faktiske AI-utviklingen
-- `/mine-erfaringer-med-affiliatenettverket-tradetracker/`: Har historisk GSC-verdi. Venter på kontrollert eller ny TradeTracker-partnerlenke fra Andreas
-
-### 410 candidate – backlink validation required (4)
-
-Ingen 410 er implementert. Kontroller lenker inn for hver URL før beslutningen tas. Har en URL verdifulle lenker inn, er 301 til nærmeste relevante side et alternativ. Til beslutningen er tatt, gir de 404 i den nye løsningen.
-
-- `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/`: Lite historisk trafikk og nesten ingen fersk aktivitet. Utenfor tema
-- `/anmeldelse_seo-that-works-2/`: Mange visninger, men nesten ingen klikk. Kurs fra 2016 med utdatert pris
-- `/betalt-annonsering-med-google-adwords/`: Mange visninger, men nesten ingen klikk. Utenfor kjernetemaet
-- `/tanker-rundt-inspirasjon/`: Har trafikk, men nesten all søketrafikken gjelder Dyar Al-Ashtari, ikke Min Egen Sjefs temaer
-
-Den gamle sluggen `/hva-syns-jeg-om-kurset-seo-that-works-2/` peker til `/anmeldelse_seo-that-works-2/` og skal få samme behandling som den. Den er ikke en av de 39, fordi den ikke er en egen publisert side.
+Alle seks gamle slugger (`_wp_old_slug`) går nå til en side som svarer 200, også `/hva-syns-jeg-om-kurset-seo-that-works-2/` → `/anmeldelse_seo-that-works-2/`. Alle 165 vedleggssider med publisert parent og alle 204 kjente WordPress-ID-er går direkte til et mål som svarer 200.
 
 ## Historiske slugger som må videresendes
 
@@ -136,7 +131,7 @@ WordPress har `_wp_old_slug` for disse. De fungerer i dag, men det må bygges ek
 | `/hva-er-egentlig-affiliate-markedsforing/` | `/hva-er-affiliate-markedsforing/` |
 | `/hvordan-lage-nettside-na-til-dags-det-er-enkelt/` | `/hvordan-lage-nettside-na-til-dags/` |
 | `/hva-er-sokemotoroptimalisering-seo/` | `/hva-er-seo/` (verifisert 301 på live) |
-| `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` |
+| `/hva-syns-jeg-om-kurset-seo-that-works-2/` | `/anmeldelse_seo-that-works-2/` (200 fra 03.11.2026) |
 | `/det-arlige-wealthy-affiliate-black-friday-salget/` | `/wealthy-affiliate/` (direkte, uten kjede) |
 | `/hvordan-motta-inntekter-fra-amazon-pa-enklest-mulig-vis/` | `/hvordan-fa-amazon-inntekter-utbetalt-til-norsk-bankkonto/` |
 
@@ -169,10 +164,10 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/regnskap-og-skatt-pa-affiliate-inntekter/` | 2018-10-03 | innlegg | Skatt/regnskap | nei | – | REWRITE, **migrert** | beholdes | P0 |
 | `/merverdiavgift-og-affiliate-markedsforing/` | 2019-04-06 | innlegg | MVA | nei | – | REWRITE, **migrert** | beholdes | P0 |
 | `/seriose-mater-a-tjene-penger-pa-nettet/` | 2025-03-13 | innlegg | Tjene penger på nett | ja (1) | 7 ruter | REWRITE, **migrert** | beholdes | P1 |
-| `/chatgpt-og-affiliate-markedsforing/` | 2023-01-07 | innlegg | AI | nei | – | KEEP/REWRITE, utsatt | beholdes | P1 |
+| `/chatgpt-og-affiliate-markedsforing/` | 2023-01-07 | innlegg | AI | nei | – | Historisk legacy, **migrert** 03.11.2026 | beholdes | P1 |
 | `/hvordan-lage-nettside-na-til-dags/` | 2015-11-27 | innlegg | Nettsider | ja (2) | `/namecheap`, `/one`, `/wealthyaffiliate` | REWRITE, **migrert** | beholdes | P1 |
 | `/er-amazon-sitt-affiliate-program-helt-ute-a-kjore/` | 2020-04-17 | innlegg | Amazon/nettverk | ja (2) | 8 ruter | REWRITE, **migrert** | beholdes | P1 |
-| `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | 2020-10-17 | innlegg | Affiliate-nettverk | nei | `/tradetracker`, `/adtraction`, `/adservice` | KEEP/REWRITE, utsatt | beholdes | P1 |
+| `/mine-erfaringer-med-affiliatenettverket-tradetracker/` | 2020-10-17 | innlegg | Affiliate-nettverk | nei | `/tradetracker`, `/adtraction`, `/adservice` | Historisk legacy, **migrert** 03.11.2026 | beholdes | P1 |
 | `/affiliate-markedsforing-i-norge-er-det-enklere/` | 2018-10-07 | innlegg | Affiliate i Norge | ja (1) | 5 ruter | REWRITE, **migrert** | beholdes | P1 |
 | `/gode-verktoy-for-sokeordsanalyse/` | 2019-08-08 | innlegg | SEO-verktøy | ja (1) | `/kwfinder`, `/morningscore`, `/jaaxy` | REWRITE, **migrert** | beholdes | P1 |
 | `/morningscore-anmeldelse-for-norsk-seo/` | 2023-01-04 | innlegg | SEO-verktøy | nei | `/morningscore` | REWRITE, **migrert** | beholdes | P1 |
@@ -191,10 +186,10 @@ Kolonnen «Aff-ruter» viser interne affiliate-ruter som brukes i artikkelen.
 | `/er-det-umulig-a-tjene-penger-pa-nett/` | 2015-12-08 | innlegg | Tjene penger på nett | ja (1) | – | MERGE → 301, **implementert** | `/seriose-mater-a-tjene-penger-pa-nettet/` | P2 |
 | `/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/` | 2020-11-24 | innlegg | Tjene penger på nett | ja (4) | `/wealthyaffiliate` | MERGE → 301, **implementert** | `/seriose-mater-a-tjene-penger-pa-nettet/` | P2 |
 | `/viktig-husk-pa-dette-nar-du-begynner-a-tjene-penger-pa-nett/` | 2023-01-10 | innlegg | Skatt/forventninger | ja (1) | `/wealthyaffiliate` | ~~MERGE → 301~~ KEEP, **migrert** (GSC viste trafikk) | beholdes | P1 |
-| `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/` | 2016-01-12 | innlegg | Verktøy (utenfor tema) | nei | – | 410 candidate – backlink validation required | – | P2 |
-| `/anmeldelse_seo-that-works-2/` | 2016-06-13 | innlegg | Kursanmeldelse | ja (1) | – | 410 candidate – backlink validation required | – | P2 |
-| `/betalt-annonsering-med-google-adwords/` | 2016-10-05 | innlegg | Betalt annonsering | nei | – | 410 candidate – backlink validation required | – | P2 |
-| `/tanker-rundt-inspirasjon/` | 2016-08-25 | innlegg | Personlig refleksjon | nei | – | 410 candidate – backlink validation required | – | P2 |
+| `/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/` | 2016-01-12 | innlegg | Verktøy (utenfor tema) | nei | – | Historisk legacy, noindex, **migrert** 03.11.2026 | beholdes | P2 |
+| `/anmeldelse_seo-that-works-2/` | 2016-06-13 | innlegg | Kursanmeldelse | ja (1) | – | Historisk legacy, noindex, **migrert** 03.11.2026 | beholdes | P2 |
+| `/betalt-annonsering-med-google-adwords/` | 2016-10-05 | innlegg | Betalt annonsering | nei | – | Historisk legacy, noindex, **migrert** 03.11.2026 | beholdes | P2 |
+| `/tanker-rundt-inspirasjon/` | 2016-08-25 | innlegg | Personlig refleksjon | nei | – | Historisk legacy, noindex, **migrert** 03.11.2026 | beholdes | P2 |
 
 ## Detaljer per URL
 

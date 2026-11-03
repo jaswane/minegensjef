@@ -3,8 +3,8 @@
  * Dette er HTML-sidene WordPress laget for hvert bilde, ikke selve bildefilene under /wp-content/uploads/.
  * Regler og begrunnelse: docs/migration/wordpress-archives-and-media.md.
  *
- * Vedlegg der parent-artikkelen er en 410-kandidat (23) eller er utsatt (5),
- * står ikke her. De følger parent-artikkelens beslutning og gir 404 til den er tatt.
+ * Alle vedlegg med publisert parent står her (165). De 28 som tidligere ventet på beslutning, går nå til
+ * de seks historiske artiklene som ble migrert i november 2026.
  */
 
 /** Vedlegg med publisert parent: 301 direkte til parent-artikkelens endelige URL. */
@@ -18,6 +18,13 @@ export const attachmentRedirects: { from: string; to: string }[] = [
   { from: "/amazon-julehandel-over-alle-stovelskaft/excel_amazon_provisjon/", to: "/amazon-julehandel-over-alle-stovelskaft/" },
   { from: "/amazon-julehandel-over-alle-stovelskaft/julehandel_amazon_com/", to: "/amazon-julehandel-over-alle-stovelskaft/" },
   { from: "/amazon-julehandel-over-alle-stovelskaft/julehandel_amazon/", to: "/amazon-julehandel-over-alle-stovelskaft/" },
+  { from: "/anmeldelse_seo-that-works-2/ahrefs_data_power_page/", to: "/anmeldelse_seo-that-works-2/" },
+  { from: "/anmeldelse_seo-that-works-2/anmeldelse_seo_that_works/", to: "/anmeldelse_seo-that-works-2/" },
+  { from: "/anmeldelse_seo-that-works-2/seo_that_works_screenshot/", to: "/anmeldelse_seo-that-works-2/" },
+  { from: "/betalt-annonsering-med-google-adwords/ppc_adwords_featured/", to: "/betalt-annonsering-med-google-adwords/" },
+  { from: "/betalt-annonsering-med-google-adwords/ppc_adwords_kampanje/", to: "/betalt-annonsering-med-google-adwords/" },
+  { from: "/chatgpt-og-affiliate-markedsforing/chatgpt-og-affiliate-markedsforing-2/", to: "/chatgpt-og-affiliate-markedsforing/" },
+  { from: "/chatgpt-og-affiliate-markedsforing/screen-with-chatgpt-chat-with-ai-or-artificial-intelligence-man-search-for-information-using-artificial-intelligence-chatbot-developed-by-openai-warsaw-poland-december-02-2022/", to: "/chatgpt-og-affiliate-markedsforing/" },
   { from: "/de-beste-norske-seo-bloggene/billig_seo/", to: "/de-beste-norske-seo-bloggene/" },
   { from: "/de-beste-norske-seo-bloggene/blackcapseo-logo-for-blogg-300x300/", to: "/de-beste-norske-seo-bloggene/" },
   { from: "/de-beste-norske-seo-bloggene/fredrik_blanke_200/", to: "/de-beste-norske-seo-bloggene/" },
@@ -71,6 +78,22 @@ export const attachmentRedirects: { from: string; to: string }[] = [
   { from: "/hvordan-lage-nettside-na-til-dags/domenenavn/", to: "/hvordan-lage-nettside-na-til-dags/" },
   { from: "/hvordan-lage-nettside-na-til-dags/hvordan-lage-nettside/", to: "/hvordan-lage-nettside-na-til-dags/" },
   { from: "/hvordan-lage-nettside-na-til-dags/wordpress_kontrollpanel/", to: "/hvordan-lage-nettside-na-til-dags/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ferdige_do_oppskrifter/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ferdige_ifttt_oppskrifter/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/hva_er_ifttt/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/if_this_then_that/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_flickr_oppskrifter/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_0/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_1_this/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_2_trigger_channel/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_3_trigger/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_4_trigger_fields/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_5_that/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_6_action_channel/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_7_action/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_8_action_fields/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/ifttt_recipe_step_9_create_recipe/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
+  { from: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/minegensjef_ifttt/", to: "/ifttt-er-et-nyttig-verktoy-for-a-automatisere-sma-oppgaver/" },
   { from: "/introduksjon-drommen-om-a-bli-sin-egen-sjef/del_facebook/", to: "/introduksjon-drommen-om-a-bli-sin-egen-sjef/" },
   { from: "/introduksjon-drommen-om-a-bli-sin-egen-sjef/del_twitter/", to: "/introduksjon-drommen-om-a-bli-sin-egen-sjef/" },
   { from: "/introduksjon-drommen-om-a-bli-sin-egen-sjef/jobbe_cafe/", to: "/introduksjon-drommen-om-a-bli-sin-egen-sjef/" },
@@ -78,6 +101,9 @@ export const attachmentRedirects: { from: string; to: string }[] = [
   { from: "/merverdiavgift-og-affiliate-markedsforing/merverdiavgift-og-affiliate-markedsforing/", to: "/merverdiavgift-og-affiliate-markedsforing/" },
   { from: "/min-forste-sjekk-pa-over-1000/amazon_sjekk/", to: "/min-forste-sjekk-pa-over-1000/" },
   { from: "/min-forste-sjekk-pa-over-1000/amazon_sjekk2/", to: "/min-forste-sjekk-pa-over-1000/" },
+  { from: "/mine-erfaringer-med-affiliatenettverket-tradetracker/mine_erfaringer_med_tradetracker/", to: "/mine-erfaringer-med-affiliatenettverket-tradetracker/" },
+  { from: "/mine-erfaringer-med-affiliatenettverket-tradetracker/tradetracker_erfaring/", to: "/mine-erfaringer-med-affiliatenettverket-tradetracker/" },
+  { from: "/mine-erfaringer-med-affiliatenettverket-tradetracker/tradetracker/", to: "/mine-erfaringer-med-affiliatenettverket-tradetracker/" },
   { from: "/morningscore-anmeldelse-for-norsk-seo/add-missions/", to: "/morningscore-anmeldelse-for-norsk-seo/" },
   { from: "/morningscore-anmeldelse-for-norsk-seo/all-links/", to: "/morningscore-anmeldelse-for-norsk-seo/" },
   { from: "/morningscore-anmeldelse-for-norsk-seo/easy-to-reach/", to: "/morningscore-anmeldelse-for-norsk-seo/" },
@@ -131,6 +157,8 @@ export const attachmentRedirects: { from: string; to: string }[] = [
   { from: "/suksess-motbakke-status-og-nye-mal-for-2017/amazon_inntekt/", to: "/suksess-motbakke-status-og-nye-mal-for-2017/" },
   { from: "/suksess-motbakke-status-og-nye-mal-for-2017/amazoncom_earnings/", to: "/suksess-motbakke-status-og-nye-mal-for-2017/" },
   { from: "/suksess-motbakke-status-og-nye-mal-for-2017/suksess_motbakke_status_featured/", to: "/suksess-motbakke-status-og-nye-mal-for-2017/" },
+  { from: "/tanker-rundt-inspirasjon/dyar_al-ashtari_finansavisen/", to: "/tanker-rundt-inspirasjon/" },
+  { from: "/tanker-rundt-inspirasjon/inspirasjon/", to: "/tanker-rundt-inspirasjon/" },
   { from: "/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/til-deg-som-sitter-hjemme/", to: "/seriose-mater-a-tjene-penger-pa-nettet/" },
   { from: "/til-deg-som-sitter-hjemme-og-vil-tjene-penger-pa-nett/wealthy_affilliate_new_look/", to: "/seriose-mater-a-tjene-penger-pa-nettet/" },
   { from: "/verdifulle-tips-fra-simon/simon_bak_andersen_gjestepost/", to: "/verdifulle-tips-fra-simon/" },

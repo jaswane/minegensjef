@@ -38,7 +38,10 @@ const nextConfig: NextConfig = {
       { source: "/blogg/page/:n(\\d+)/", destination: "/artikler/" },
       { source: "/author/andreas/", destination: "/om/" },
     ].map((rule) => ({ ...rule, statusCode: 301 as const }));
-    return [...prettyLinks, ...oldPages, ...archives];
+    // Den gamle WordPress-sitemapen er registrert i Search Console. /sitemap.xml er fasiten.
+    // Filsti uten avsluttende skråstrek, siden trailingSlash ikke gjelder filer med filendelse.
+    const sitemap = { source: "/sitemap_index.xml", destination: "/sitemap.xml", statusCode: 301 as const };
+    return [...prettyLinks, ...oldPages, ...archives, sitemap];
   },
   async rewrites() {
     return {

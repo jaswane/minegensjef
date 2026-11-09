@@ -1,7 +1,8 @@
 /**
  * Alle affiliatelenker, samlet ett sted. Alle 30 gamle Pretty Links-ruter er med, og
  * fasit for de gamle destinasjonene er eksporten 03.11.2026 (lik eksporten 28.09.2026),
- * se docs/migration/affiliate-redirects.md.
+ * se docs/migration/affiliate-redirects.md. Mangools og Windsor.ai er lagt til 09.11.2026
+ * uten gamle ruter.
  *
  * Ikke «reparer» en destinasjon her uten godkjenning, selv om den ser feil ut.
  * Bare lenker med status «active» kan brukes i innhold. <AffiliateLink> stopper bygget
@@ -104,6 +105,14 @@ export const affiliateLinks: AffiliateLink[] = [
     partner: "KWFinder",
     destination: "https://app.kwfinder.com#a573d835c285f735d9b85f00c",
     legacyRoutes: ["/kwfinder"],
+    status: "active",
+  },
+  {
+    // Samme Mangools-affiliatekonto som KWFinder (samme ID etter #). Ingen gammel Pretty Link.
+    slug: "mangools",
+    partner: "Mangools",
+    destination: "https://mangools.com#a573d835c285f735d9b85f00c",
+    legacyRoutes: [],
     status: "active",
   },
   {
@@ -253,6 +262,14 @@ export const affiliateLinks: AffiliateLink[] = [
     legacyRoutes: ["/heycash"],
     status: "legacy",
     note: "Spørreundersøkelser passer dårlig med «uten hype».",
+  },
+  {
+    // Affiliateprogrammet godkjent og lenken levert av Andreas 09.11.2026. Ingen gammel Pretty Link.
+    slug: "windsor-ai",
+    partner: "Windsor.ai",
+    destination: "https://windsor.ai/?fpr=andreas-fd71e3",
+    legacyRoutes: [],
+    status: "active",
   },
 ];
 

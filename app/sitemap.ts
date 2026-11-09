@@ -3,8 +3,8 @@ import { getArticles } from "@/lib/articles";
 import { absoluteUrl } from "@/lib/site";
 
 /**
- * Bare ekte, indekserbare sider. Ikke med: /go/ (affiliate), personvern og
- * ansvarsfraskrivelse (noindex), artikler med `noindex`, utkast og 404.
+ * Bare ekte, indekserbare sider. Ikke med: /go/ (affiliate), personvern,
+ * ansvarsfraskrivelse og partnere (noindex), artikler med `noindex`, utkast og 404.
  */
 const staticPaths = [
   "/",

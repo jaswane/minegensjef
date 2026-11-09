@@ -22,9 +22,9 @@ Ingen partnerlenker ble fulgt, så ingen klikk er registrert hos nettverkene.
 
 Hver oppføring har én `status`. Bare `active` kan brukes som annonselenke i innhold. `<AffiliateLink>` stopper bygget for de andre.
 
-### AKTIV / BEKREFTET (10 slugs)
+### AKTIV / BEKREFTET (12 slugs)
 
-Kontrollert av Andreas 03.11.2026.
+Kontrollert av Andreas 03.11.2026. `mangools` og `windsor-ai` er lagt til 09.11.2026 uten gamle Pretty Links-ruter. Alle aktive lenker står også på `/partnere/`.
 
 | Slug | Gammel rute | Destinasjon | Endret fra CSV | Brukt i |
 |---|---|---|---|---|
@@ -32,14 +32,16 @@ Kontrollert av Andreas 03.11.2026.
 | `tradetracker` | `/tradetracker` | `https://tc.tradetracker.net/?c=5187&m=12&a=233877&r=&u=` | CSV: `http://tc.tradetracker.net/?c=5187&m=12&a=233877` | `/norske-affiliate-programmer/` |
 | `adtraction` | `/adtraction` | `https://track.adtraction.com/t/t?a=923786618&as=1156469187&t=2&tk=1` | Nei | `/norske-affiliate-programmer/` |
 | `partner-ads` | `/partnerads` | `https://www.partner-ads.com/no/klikbanner.php?partnerid=27345&bannerid=54626` | Nei | `/norske-affiliate-programmer/` |
-| `kwfinder` | `/kwfinder` | `https://app.kwfinder.com#a573d835c285f735d9b85f00c` | Nei | `/hva-er-seo/` |
+| `kwfinder` | `/kwfinder` | `https://app.kwfinder.com#a573d835c285f735d9b85f00c` | Nei | `/hva-er-seo/`, `/kwfinder-i-chatgpt/` |
+| `mangools` | – (ny 09.11.2026) | `https://mangools.com#a573d835c285f735d9b85f00c` | – | `/partnere/` |
 | `daisycon` | `/daisycon` | `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=no%2F` | CSV: `https://ds1.nl/c/?si=1400&li=84664&wi=320283&ws=&dl=` | `/norske-affiliate-programmer/` |
 | `namecheap` | `/namecheap` | `https://namecheap.pxf.io/692ZV` | CSV: `http://namecheap.pxf.io/692ZV`. HTTPS gir samme Impact-sporing (konto 352841, kampanje 5618), testet 03.11.2026 | `/hvordan-lage-nettside-na-til-dags/` |
 | `orion-media` | `/orionmedia` | `https://orionious.com/click.track?CID=438863&AFID=434772` | CSV: `https://orsearchlink.com/click.track?CID=438863&AFID=434772` | `/norske-affiliate-programmer/` |
 | `morningscore` | `/morningscore` | `https://morningscore.io?fpr=andreas-swane57` | Nei | `/morningscore-anmeldelse-for-norsk-seo/` |
 | `addrevenue` | `/addrevenue` | `https://addrevenue.io/t?a=984405&c=3455267` | CSV: `https://addrevenue.io/t?c=3455267&a=984405&m=DK` | `/norske-affiliate-programmer/` |
+| `windsor-ai` | – (ny 09.11.2026) | `https://windsor.ai/?fpr=andreas-fd71e3` | – | `/partnere/` |
 
-KWFinder: Affiliate-ID-en står etter `#`, og det er riktig. Mangools legger ID-en som en hash på en hvilken som helst Mangools-side, og Andreas har kontrollert det i Mangools' affiliate-dashboard.
+KWFinder og Mangools: Affiliate-ID-en står etter `#`, og det er riktig. Begge bruker samme Mangools-affiliatekonto. Mangools legger ID-en som en hash på en hvilken som helst Mangools-side, og Andreas har kontrollert det i Mangools' affiliate-dashboard.
 
 ### LEGACY / IKKE KONTROLLERT (14 slugs)
 

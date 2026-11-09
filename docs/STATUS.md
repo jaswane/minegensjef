@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 09.11.2026
 **Status:** Minegensjef 2.0 er live på minegensjef.no (Vercel) og kan indekseres. Legacy-arkivet er komplett. Alle 39 gamle URL-er har en endelig behandling: 15 moderniserte artikler, 13 historiske (4 av dem noindex), 3 rebygget og 8 med 301. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Add KWFinder in ChatGPT guide and content roadmap» (`git log -1`)
+**Siste commit:** «Add partner page and Windsor.ai and Mangools links» (`git log -1`)
 
 **Lansering 03.11.2026:** DNS hos Domeneshop peker til Vercel, `www` og `minegensjef.vercel.app` gir 308 til `https://minegensjef.no/`, og `SITE_INDEXABLE=true` er satt bare i Production. Den gamle WordPress-installasjonen på altgratis-webhotellet er beholdt som rollback. Seksjonene «Ikke implementert» og «Gjenstår før domenet kan flyttes» lenger ned beskriver tilstanden før lansering.
 
@@ -37,6 +37,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
 | `/kontakt/` | **Eneste sted e-postadressen står** | ja |
+| `/partnere/` | Alle aktive affiliatepartnere i to grupper (verktøy og plattformer, affiliatenettverk), med lenke i footeren | nei, noindex |
 | `/personvern/` | Analyse og samtykke, annonselenker, kontaktvei, rettigheter | nei, noindex |
 | `/ansvarsfraskrivelse/` | Inntekt, skatt/MVA, annonselenker, utdatert innhold | nei, noindex |
 | `/<slug>/` | Artikkelmalen (MDX) | ja, når publisert |
@@ -115,9 +116,9 @@ Fra før er sju innlegg historiske legacy-artikler med `historical: true`: `/ama
 
 ## Partnerlenker
 
-Alle 30 gamle Pretty Links virker. Status per 03.11.2026:
+Alle 30 gamle Pretty Links virker. Status per 09.11.2026:
 
-- **AKTIV / BEKREFTET (10):** Wealthy Affiliate, TradeTracker, Adtraction, Partner-ads, KWFinder, Daisycon, Namecheap, Orion Media, Morningscore, Addrevenue.
+- **AKTIV / BEKREFTET (12):** Wealthy Affiliate, TradeTracker, Adtraction, Partner-ads, KWFinder, Mangools, Daisycon, Namecheap, Orion Media, Morningscore, Addrevenue, Windsor.ai. KWFinder og Mangools er samme affiliatekonto og vises som én partner på `/partnere/`.
 - **LEGACY / IKKE KONTROLLERT (14):** Payoneer, Adsninja, ProISP, Adservice, Link Whisper, Depositphotos, Apotera, Pretty Links, Shopify, YouGov, Nordnet, TopSurveys, Prime Opinion, HeyCash. Rutene virker, men brukes ikke som annonselenker.
 - **INAKTIV / IKKE AFFILIATE (5):** Tradedoubler, Awin, Adrecord, One.com, Jaaxy. Omtales bare redaksjonelt.
 
@@ -125,7 +126,7 @@ Bare `status: "active"` kan brukes i innhold, og bygget stopper ellers. Payoneer
 
 ## Redirects implementert
 
-**Affiliate (`/go/<slug>/`):** 29 ruter i `lib/affiliate-links.ts`. Destinasjonene er kopiert fra Pretty Links-eksporten 28.09.2026, og ti er bekreftet som aktive av Andreas 03.11.2026 (se «Partnerlenker»). Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Hver rute har `status` (`active`, `legacy` eller `inactive`). Alle virker, men bare `active` kan brukes i innhold, og bygget stopper ellers (se `docs/migration/affiliate-redirects.md`).
+**Affiliate (`/go/<slug>/`):** 31 ruter i `lib/affiliate-links.ts`. 29 har destinasjoner fra Pretty Links-eksporten 28.09.2026, og ti av dem er bekreftet som aktive av Andreas 03.11.2026. `/go/mangools/` og `/go/windsor-ai/` er lagt til 09.11.2026 uten gamle ruter (se «Partnerlenker»). Svarer med 307, `X-Robots-Tag: noindex, nofollow` og `Cache-Control: no-store`. Hver rute har `status` (`active`, `legacy` eller `inactive`). Alle virker, men bare `active` kan brukes i innhold, og bygget stopper ellers (se `docs/migration/affiliate-redirects.md`).
 
 **Gamle Pretty Links-ruter:** Alle 30 videresendes med 301 til riktig `/go/`-rute. 30 gamle ruter går til 29 `/go/`-ruter fordi `/one` og `/one_rabatt` har identisk destinasjon i Pretty Links og deler `/go/one-com/`. Alle 30 kjeder er testet helt fram, for eksempel `/wealthyaffiliate` → `/go/wealthy-affiliate/` → Wealthy Affiliate. Uten avsluttende skråstrek blir det ett ekstra hopp (308), fordi Next legger til skråstreken først. Matchingen skiller ikke mellom store og små bokstaver.
 

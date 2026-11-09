@@ -16,6 +16,7 @@ export const footerNav: NavItem[] = [
   { label: "Guider", href: "/guider/" },
   { label: "Artikler", href: "/artikler/" },
   { label: "Wealthy Affiliate", href: "/wealthy-affiliate/" },
+  { label: "Partnere", href: "/partnere/" },
   { label: "Om", href: "/om/" },
   { label: "Kontakt", href: "/kontakt/" },
 ];

@@ -1,0 +1,100 @@
+export const metadata = {
+  title: "Slik bruker jeg KWFinder i ChatGPT: søkeordsanalyse med ekte data",
+  description:
+    "Med Mangools' MCP-server henter ChatGPT søkevolum og vanskelighetsgrad fra KWFinder i stedet for å gjette. Oppsett, norsk eksempel og kvotebruk.",
+  published: "2026-11-09",
+  hub: "seo",
+  affiliate: true,
+  related: ["gode-verktoy-for-sokeordsanalyse", "hva-er-seo", "morningscore-anmeldelse-for-norsk-seo"],
+}
+
+Spør du ChatGPT om søkevolum for et norsk søkeord, får du et anslag ChatGPT har laget selv. Kobler du ChatGPT til KWFinder via Mangools' MCP-server, henter den tallene fra KWFinder i stedet: søkevolum, vanskelighetsgrad, klikkpris og hva som rangerer i Google. Tallene er like usikre som i KWFinder ellers, og hvert oppslag trekkes fra kvoten i Mangools-abonnementet ditt.
+
+Jeg har brukt KWFinder i mange år, og nå bruker jeg det også fra ChatGPT. Her er oppsettet, et eksempel med norske søkeord og det du bør vite om kvoter, kontrollert mot dokumentasjonen fra Mangools og OpenAI 9. november 2026. Mangools kaller tjenesten beta, så verktøyene kan endre seg.
+
+## Hva koblingen gjør
+
+MCP (Model Context Protocol) er en åpen standard som lar AI-assistenter bruke eksterne verktøy. Mangools driver selv en MCP-server, og når den er koblet til, kan ChatGPT kalle verktøyene i Mangools midt i samtalen. Du skriver spørsmålet med vanlige ord, ChatGPT gjør oppslaget i KWFinder, og svaret bygger på det KWFinder returnerer. Deretter kan ChatGPT sortere, gruppere og sammenligne tallene for deg.
+
+Ifølge [Mangools](https://mangools.com/mcp) har serveren rundt 35 verktøy. Disse er mest relevante for søkeordsanalyse:
+
+- relaterte søkeord med søkevolum, klikkpris og vanskelighetsgrad
+- søkeresultatene for et søkeord, med sted
+- søkeordene en konkurrent eller en bestemt URL rangerer på
+- kontroll av en ferdig søkeordliste, opptil 700 søkeord per forespørsel
+- hvor mye du har brukt av kvoten
+
+Serveren dekker også SERPWatcher (rangeringssporing), LinkMiner (lenker), SiteProfiler (domeneanalyse) og AI Search Watcher (synlighet i AI-svar).
+
+## Dette trenger du
+
+- **En Mangools-konto.** Gratiskontoen fungerer, men gir lite å gå på: [5 oppslag per døgn og 15 relaterte søkeord per oppslag](https://mangools.com/kwfinder/). Gratiskontoer får i tillegg en engangsbonus på 100 søkeordoppslag og 100 SERP-oppslag til bruk via API og MCP.
+- **Et ChatGPT-abonnement som tillater egne MCP-servere, og ChatGPT i nettleseren.** Ifølge [OpenAIs hjelpeside](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt) kan Pro koble til egne MCP-servere med lesetilgang, mens Business og Enterprise/Edu har full MCP-støtte, også for handlinger som endrer noe. I Business-arbeidsområder er det bare administratorer og eiere som kan legge til servere. Plus er ikke nevnt. Oppsettet gjøres på web, ikke i mobilappen. For søkeordsanalyse holder lesetilgang.
+
+De betalte Mangools-planene gir ifølge [Mangools' planoversikt](https://help.mangools.com/en/articles/17450706-mangools-plans-compared-what-each-plan-includes) dette:
+
+- **Basic:** 100 søkeordoppslag og 100 SERP-oppslag per døgn, 200 relaterte søkeord per søk.
+- **Premium:** 500 søkeordoppslag og 500 SERP-oppslag per døgn, ubegrenset antall relaterte søkeord.
+- **Agency:** 1 200 søkeordoppslag og 1 200 SERP-oppslag per døgn, ubegrenset antall relaterte søkeord.
+
+Mangools har en fotnote ved «ubegrenset», og API-dokumentasjonen oppgir maks 10 000 relaterte søkeord per forespørsel. API og MCP er med i alle planene. Prisen avhenger av land og om du betaler månedlig eller årlig, og står på [Mangools' prisside](https://mangools.com/plans-and-pricing).
+
+## Slik kobler du KWFinder til ChatGPT
+
+Menynavnene i ChatGPT har endret seg flere ganger. Mangools beskriver fortsatt oppsettet med Developer mode og Settings → Connectors, men ifølge OpenAIs hjelpeside legges egne MCP-servere nå til direkte under Plugins, uten at Developer mode må slås på først. Slik er det beskrevet der:
+
+1. Gå til Plugins i ChatGPT, trykk på plusstegnet og velg «Add custom MCP server».
+2. Gi serveren navnet Mangools, og lim inn adressen `https://mcp.mangools.com/mcp`.
+3. Logg inn med Mangools-kontoen når du blir bedt om det.
+4. Les risikovarselet og bekreft. OpenAI advarer mot å koble til servere du ikke stoler på, blant annet på grunn av risikoen for prompt injection.
+5. I chatten skriver du @ og velger Mangools. Valget gjelder bare den ene meldingen. Trenger et oppfølgingsspørsmål nye data, må du velge Mangools på nytt.
+
+Får du autorisasjonsfeil, anbefaler [Mangools](https://mangools.com/mcp) å koble fra serveren og logge inn på nytt. Ifølge Mangools fungerer samme server også i Claude og Cursor.
+
+## Et eksempel med norske søkeord
+
+Eksempelet bruker «robotgressklipper». Tallene du får, avhenger av når du spør, så de er ikke gjengitt her. Det som står under, er spørsmålene og hva du bør se etter i svaret.
+
+**Første spørsmål: hent søkeordene.**
+
+> Bruk KWFinder og finn relaterte søkeord for «robotgressklipper». Bruk Norge som sted og norsk som språk. Vis søkeord, månedlig søkevolum, vanskelighetsgrad og klikkpris i en tabell, sortert etter søkevolum.
+
+Oppgi alltid land og språk. I [API-dokumentasjonen](https://apidocs.mangools.com/kwfinder/get-related-keywords/) er standardinnstillingen globale tall, og det er ikke det du vil ha for en norsk side. Har du glemt å velge Mangools med @, er tallene ChatGPTs egne anslag. Spør på nytt med Mangools valgt.
+
+**Andre spørsmål: sorter etter søkeintensjon.**
+
+> Grupper søkeordene etter hva folk vil: kjøpe, sammenligne modeller eller løse et problem. Foreslå én side per gruppe, og si hvilke søkeord som bør dekkes av samme side.
+
+Her jobber ChatGPT med tallene som allerede står i samtalen, så det koster ingen nye oppslag. Grupperingen er ChatGPTs vurdering, ikke data fra KWFinder.
+
+**Tredje spørsmål: se hva som rangerer.**
+
+> Hent søkeresultatene i Norge for de tre søkeordene med høyest volum. Hva slags sider rangerer: nettbutikker, tester, guider eller forum?
+
+Her trengs nye data, så velg Mangools med @ igjen. Det bruker ett SERP-oppslag per søkeord. Svaret forteller om det er realistisk å rangere med en artikkel, eller om Google mest viser nettbutikker. Gjør gjerne søkene selv i Google også. Hvorfor det lønner seg, står i [søkeordsanalyse på norsk](/gode-verktoy-for-sokeordsanalyse/).
+
+**Fjerde spørsmål: sjekk kvoten.** Også her med Mangools valgt.
+
+> Hvor mye har jeg brukt av Mangools-kvoten i dag?
+
+## Dette koster det i oppslag
+
+Mangools skriver at hvert verktøykall teller mot kvoten i planen din, med de samme døgngrensene som i KWFinder selv. Ett kall er ett oppslag. I praksis betyr det:
+
+- Én liste med relaterte søkeord er ett søkeordoppslag.
+- Søkeresultater er ett SERP-oppslag per søkeord. Ber du om ti søkeord, bruker du ti.
+- Ett spørsmål kan gi flere kall. Be ChatGPT si hva den skal hente før den gjør det, hvis du har lite kvote.
+- Ifølge API-dokumentasjonen teller ikke en identisk forespørsel på nytt innen 24 timer.
+
+Noen verktøy er merket som betalte hos Mangools: å opprette rangeringssporing i SERPWatcher, legge til søkeord der og opprette overvåking i AI Search Watcher. Mangools skriver at klienten skal be om bekreftelse før disse kalles. Har du bare tenkt å gjøre søkeordsanalyse, kan du si nei.
+
+## Begrensninger
+
+- **Søkevolum er fortsatt et anslag.** ChatGPT gjør ikke tallene mer presise enn de er i KWFinder. Mange nyttige norske søkeord har så få søk at de vises som 0 eller mangler. Se [hvorfor søkevolum er usikkert i Norge](/gode-verktoy-for-sokeordsanalyse/).
+- **Vanskelighetsgraden kan mangle.** I API-dokumentasjonen står det at vanskelighetsgraden i listen over relaterte søkeord bare er med når KWFinder har en lagret verdi. For de andre må den hentes med et eget oppslag.
+- **ChatGPT kan gjøre feil med tallene.** Den kan avrunde, blande sammen rader eller trekke konklusjoner dataene ikke dekker. Sjekk tallene i KWFinder før du tar en større beslutning.
+- **Tjenesten er i beta.** Mangools skriver at verktøy og parametere kan endre seg, og at større endringer varsles på forhånd på [MCP-siden](https://mangools.com/mcp).
+
+Koblingen er mest nyttig når du skal gjøre noe med dataene: gruppere en lang liste, sammenligne konkurrenter eller kontrollere hundre søkeord på én gang. Skal du bare sjekke to–tre søkeord, er det like raskt å gjøre det i KWFinder selv.
+
+Vil du prøve, kan du starte med en gratis konto i [KWFinder](/go/kwfinder/).

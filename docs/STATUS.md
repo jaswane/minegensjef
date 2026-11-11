@@ -1,8 +1,8 @@
 # Status – Minegensjef 2.0
 
-**Sist oppdatert:** 09.11.2026
+**Sist oppdatert:** 11.11.2026
 **Status:** Minegensjef 2.0 er live på minegensjef.no (Vercel) og kan indekseres. Legacy-arkivet er komplett. Alle 39 gamle URL-er har en endelig behandling: 15 moderniserte artikler, 13 historiske (4 av dem noindex), 3 rebygget og 8 med 301. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Add Windsor.ai and ChatGPT guide» (`git log -1`)
+**Siste commit:** «Turn Wealthy Affiliate hub into a Norwegian start guide» (`git log -1`)
 
 **Lansering 03.11.2026:** DNS hos Domeneshop peker til Vercel, `www` og `minegensjef.vercel.app` gir 308 til `https://minegensjef.no/`, og `SITE_INDEXABLE=true` er satt bare i Production. Den gamle WordPress-installasjonen på altgratis-webhotellet er beholdt som rollback. Seksjonene «Ikke implementert» og «Gjenstår før domenet kan flyttes» lenger ned beskriver tilstanden før lansering.
 
@@ -33,7 +33,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
 | `/artikler/` | Liste over alle 30 publiserte artikler, også de fire med noindex | ja |
-| `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
+| `/wealthy-affiliate/` | Norsk startside for Wealthy Affiliate 2026: historien fra 2014, gammelt mot nytt, startløype i sju steg, Ace Research, kort pris, én merket annonselenke | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
 | `/kontakt/` | **Eneste sted e-postadressen står** | ja |

@@ -13,7 +13,7 @@ Planen dekker fire saker: KWFinder i ChatGPT, Windsor.ai, Wealthy Affiliate 2026
 | 2 | Windsor.ai og ChatGPT for Search Console og GA4 | `/windsor-ai-chatgpt/` | **Publisert 09.11.2026** | – |
 | 3 | WA pris, medlemsnivåer og credits | `/wealthy-affiliate-pris/` (ny) | Planlagt | Kontroller prissiden på publiseringsdagen |
 | 4 | Praktisk norsk innføring i Hubs og Ace | `/wealthy-affiliate-hubs-og-ace/` (ny) | Ny idé | Andreas' egne erfaringer med Hubs og Ace (se «Nye ideer») |
-| 5 | WA-huben bygges ut med plattformkart | `/wealthy-affiliate/` (finnes) | Planlagt | Ingen nye fakta, bare struktur og lenker. Kan gjøres sammen med nr. 3 |
+| 5 | WA-huben som norsk startside | `/wealthy-affiliate/` | **Ferdig 11.11.2026** | Se «WA-startsiden (11.11.2026)» |
 | 6 | WA-anmeldelsen oppdateres til 2026 | `/wealthy-affiliate-anmeldelse-en-gylden-mulighet/` (finnes) | Venter | **Ingen endelig 2026-vurdering før Andreas har dokumentert egne erfaringer** (B-feltene under) |
 | 7 | Norsk steg-for-steg-løype i WA | `/wealthy-affiliate-steg-for-steg/` (ny) | Planlagt | Andreas har gått gjennom de første stegene i Learn |
 | 8 | Mangools SEO-skill for Claude | Ikke bestemt | Ny idé | Testet i praksis, og kilden bekreftet (se «Nye ideer») |
@@ -21,6 +21,34 @@ Planen dekker fire saker: KWFinder i ChatGPT, Windsor.ai, Wealthy Affiliate 2026
 | 10 | Det nye WA-testprosjektet | `/wealthy-affiliate-testprosjekt/` (ny) | Venter | Nisjen er valgt. Ikke før |
 
 **Hvorfor denne rekkefølgen:** Windsor.ai er neste prioritet fordi affiliateprogrammet er godkjent, disposisjonen er klar og ingen eksisterende side dekker temaet. Prissiden for WA kan bygges nesten bare på dokumenterte fakta. Hubs og Ace, anmeldelsen, steg-for-steg og testprosjektet krever Andreas' egne erfaringer, og kan ikke skrives før de er dokumentert. Å forbedre huben og anmeldelsen gir mer enn nye URL-er som konkurrerer med dem.
+
+## WA-startsiden (11.11.2026)
+
+`/wealthy-affiliate/` er gjort om fra en personlig introduksjon til en norsk startside for den nye plattformen. Ingen nye undersider.
+
+**Innhold:** kort svar om relanseringen, historien fra 2014, forskjellen på det gamle sertifiseringskurset og systemet med Hub, Ace og Gameplan, startløypen i sju steg (forstå modellen, nisje og målgruppe, Hub, Ace Research, Gameplan og Learn, nettsted, måling), en kort innføring i Ace Research, en kort prisomtale med lenke til WAs prisside og kontrolldato, og den eksisterende annonseboksen. Hvert steg har «I WA», «Målet», «Neste steg» og enten lenke til en publisert guide eller «guide under arbeid» uten lenke.
+
+**Kilder kontrollert 11.11.2026:** [The New Wealthy Affiliate](https://my.wealthyaffiliate.com/blog/kyle/the-new-wealthy-affiliate) (14.10.2026), [Ace Research Is Live](https://my.wealthyaffiliate.com/blog/kyle/beer-with-kyle-fridays-ace-research-is-live-your-entire-research-team-built-in) (07.11.2026), [Live Expert Classes](https://my.wealthyaffiliate.com/blog/kyle/beer-with-kyle-fridays-live-expert-classes-are-now-open-to-everyone-and-a-new) (31.10.2026), [prissiden](https://www.wealthyaffiliate.com/pricing) og [Websites](https://www.wealthyaffiliate.com/websites). I tillegg WAs release notes i plattformen (What's New, krever innlogging), lest i Andreas' konto 11.11.2026: «Ace is now your research team» (v20261106.1, 06.11.2026) med de sju researchtypene og Research my Hub, «See how your website does in Google Search» (v20261103.1, 03.11.2026) og «Ace and Platform guides answer far more of your questions» (v20261109.1, 09.11.2026). Det gamle kurset er beskrevet ut fra Andreas' anmeldelse fra 2016.
+
+**Foreslåtte enkeltguider** (vises som «guide under arbeid» på startsiden):
+
+| Guide | Steg | Krever |
+|---|---|---|
+| Slik finner du en nisje | 2 | Generell guide, kan skrives uten WA-test. Planlagt også under `/guider/#nisje` |
+| Hubs og Ace på norsk | 3 | Andreas' egen Hub: hva han skrev i idé, målgruppe, stemme og mål, og hva Ace gjorde med det |
+| Gameplan og Learn i praksis | 5 | Andreas' første Gameplan og hvilke Learn-moduler han brukte |
+| Ace Research mot KWFinder | 4 | Samme norske søkeord testet i begge, med dato |
+
+**Andreas må teste i egen konto før noe skrives som erfaring:**
+
+- Opprette en Hub for det nye prosjektet og se hva Ace gjør med en norsk beskrivelse.
+- Kjøre Ace Research på et norsk tema: hvilke deler som fungerer på norsk, om det vises søkevolum, og hvor mange credits det bruker.
+- Følge de første stegene i en Gameplan og notere hvor planen er treffende og hvor den bommer.
+- Skrive ett utkast med Writer på norsk og vurdere språket.
+- Publisere en side fra Studio til et nettsted i Websites.
+- Se hva Earn viser for en norsk affiliate: satser, utbetaling og hvilke vilkår som gjelder for et eldre medlemskap.
+- Koble Google-kontoen til WA (Search Console i Huben, fra 03.11.2026) og sammenligne tallene med Search Console direkte.
+- Kontrollere «Worth writing?»-vurderingen (Great, Good, Stretch) og søkevolumet mot KWFinder for de samme norske søkeordene.
 
 ## Nye ideer (09.11.2026)
 
@@ -93,7 +121,7 @@ Regel: én URL per søkeintensjon. PRD §9 listet ti mulige WA-undersider. Seks 
 | **Hubs** | Én hub per virksomhet, med nisje, målgruppe, stemme og mål. Hver hub har egen research-fane | Brukt. Erfaring mangler | Het «My Businesses» fra juni 2025, nå «Hubs» igjen. Ta med navnebyttet bare hvis det hjelper leseren | Hub, steg-for-steg |
 | **Gameplans** | En kort kjede med konkrete steg mot ett mål, lagret i huben. Ace bygger og oppdaterer den. Egne gameplans per kanal (nettsted, Instagram, YouTube) | Brukt. Erfaring mangler | Hvor godt den håndterer et eksisterende nettsted (én tredjepartsrapport om feil, ikke kontrollert) | Steg-for-steg, testprosjekt |
 | **Ace** | AI-assistent i hele plattformen. Setter opp hubs, lager planer og styrer Writer og Artist. Grense per dag: 20, 50, 100 eller 200 meldinger etter nivå. Bruker credits | Brukt. Erfaring mangler | Kvaliteten på svarene på norsk | Anmeldelse, steg-for-steg |
-| **Ace Research** | Live fra 07.11.2026. Søkeordsanalyse for nettsted, AI-svar, YouTube, Pinterest og sosiale medier, pluss marked og produkter. Resultater lagres i huben. Finner affiliateprogrammer, men ikke provisjonssatser. WA varsler mulige feil | Brukt. Erfaring mangler | Hvilke nivåer som har tilgang, hva det koster i credits, og om norske søkeord og søkevolum støttes | Anmeldelse. Mulig sammenligning med KWFinder senere |
+| **Ace Research** | Lansert 06.11.2026 i plattformen (release note v20261106.1) og omtalt i grunnleggerens innlegg 07.11.2026. Sju typer: Keywords (med anslått søkevolum og vurderingen Great/Good/Stretch), Questions, Pain points, Products and offers, Competitors, Facts and stats og Trends, pluss Research my Hub. Søkeordsanalyse for nettsted, AI-svar, YouTube, Pinterest og sosiale medier, pluss marked og produkter. Resultater lagres i huben. Finner affiliateprogrammer, men ikke provisjonssatser. WA varsler mulige feil | Brukt. Erfaring mangler | Hvilke nivåer som har tilgang, hva det koster i credits, og om norske søkeord og søkevolum støttes | Anmeldelse. Mulig sammenligning med KWFinder senere |
 | **Learn** | Bygget om rundt Tutorials, Platform guides og Live sessions. Svar i Learn bruker credits. Live-klasser hver fredag, åpne for alle med gratis registrering | Brukt. Erfaring mangler | Om Core Training er erstattet av Learn (ikke sagt rett ut) | Steg-for-steg (bare overordnet, ikke kursinnhold) |
 | **Studio** | Ett sted for alt du lager, også artikler fra den gamle plattformen. Publiserer til nettstedet. Erstatter Library | Brukt. Erfaring mangler | – | Anmeldelse, steg-for-steg |
 | **Writer og Artist** | Writer lager artikler, innlegg og videomanus. Artist lager bilder, grafikk og logoer. Med i alle betalte nivåer | Ikke bekreftet | Hvordan tekst på norsk blir | Anmeldelse |
@@ -164,5 +192,6 @@ Disposisjon:
 
 ## Neste sprint (anbefaling)
 
-1. Andreas skriver eller dikterer stikkord om erfaringene sine med Hubs, Ace, Ace Research, Learn, Studio og Websites (B-feltene). Det låser opp Hubs og Ace-innføringen, steg-for-steg og anmeldelsen.
-2. Prissiden for Wealthy Affiliate, med kontroll av prissiden samme dag, og huben med plattformkart og lenker.
+1. Andreas tester punktene under «Andreas må teste i egen konto» og skriver stikkord. Det låser opp «Hubs og Ace på norsk», som er neste WA-artikkel.
+2. «Slik finner du en nisje», som kan skrives uten WA-test og fyller både steg 2 på startsiden og `/guider/#nisje`.
+3. Prissiden for Wealthy Affiliate, med kontroll av prissiden samme dag.

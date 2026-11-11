@@ -1,0 +1,145 @@
+export const metadata = {
+  title: "Slik bruker jeg Windsor.ai og ChatGPT til å analysere Search Console og Google Analytics",
+  description:
+    "Windsor.ai kobler Search Console og GA4 til ChatGPT, så du kan spørre om dine egne søkedata. Oppsett, spørsmål du kan kopiere, pris og hva tallene ikke sier.",
+  published: "2026-11-09",
+  hub: "seo",
+  affiliate: true,
+  related: ["kwfinder-i-chatgpt", "hva-er-seo", "gode-verktoy-for-sokeordsanalyse"],
+}
+
+Windsor.ai henter data fra Google Search Console og Google Analytics 4 (GA4) og gjør dem tilgjengelige i ChatGPT. Da kan jeg spørre «hvilke sider har fått mange visninger de siste 28 dagene, men få klikk?» og få svaret fra mine egne data, uten å eksportere noe til et regneark først. Windsor leser bare dataene. Det kan ikke endre noe i Search Console eller GA4.
+
+Jeg har mange nettsteder, og bruker Windsor for å slippe å gå inn i Search Console og GA4 for hvert av dem. Jeg bruker det også til å stille spørsmål som kombinerer søkedata fra Search Console med hva besøkende gjør i GA4, og til å bestemme hvilke sider jeg skal forbedre først. Jeg bruker Basic-planen og Windsor-pluginen i ChatGPT.
+
+Oppsett, felter, begrensninger og pris er kontrollert mot dokumentasjonen fra Windsor, OpenAI og Google 9. november 2026. Eksemplene viser spørsmålene og hva du bør se etter i svarene, ikke tall fra mine nettsteder.
+
+## Hva Windsor.ai er
+
+Windsor.ai er en datakobling. Ifølge [Windsor](https://windsor.ai/data-integration/) kan den hente data fra over 350 kilder, blant annet annonseplattformer, nettbutikker og analyseverktøy. Dataene kan sendes til Looker Studio, Google Sheets eller BigQuery, eller gjøres tilgjengelige for AI-assistenter som ChatGPT og Claude via Windsors MCP-server. MCP (Model Context Protocol) er standarden som lar en AI-assistent bruke eksterne verktøy.
+
+For en innholdsside er det to kilder som betyr noe:
+
+- **Search Console** viser hvordan nettstedet ditt gjør det i Google-søk: søkeord, sider, visninger, klikk, klikkfrekvens (CTR) og gjennomsnittlig plassering.
+- **GA4** viser hva som skjer etter klikket: økter, engasjement, landingssider, trafikkilder og hendelser du har satt opp.
+
+Windsor skriver at [Search Console-koblingen](https://windsor.ai/connectors/google-search-console/) bare leser data. Den sender ikke inn sitemaps, ber ikke om indeksering og endrer ingen innstillinger. URL-inspeksjon og rapporten om sideindeksering er heller ikke med. Windsor kan gjøre endringer på enkelte annonse- og markedsplattformer, alltid etter bekreftelse, men for Search Console og GA4 finnes det ingen slike handlinger.
+
+## Slik kobler du det til
+
+### 1. Koble Search Console og GA4 i Windsor
+
+Lag en konto hos Windsor og koble til Search Console og GA4 med Google-kontoen som har tilgang til eiendommene. Du velger selv hvilke nettsteder som skal være med.
+
+### 2. Installer Windsor-pluginen i ChatGPT
+
+Windsor.ai ligger i Plugins-katalogen i ChatGPT. Ifølge [Windsors veiledning](https://windsor.ai/documentation/windsor-mcp/how-to-integrate-data-into-chatgpt/) gjør du dette:
+
+1. Åpne Windsor.ai i Plugins-katalogen i ChatGPT, og installer pluginen.
+2. Godkjenn koblingen. Windsor beskriver knappene som Connect og Allow Access.
+3. Logg inn i Windsor når du blir bedt om det.
+4. Test koblingen med et spørsmål som «Vis hvilke datakilder jeg har koblet til Windsor.ai.»
+
+Windsor må være valgt i chatten for at ChatGPT skal hente nye data. Skriv @ i meldingsfeltet og velg Windsor.ai når spørsmålet trenger tall. Oppfølgingsspørsmål om tall som allerede står i samtalen, trenger det ikke.
+
+### Plugin eller egen MCP-server
+
+Pluginen er den ferdige versjonen fra katalogen, og det Windsor selv anbefaler. Den bruker Windsors MCP-server på `https://mcp.windsor.ai/`.
+
+Du kan også legge inn den samme adressen som egen MCP-server, med «Add custom MCP server» under Plugins. Ifølge [OpenAIs hjelpeside](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt) kan Pro bare koble til egne MCP-servere med lesetilgang, mens Business og Enterprise/Edu har full støtte. I Business-arbeidsområder er det bare administratorer og eiere som kan legge dem til. Egen MCP-server er mest aktuelt i arbeidsområder der administratoren styrer hvilke apper som er tillatt, eller i andre klienter enn ChatGPT. Windsor støtter også Claude, Gemini og Cursor.
+
+## Dette kan du hente ut
+
+Fra Search Console får du blant annet søkeord, side, land, enhet, dato og søkeresultattype, med klikk, visninger, CTR og gjennomsnittlig plassering. Windsor legger i tillegg til noen felter Search Console selv ikke har: antall ord i søket og om søket inneholder merkenavnet. Det siste regnes bare ut fra om domenenavnet står i søket, så feilstavinger av merkenavnet blir ikke fanget opp.
+
+Fra GA4 kan du hente økter, engasjerte økter, engasjementsrate, landingsside, kanal (for eksempel Organic Search) og hendelser. Windsor oppgir 92 målinger og 390 dimensjoner. Har du satt opp egne hendelser, kan de også hentes. På Min Egen Sjef sendes for eksempel klikk på annonselenker som en egen hendelse.
+
+To detaljer er nyttige å kjenne til før du spør:
+
+- **CTR og engasjementsrate kommer som desimaltall.** 0,0119 betyr 1,19 %. Be ChatGPT vise prosent.
+- **Sidene skrives ulikt i de to kildene.** Search Console oppgir hele adressen, for eksempel `https://eksempel.no/side/`. GA4 oppgir stien, ofte uten avsluttende skråstrek: `/side`. Skal ChatGPT koble tallene sammen, må du be den matche på stien.
+
+## Spørsmål du kan kopiere
+
+Alle spørsmålene forutsetter at Windsor er valgt i chatten, og at du sier hvilket nettsted det gjelder.
+
+**Sider med mange visninger, men lav CTR**
+
+> Vis hvilke landingssider på eksempel.no som har fått flest Google-visninger de siste 28 dagene, men lav CTR. Ta med klikk, visninger, CTR i prosent og gjennomsnittlig plassering, sortert etter visninger.
+
+Se på plasseringen før du gjør noe. En side med gjennomsnittlig plassering rundt 40 får mange visninger fra søk der den ligger langt nede, og da er lav CTR forventet. Er plasseringen under 10 og CTR-en lav sammenlignet med dine andre sider, er tittel og metabeskrivelse det første du bør se på. Spør gjerne videre: «Hvilke søkeord gir visningene for denne siden?» Ofte viser det at siden vises på søk den ikke svarer på.
+
+**Sammenligning med forrige periode**
+
+> Sammenlign klikk og visninger fra Search Console for eksempel.no de siste 28 dagene med de 28 dagene før. Bruk to like lange perioder som slutter tre dager før i dag, og oppgi datoene du har brukt. Vis hvilke sider som står for den største endringen.
+
+Search Console har ikke ferdige tall for de siste to–tre dagene, og GA4 bruker 24–48 timer på å ferdigbehandle et døgn. Tar du med de siste dagene, ser det ut som et fall som ikke finnes. Be alltid om datoene i svaret, så du vet hva som faktisk er sammenlignet. Har nettstedet sesongvariasjon, er det ofte mer nyttig å sammenligne med samme periode i fjor. Search Console lagrer 16 måneder.
+
+**Søkeord på plass 5–15**
+
+> Hvilke søkeord på eksempel.no ligger på gjennomsnittlig plassering 5–15 de siste 28 dagene og har flest visninger? Vis søkeord, side, visninger, klikk og plassering.
+
+Dette er søkeordene der en forbedring kan gi flest nye klikk, fordi siden allerede er nær toppen. Se om siden faktisk svarer på søket, om svaret kommer tidlig, og om den har interne lenker fra relaterte sider. Står to av sidene dine på samme søkeord, konkurrerer de kanskje med hverandre. Hvordan søk og rangering henger sammen, står i [hva SEO er](/hva-er-seo/).
+
+**Økende visninger, men lite engasjement**
+
+> Finn sider på eksempel.no der Google-visningene i Search Console har økt de siste 28 dagene sammenlignet med de 28 dagene før, og vis engasjementsraten for de samme sidene fra GA4, bare for kanalen Organic Search. Match sidene på stien.
+
+Dette er spørsmålet som krever begge kildene. En side som får flere visninger, men der få blir værende, svarer kanskje ikke på det folk søker etter. Søkeordene fra spørsmålet over viser hva de lette etter. Les engasjementet som et signal, ikke en fasit: GA4 måler bare en del av besøkende (se under), og en side som gir svaret raskt, kan ha lav engasjementsrate fordi leseren fikk svaret med en gang.
+
+## Slik bruker du svarene til å prioritere
+
+Spørsmålene gir ofte flere kandidater enn du har tid til. En praktisk rekkefølge, fra minst arbeid til mest:
+
+1. **Søkeord på plass 5–15 med mange visninger.** Siden finnes og rangerer nesten. Ofte holder det med et bedre svar øverst og noen interne lenker.
+2. **God plassering, men lav CTR.** Tittel og metabeskrivelse er raske å endre.
+3. **Sider som har falt.** Finn ut om det skyldes sesong, et søkeord som har forsvunnet eller en konkurrent, før du skriver om noe.
+4. **Mye trafikk, lite engasjement.** Krever som regel at du skriver om deler av siden.
+
+Skriv ned hva du endret og når. Etter noen uker kan du stille det samme spørsmålet igjen for de samme sidene og se om noe har skjedd. Kontroller viktige tall i Search Console før du gjør store endringer. ChatGPT kan avrunde, blande rader eller trekke slutninger dataene ikke dekker.
+
+## Search Console og GA4 måler ikke det samme
+
+Klikk i Search Console og økter i GA4 blir aldri like, og [Google forklarer hvorfor](https://developers.google.com/search/docs/monitor-debug/google-analytics-search-console):
+
+- Et klikk er et klikk på et søkeresultat. En økt er en periode der noen bruker nettstedet.
+- Search Console bruker alltid amerikansk stillehavstid. GA4 bruker tidssonen du har valgt.
+- Search Console rapporterer bare den kanoniske adressen, mens GA4 rapporterer alle adresser med sporingskoden.
+- GA4 filtrerer bort kjente roboter. Search Console gjør ikke nødvendigvis det.
+- Avslår besøkende sporing, blir GA4-tallene skjeve.
+
+Det siste betyr mye i Norge. Bruker nettstedet et samtykkebanner, måler GA4 i praksis bare dem som godtar analyse. Min Egen Sjef laster for eksempel ikke GA4 i det hele tatt før besøkende har godtatt. Da kan GA4 vise langt færre økter fra Google enn Search Console viser klikk. Sammenlign derfor utvikling over tid i hver kilde, ikke tallene direkte mot hverandre.
+
+## Begrensninger
+
+- **Sjeldne søk er skjult.** Google holder igjen søkeord som få har brukt, av personvernhensyn. Summen av søkeordradene blir derfor lavere enn totalen for nettstedet.
+- **GA4 kan holde igjen rader.** Med Google signals slått på kan rader med få brukere bli holdt tilbake, og sjeldne verdier samles i en rad som heter «(other)». Færre dimensjoner i spørsmålet kan hjelpe.
+- **Svar kan bli for store.** Ber du om mange felter over lang tid, kan Windsor svare at datamengden er for stor. Avgrens periode, felter eller nettsted.
+- **Tallene kan være opptil seks timer gamle.** Ifølge [Windsors GA4-veiledning](https://windsor.ai/how-to-connect-ga4-data-to-claude/) mellomlagres svaret på et identisk spørsmål i opptil seks timer.
+- **Windsor gir ingen indekseringsdata.** Spørsmål om hvorfor en side ikke er indeksert, må du fortsatt sjekke i Search Console.
+
+## Personvern
+
+Data fra Search Console og GA4 er stort sett samlede tall uten personopplysninger, men to ting er verdt å vite:
+
+- **Dataene går via Windsor.** Selskapet heter Windsor Group AG og holder til i Sveits. Ifølge [Windsor](https://windsor.ai/security/) behandles personopplysninger etter GDPR, en databehandleravtale er en del av vilkårene, og serverne står i Tyskland. Flere [underleverandører](https://windsor.ai/list-of-sub-processors/) er amerikanske.
+- **Svarene havner i ChatGPT.** Tallene du henter, blir en del av samtalen. Ifølge oppføringen i Plugins-katalogen kan ChatGPT også dele relevante samtaler og minner med Windsor. Analyserer du nettsteder for andre, bør du avklare det med dem først.
+
+## Pris
+
+Windsors [prisside](https://windsor.ai/pricing/) viste dette 9. november 2026:
+
+- **Prøveperiode:** 30 dager gratis, med opptil 10 datakilder.
+- **Forever Free:** gratis, med én datakilde og én konto.
+- **Basic:** 23 dollar per måned, eller 19 dollar per måned ved årlig betaling. Tre datakilder og 75 kontoer, oppdatert daglig.
+- **Standard:** 118 dollar per måned, eller 99 dollar ved årlig betaling. Sju datakilder, og mulighet for oppdatering hver time.
+
+MCP-tilgangen er med i alle planene. En datakilde er en plattform, for eksempel Search Console. En konto er ett nettsted eller én eiendom i den plattformen. Search Console og GA4 er altså to datakilder, og Windsor skriver selv at spørsmål som kombinerer dem, krever betalt plan etter de første 30 dagene.
+
+## Hvem det passer for
+
+Windsor er mest nyttig hvis du har flere nettsteder eller mange sider, allerede bruker ChatGPT, og vil koble søkedata sammen med det som skjer på nettstedet. Har du ett lite nettsted med få søk, gir Search Console selv deg det meste, og gratisplanen holder hvis du bare vil spørre om Search Console-data i ChatGPT.
+
+Search Console viser hva nettstedet ditt allerede vises på. Vil du finne nye søkeord, trenger du søkevolum fra et søkeordsverktøy. Se [hvordan jeg bruker KWFinder i ChatGPT](/kwfinder-i-chatgpt/).
+
+Vil du prøve, kan du starte med prøveperioden hos [Windsor.ai](/go/windsor-ai/). Windsor er en av de faste [partnerne](/partnere/) her.

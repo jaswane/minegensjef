@@ -2,7 +2,7 @@
 
 **Sist oppdatert:** 09.11.2026
 **Status:** Minegensjef 2.0 er live på minegensjef.no (Vercel) og kan indekseres. Legacy-arkivet er komplett. Alle 39 gamle URL-er har en endelig behandling: 15 moderniserte artikler, 13 historiske (4 av dem noindex), 3 rebygget og 8 med 301. Se «Sluttregnskap» i `docs/migration/url-inventory.md`.
-**Siste commit:** «Add partner page and Windsor.ai and Mangools links» (`git log -1`)
+**Siste commit:** «Add Windsor.ai and ChatGPT guide» (`git log -1`)
 
 **Lansering 03.11.2026:** DNS hos Domeneshop peker til Vercel, `www` og `minegensjef.vercel.app` gir 308 til `https://minegensjef.no/`, og `SITE_INDEXABLE=true` er satt bare i Production. Den gamle WordPress-installasjonen på altgratis-webhotellet er beholdt som rollback. Seksjonene «Ikke implementert» og «Gjenstår før domenet kan flyttes» lenger ned beskriver tilstanden før lansering.
 
@@ -32,7 +32,7 @@ Designbeslutninger for forsiden står i `docs/PRD.md` §8 («Beslutninger om for
 | `/` | Forside | ja |
 | `/start/` | Fire steg med råd, lenker til guidene | ja |
 | `/guider/` | Planlagte guider, merket «Under arbeid», med ankere | ja |
-| `/artikler/` | Liste over alle 29 publiserte artikler, også de fire med noindex | ja |
+| `/artikler/` | Liste over alle 30 publiserte artikler, også de fire med noindex | ja |
 | `/wealthy-affiliate/` | Første versjon av WA-huben, med én merket annonselenke og lenke til anmeldelsen | ja |
 | `/case/ebutikker/` | eButikker som ekte eksempel, ikke oppskrift. Ingen tall | ja |
 | `/om/` | Om Andreas og nettstedet | ja |
@@ -207,6 +207,7 @@ Min Egen Sjef drives av **Swane Creative, enkeltpersonforetak, org.nr. 917 248 8
 ## Innholdsbacklog
 
 - **Publisert 09.11.2026:** `/kwfinder-i-chatgpt/` («Slik bruker jeg KWFinder i ChatGPT»). Andreas har bekreftet at han har koblet Mangools MCP til ChatGPT og brukt det. Artikkelen har ingen tall fra egne søk. Et ekte, datert eksempel kan legges inn når Andreas leverer det.
+- **Publisert 09.11.2026:** `/windsor-ai-chatgpt/` (Windsor.ai og ChatGPT for Search Console og GA4), med annonselenke via `/go/windsor-ai/`. Metoden er testet mot minegensjef.no-data, men ingen tall er publisert.
 - Resten av backloggen for WA, Windsor.ai og AI-verktøy står i `docs/content/roadmap-wa-ai-verktøy.md`.
 
 ## Åpne beslutninger

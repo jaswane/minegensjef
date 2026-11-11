@@ -10,7 +10,7 @@ Planen dekker fire saker: KWFinder i ChatGPT, Windsor.ai, Wealthy Affiliate 2026
 | # | Sak | URL | Status | Hva som må til før publisering |
 |---|---|---|---|---|
 | 1 | KWFinder i ChatGPT | `/kwfinder-i-chatgpt/` | **Publisert 09.11.2026** | – |
-| 2 | Windsor.ai: Search Console og GA4 i ChatGPT | `/windsor-ai-search-console-ga4-chatgpt/` (ny) | **Neste innholdsprioritet.** Disposisjon klar | Andreas har brukt Windsor med egne GSC- og GA4-data. Affiliatelenken er klar (`/go/windsor-ai/`) |
+| 2 | Windsor.ai og ChatGPT for Search Console og GA4 | `/windsor-ai-chatgpt/` | **Publisert 09.11.2026** | – |
 | 3 | WA pris, medlemsnivåer og credits | `/wealthy-affiliate-pris/` (ny) | Planlagt | Kontroller prissiden på publiseringsdagen |
 | 4 | Praktisk norsk innføring i Hubs og Ace | `/wealthy-affiliate-hubs-og-ace/` (ny) | Ny idé | Andreas' egne erfaringer med Hubs og Ace (se «Nye ideer») |
 | 5 | WA-huben bygges ut med plattformkart | `/wealthy-affiliate/` (finnes) | Planlagt | Ingen nye fakta, bare struktur og lenker. Kan gjøres sammen med nr. 3 |
@@ -30,7 +30,7 @@ Planen dekker fire saker: KWFinder i ChatGPT, Windsor.ai, Wealthy Affiliate 2026
 
 **C. Ace Research mot KWFinder.** Mulig sammenligning senere: samme norske søkeord i begge, med datogrunnlag, hvilke data hvert verktøy gir, kostnad (credits mot oppslag) og begrensninger. Ikke aktuelt før Andreas har testet begge på samme søkeord. Ingen konklusjon på forhånd.
 
-**D. Windsor.ai.** Affiliateprogrammet er godkjent, og `/go/windsor-ai/` er opprettet (09.11.2026). Den praktiske guiden om Search Console og GA4 er neste innholdsprioritet. Se disposisjonen under.
+**D. Windsor.ai.** Affiliateprogrammet er godkjent, og `/go/windsor-ai/` er opprettet (09.11.2026). Den praktiske guiden om Search Console og GA4 er publisert som `/windsor-ai-chatgpt/` (09.11.2026).
 
 ## Eksisterende URL-er og kannibalisering
 
@@ -132,7 +132,11 @@ Regel: én URL per søkeintensjon. PRD §9 listet ti mulige WA-undersider. Seks 
 
 **7. Testprosjektet.** En datert logg over det nye nettstedet. Starter først når nisjen er valgt (STATUS.md: ikke finn på et prosjekt). Innhold: hvorfor nisjen ble valgt, hva Ace og Ace Research foreslo og hva Andreas valgte, publiserte sider, trafikk fra Search Console når det finnes, og kostnad i credits. Ingen inntektstall uten dokumentasjon. Kan bli en serie med én oversiktsside og datoinnlegg. Det avgjøres når første innlegg skal skrives.
 
-## 5. Windsor.ai: disposisjon
+## 5. Windsor.ai (publisert 09.11.2026)
+
+Publisert som `/windsor-ai-chatgpt/` («Slik bruker jeg Windsor.ai og ChatGPT til å analysere Search Console og Google Analytics»). Andreas har bekreftet at han bruker Windsor-pluginen i ChatGPT på Basic-planen, med Search Console og GA4 for flere nettsteder. Spørsmålene i artikkelen er testet mot minegensjef.no-dataene via Windsor 09.11.2026, men ingen tall eller sidenavn er publisert. Disposisjonen under er beholdt som grunnlag.
+
+### Opprinnelig disposisjon
 
 **Arbeidstittel:** «Windsor.ai: Search Console- og GA4-rapporter i ChatGPT»
 **Slug-forslag:** `/windsor-ai-search-console-ga4-chatgpt/`, hub `seo` (eller `ai` når den huben finnes).
@@ -160,6 +164,5 @@ Disposisjon:
 
 ## Neste sprint (anbefaling)
 
-1. Windsor.ai-guiden om Search Console og GA4. Krever bekreftelse på at Andreas har brukt Windsor med egne data, og gjerne ett eller to ekte, daterte eksempler.
-2. Andreas skriver eller dikterer stikkord om erfaringene sine med Hubs, Ace, Ace Research, Learn, Studio og Websites (B-feltene). Det låser opp Hubs og Ace-innføringen, steg-for-steg og anmeldelsen.
-3. Prissiden for Wealthy Affiliate, med kontroll av prissiden samme dag, og huben med plattformkart og lenker.
+1. Andreas skriver eller dikterer stikkord om erfaringene sine med Hubs, Ace, Ace Research, Learn, Studio og Websites (B-feltene). Det låser opp Hubs og Ace-innføringen, steg-for-steg og anmeldelsen.
+2. Prissiden for Wealthy Affiliate, med kontroll av prissiden samme dag, og huben med plattformkart og lenker.
